@@ -7,17 +7,9 @@ InitialHomePage.propTypes = {
     questions: PropTypes.object,
 };
 
-export default function InitialHomePage({theModel}) {
-    // const [rows, setRows] = useState([]);
-    // console.log(theModel.data.questions);
-    // useEffect(() => {
-    //     setRows(theModel.data.questions.map((question) => <AddRow question={question} key={question.id} />));
-    // }, [theModel.data.questions]);
-    
-    const [displayStyle] = useState('block');
-    
+export default function InitialHomePage({theModel,showQuestionPage}) {
     return (
-      <div style={{ display: displayStyle }} id="homepage">
+      <div style={{ display: showQuestionPage ? "block" : "none" }} id="homepage">
         <table className="defaultPos" id="allQuestions">
           <thead>
             <tr className="topRow">

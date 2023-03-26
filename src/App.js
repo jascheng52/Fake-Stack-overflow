@@ -12,9 +12,12 @@ import './stylesheets/index.css'
 import Model from './models/model.js'
 import { React, useState } from 'react'
 import LeftSideMenu from './components/leftSideMenu'
+import InitialHomePage from './components/initialHomePage'
 
 function App () {
   const [theModel, settheModel] = useState(new Model())
+  const [showQuestionPage, setshowQuestionPage] = useState(true);
+  const [showTagsPage, setShowTagsPage] = useState(false);
   // const [lastQuestionArr, setLastQuestionArr] = useState([]);
   // const [lastAnswerPageEvent, setLastAnswerPageEvent] = useState(null);
   // const [currentQuestions, setCurrentQuestions] = useState(theModel.getAllQstns());
@@ -22,9 +25,11 @@ function App () {
     <section className="fakeso">
       <Banner/>
       {/* <QuestionForm model = {theModel} setModel = {settheModel}/> */}
-      <LeftSideMenu model = {theModel}/>
+      <LeftSideMenu theModel = {theModel} showQuestionPage={showQuestionPage} setshowQuestionPage={setshowQuestionPage}
+      showTagsPage={showTagsPage} setShowTagsPage={setShowTagsPage}/>
       {/* <AnswersForm/>  */}
-      <TagsPage model = {theModel} setModel = {settheModel}/>
+      <InitialHomePage theModel = {theModel} showQuestionPage={showQuestionPage}/>
+      <TagsPage model = {theModel} setModel = {settheModel} showTagsPage={showTagsPage}/>
     </section>
   )
 }
