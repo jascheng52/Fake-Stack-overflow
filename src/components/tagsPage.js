@@ -5,10 +5,10 @@ TagsPage.propTypes = {
   model: PropTypes.object,
   setModel: PropTypes.func
 }
-export default function TagsPage ({ model, setModel }) {
+export default function TagsPage ({ model, setModel, showTagsPage }) {
   return (
     <>
-        <div className = 'hidden' id = "tagsPage">
+        <div style={{ display: showTagsPage ? "block" : "none" }} className = 'hidden' id = "tagsPage">
 
             <div className="right-table defaultPos">
                 <div>
