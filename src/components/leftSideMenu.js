@@ -1,5 +1,6 @@
 // This function is the left side menu
-import React from 'react';
+import TagsPage from './tagsPage'
+import React from 'react'
 // import Model from '../models/model.js';
 // import hideAllHidden  from '../components/hideAllHidden.js';
 // import addRow from '../components/addRow.js';
@@ -10,21 +11,22 @@ import React from 'react';
 //     theModel: PropTypes.object.isRequired,
 // };
 
-export default function LeftSideMenu(){
-
-    return (
+export default function LeftSideMenu (model) {
+  return (
         <>
         <div className = "leftSide">
         <table className ="left-table">
-            <tr>
-            <td height='100' id="tableSide"><h2> Question </h2></td>   
+          <tbody>
+            <tr key="row1">
+            <td height='100' id="tableSide"><h2 style = {{ paddingLeft: '1vw' }}> Question </h2></td>
             </tr>
-            <tr>
-            <td height='100' id="tagsSide"><h2> Tags </h2></td>   
+            <tr key="row2">
+            <td height='100' id="tagsSide" onClick = {function () { TagsPage(model) }}><h2 style={{ paddingLeft: '1vw' }}> Tags </h2></td>
             </tr>
-            <tr></tr>
+            <tr key="row3"></tr>
+          </tbody>
         </table>
         </div>
         </>
-    );
+  )
 }
