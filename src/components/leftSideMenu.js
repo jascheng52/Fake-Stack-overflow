@@ -16,9 +16,9 @@ LeftSideMenu.propTypes = {
 export default function LeftSideMenu (theModel) {
   const [showQuestionPage, setShowQuestionPage] = useState(false);
   
-    const handleQuestionClick = () => {
-      setShowQuestionPage(true);
-    };
+    // const handleQuestionClick = () => {
+    //   setShowQuestionPage(true);
+    // };
   
     if (showQuestionPage) {
       return <QuestionPage theModel={theModel} />;
@@ -29,7 +29,7 @@ export default function LeftSideMenu (theModel) {
         <table className ="left-table">
           <tbody>
             <tr key="row1">
-            <td height='100' id="tableSide" onClick={handleQuestionClick} ><h2 style = {{ paddingLeft: '1vw' }}> Question </h2></td>
+            <td height='100' id="tableSide" ><h2 style = {{ paddingLeft: '1vw' }}> Question </h2></td>
             </tr>
             <tr key="row2">
             <td height='100' id="tagsSide" onClick = {function () { TagsPage(theModel) }}><h2 style={{ paddingLeft: '1vw' }}> Tags </h2></td>
