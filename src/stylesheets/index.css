@@ -5,7 +5,7 @@ body {
 
 /* Hide html class */
 .hidden {
-    display: none;
+    display: block;
   }
 /* End of Hide html class */
 
