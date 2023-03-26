@@ -8,7 +8,6 @@ InitialHomePage.propTypes = {
 };
 
 export default function InitialHomePage({theModel}) {
-    console.log('Hi9412-');
     // const [rows, setRows] = useState([]);
     // console.log(theModel.data.questions);
     // useEffect(() => {
@@ -38,24 +37,17 @@ export default function InitialHomePage({theModel}) {
               </td>
             </tr>
             
-          </thead>
-          <tbody >
-            
-            {/* {rows} */}
-          </tbody>
-        </table>
-        <div className = "defaultQuestTable">
-            <table>
+          </thead> 
+          <table className = "defaultQuestTable">
             <LoadQuestions theModel={theModel}/>
-            </table>
-        </div>
+          </table>
+        </table>
       </div>
     );    
 }
 
 function LoadQuestions({theModel})
 {
-    console.log(theModel)
     return theModel.data.questions.map(function(questRow, index){
         return <AddRow  key = {index} question={questRow} theModel={theModel}/>
     }

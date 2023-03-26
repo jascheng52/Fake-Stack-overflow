@@ -16,7 +16,6 @@ AddRow.propTypes = {
 
 function getTagName(tid,theModel){
   const tagsArr = theModel.data.tags;
-  console.log("tagsArr is " + tagsArr);
   for (let i = 0; i < tagsArr.length; i++){
       const id = tagsArr[i].tid;
       if (id == tid){
@@ -29,12 +28,9 @@ function AddRow({question, theModel}) {
   if (!question) {
     return null; 
   }
-  // const tableRows = questions.map((question) => {
     const qid = question.qid;
     const num = qid.replace(/\D/g, '');
-    console.log("questions is " + question);
     const names = question.tagIds.map(tagId => getTagName(tagId,theModel));
-    console.log("bob is very cool " + names);
     const dateArr = question.askDate.toString().split(" ");
     const dateStr = question.askDate.toString();
     const dateObj = new Date(dateStr);
