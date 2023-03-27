@@ -24,7 +24,7 @@ function getTagName(tid,theModel){
   }
 }
 
-function AddRow({question, theModel}) {
+function AddRow({question,theModel}) {
   if (!question) {
     return null; 
   }

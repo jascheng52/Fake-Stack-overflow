@@ -6,11 +6,11 @@ import Model from '../models/model.js'
 import InitialHomePage from '../components/initialHomePage'
 import SortQuestionByDate from '../components/sortQuestionByDate'
 
-export default function NewestButton({theModel,settheModel,showQuestionPage}){
-    // deleteRows();
+export default function NewestButton({theModel,settheModel}){
     let questions = theModel.data.questions;
-    let sortedArr = SortQuestionByDate({questions});
-    let sortedModel = new Model();
-    sortedModel.data.questions = sortedArr;
-    settheModel(theModel = sortedModel);
+    let sortedArr = SortQuestionByDate(questions);
+    return sortedArr;
+    // let sortedModel = new Model();
+    // sortedModel.data.questions = sortedArr;
+    // settheModel(theModel = sortedModel);
 }

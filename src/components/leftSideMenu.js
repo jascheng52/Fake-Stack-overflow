@@ -8,6 +8,7 @@ import React, { useState } from "react";
 // import addRow from '../components/addRow.js';
 // import newestButton from '../components/newestButton.js';
 import PropTypes from 'prop-types';
+import StatusEnum from "../components/questionArrayStates";
 
 
 LeftSideMenu.propTypes = {
@@ -16,12 +17,13 @@ LeftSideMenu.propTypes = {
 
 };
 
-export default function LeftSideMenu ({theModel,showQuestionPage,setshowQuestionPage,showTagsPage,setShowTagsPage}) {
+export default function LeftSideMenu ({theModel,showQuestionPage,setshowQuestionPage,showTagsPage,setShowTagsPage,setButtonState}) {
   const [selectedSection, setSelectedSection] = useState("tableSide");
   function handleQuestionClick(){
     setshowQuestionPage(showQuestionPage = true);
     setShowTagsPage(showTagsPage = false);
     setSelectedSection("tableSide");
+    setButtonState(StatusEnum.NEWEST);
   }
   function handleTagsClick(){
     setshowQuestionPage(showQuestionPage = false);

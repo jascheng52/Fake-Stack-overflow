@@ -9,7 +9,8 @@ export default function UnAnsweredButton({theModel,settheModel}){
         unAnsQuestions.push(questions[i-1]);
       }
     }
-    let sortedModel = new Model();
-    sortedModel.data.questions = unAnsQuestions;
-    settheModel(theModel = sortedModel);
+    return unAnsQuestions;
+    // let sortedModel = new Model();
+    // sortedModel.data.questions = unAnsQuestions;
+    // settheModel(theModel = sortedModel);
 }

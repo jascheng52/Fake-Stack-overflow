@@ -1,6 +1,6 @@
 
 
-export default function SortQuestionByDate({questionArr}){
+export default function SortQuestionByDate(questionArr){
     // let questionArr = theModel.data.questions;
     let secsSincePostedArr = [];
     const currDate = new Date();

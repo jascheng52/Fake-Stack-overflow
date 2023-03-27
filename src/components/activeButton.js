@@ -1,5 +1,5 @@
-import Model from '../models/model.js'
-import React, { useState } from "react";
+// import Model from '../models/model.js'
+// import React, { useState } from "react";
 
 
 function sortAnswerByDate(questionArr){
@@ -25,7 +25,7 @@ function sortAnswerByDate(questionArr){
   return sortedQuestionArr;
 }
 
-export default function ActiveButton({theModel,settheModel}){
+export default function ActiveButton({theModel}){
     let questions = theModel.data.questions;
     console.log(JSON.stringify(questions) + "BABABABA");
     let sortedByActive = [];
@@ -45,7 +45,8 @@ export default function ActiveButton({theModel,settheModel}){
     for (let k = tempArr.length; 0 < k; k--){
       sortedByActive.push(tempArr[k - 1]);
     }
-    let sortedModel = new Model();
-    sortedModel.data.questions = sortedByActive;
-    settheModel(theModel = sortedModel);
+    return sortedByActive;
+    // let sortedModel = new Model();
+    // sortedModel.data.questions = sortedByActive;
+    // settheModel(theModel = sortedModel);
 }

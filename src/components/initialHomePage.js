@@ -1,31 +1,53 @@
-import React, { useState } from "react";
+import React from "react";
 import AddRow from '../components/addRow.js';
 import PropTypes from 'prop-types';
 import NewestButton from '../components/newestButton.js';
 import ActiveButton from '../components/activeButton';
 import UnAnsweredButton from '../components/unAnsweredButton';
-import SortQuestionByDate from "./sortQuestionByDate.js";
-import Model from '../models/model.js'
+// import SortQuestionByDate from "./sortQuestionByDate.js";
+// import Model from '../models/model.js'
+import StatusEnum from "../components/questionArrayStates";
 
 InitialHomePage.propTypes = {
-    theModel: PropTypes.object,
-    questions: PropTypes.object,
-    showQuestionPage: PropTypes.bool,
+  theModel: PropTypes.object,
+  questions: PropTypes.object,
+  showQuestionPage: PropTypes.bool,
+  buttonState: PropTypes.bool,
+  settheModel: PropTypes.func,
+  setButtonState: PropTypes.func,
 };
 
-// function checkState(){
-  
-// }
+function CheckState({buttonState,theModel,settheModel}){
+  let sortedArr1;
+  let sortedArr2;
+  let sortedArr3;
+  switch (buttonState) {
+    case StatusEnum.NEWEST:
+      sortedArr1 = NewestButton({theModel,settheModel});
+      //console.log(JSON.stringify(sortedArr1));
+      return <LoadQuestions questions={sortedArr1} theModel={theModel}/>
+    case StatusEnum.ACTIVE:
+      sortedArr2 = ActiveButton({theModel,settheModel});
+      return <LoadQuestions questions={sortedArr2} theModel={theModel}/>
 
-export default function InitialHomePage({theModel,settheModel,showQuestionPage}) {
+    case StatusEnum.UNANSWERED:
+      sortedArr3 = UnAnsweredButton({theModel,settheModel});
+      return <LoadQuestions questions={sortedArr3} theModel={theModel}/>
+
+    default:
+      break;
+  }
+}
+
+export default function InitialHomePage({theModel,settheModel,showQuestionPage,buttonState,setButtonState}) {
   function handleNewestBtnClick(){
-    NewestButton({theModel,settheModel,showQuestionPage});
+    setButtonState(StatusEnum.NEWEST);
   }
   function handleActiveBtnClick(){
-    ActiveButton({theModel,settheModel});
+    setButtonState(StatusEnum.ACTIVE);
   }
   function handleUnAnsweredBtnClick(){
-    UnAnsweredButton({theModel,settheModel});
+    setButtonState(StatusEnum.UNANSWERED);
   } 
 
     return (
@@ -51,7 +73,7 @@ export default function InitialHomePage({theModel,settheModel,showQuestionPage})
             
           </thead> 
           <table className = "defaultQuestTable">
-            <LoadQuestions questions={theModel.data.questions} theModel={theModel}/>
+            <CheckState buttonState={buttonState} theModel={theModel} settheModel={settheModel}/>
           </table>
         </table>
       </div>
@@ -59,13 +81,12 @@ export default function InitialHomePage({theModel,settheModel,showQuestionPage})
 }
 
 
-function LoadQuestions({questions,theModel})
-{
-    return questions.map(function(questRow, index){
-      return <AddRow  key = {index} question={questRow} theModel={theModel}/>
-    }
-    ) 
+function LoadQuestions({questions, theModel}) {
+  return questions.map(function(questRow, index) {
+    return <AddRow key={index} question={questRow} theModel={theModel}/>
+  });
 }
+
 
 // function handleRemoveRows() {
 //   const rowsToRemove = document.querySelectorAll('.insertedRow');
