@@ -20,25 +20,25 @@ function sortAnswerByDate (questionArr) {
   for (let k = 0; k < sortedIndexArr.length; k++) {
     sortedQuestionArr.push(questionArr[sortedIndexArr[k]])
   }
-  return sortedQuestionArr;
+  return sortedQuestionArr
 }
 
-export default function ActiveButton({theModel}){
-    let questions = theModel.data.questions;
-    let sortedByActive = [];
-    let tempArr = [...questions];
-    let answers = theModel.data.answers;
-    let sortedAnswers = sortAnswerByDate(answers);
-    for (let i = 0; i < sortedAnswers.length; i++){
-      let aid = sortedAnswers[i].aid;
-      for (let j = 0; j < tempArr.length; j++){
-        if (tempArr[j].ansIds.includes(aid)){
-          sortedByActive.push(tempArr[j]);
-          tempArr.splice(j,1);
-          break;
-        } 
+export default function ActiveButton ({ theModel }) {
+  const questions = theModel.data.questions
+  const sortedByActive = []
+  const tempArr = [...questions]
+  const answers = theModel.data.answers
+  const sortedAnswers = sortAnswerByDate(answers)
+  for (let i = 0; i < sortedAnswers.length; i++) {
+    const aid = sortedAnswers[i].aid
+    for (let j = 0; j < tempArr.length; j++) {
+      if (tempArr[j].ansIds.includes(aid)) {
+        sortedByActive.push(tempArr[j])
+        tempArr.splice(j, 1)
+        break
       }
     }
+  }
   for (let k = tempArr.length; k > 0; k--) {
     sortedByActive.push(tempArr[k - 1])
   }

@@ -14,16 +14,16 @@ import { React, useState } from 'react'
 import LeftSideMenu from './components/leftSideMenu'
 import InitialHomePage from './components/initialHomePage'
 // import SortQuestionByDate from "./components/sortQuestionByDate.js";
-import StatusEnum from "./components/questionArrayStates";
-import LoadAnswerPage from './components/loadAnswerPage';
+import StatusEnum from './components/questionArrayStates'
+import LoadAnswerPage from './components/loadAnswerPage'
 
 function App () {
-  const [theModel, settheModel] = useState(new Model())  
-  const [showQuestionPage, setShowQuestionPage] = useState(true);
-  const [showTagsPage, setShowTagsPage] = useState(false);
-  const [buttonState,setButtonState] = useState(StatusEnum.NEWEST);
-  const [showAnswerPage, setShowAnswerPage] = useState(false);
-  const [questionClickedOn, setQuestionClickedOn] = useState({});
+  const [theModel, settheModel] = useState(new Model())
+  const [showQuestionPage, setShowQuestionPage] = useState(true)
+  const [showTagsPage, setShowTagsPage] = useState(false)
+  const [buttonState, setButtonState] = useState(StatusEnum.NEWEST)
+  const [showAnswerPage, setShowAnswerPage] = useState(false)
+  const [questionClickedOn, setQuestionClickedOn] = useState({})
 
   return (
     <section className="fakeso">
@@ -32,10 +32,11 @@ function App () {
       <LeftSideMenu theModel = {theModel} settheModel={settheModel} showQuestionPage={showQuestionPage} setShowQuestionPage={setShowQuestionPage}
       showTagsPage={showTagsPage} setShowTagsPage={setShowTagsPage} setButtonState={setButtonState} setShowAnswerPage={setShowAnswerPage}/>
       {/* <AnswersForm/>  */}
-      <InitialHomePage theModel = {theModel} settheModel={settheModel} showQuestionPage={showQuestionPage} buttonState={buttonState} 
+      <InitialHomePage theModel = {theModel} settheModel={settheModel} showQuestionPage={showQuestionPage} buttonState={buttonState}
       setButtonState={setButtonState} setShowQuestionPage={setShowQuestionPage} showAnswerPage={showAnswerPage} setShowAnswerPage={setShowAnswerPage}
       questionClickedOn={questionClickedOn} setQuestionClickedOn={setQuestionClickedOn}/>
       <TagsPage model = {theModel} setModel = {settheModel} showTagsPage={showTagsPage}/>
+      <LoadAnswerPage showAnswerPage={showAnswerPage} questionClickedOn={questionClickedOn} theModel={theModel}/>;
     </section>
   )
 }

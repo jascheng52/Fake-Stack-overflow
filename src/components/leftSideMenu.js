@@ -16,19 +16,21 @@ LeftSideMenu.propTypes = {
   setShowQuestionPage: PropTypes.func,
   showTagsPage: PropTypes.func,
   setShowTagsPage: PropTypes.func,
-  setButtonState: PropTypes.func
+  setButtonState: PropTypes.func,
+  setShowAnswerPage: PropTypes.func
+}
 
-};
-
-export default function LeftSideMenu ({theModel,showQuestionPage,setShowQuestionPage,showTagsPage,setShowTagsPage,setButtonState,
-  setShowAnswerPage}) {
-  const [selectedSection, setSelectedSection] = useState("tableSide");
-  function handleQuestionClick(){
-    setShowQuestionPage(showQuestionPage = true);
-    setShowTagsPage(showTagsPage = false);
-    setSelectedSection("tableSide");
-    setShowAnswerPage(false);
-    setButtonState(StatusEnum.NEWEST);
+export default function LeftSideMenu ({
+  theModel, showQuestionPage, setShowQuestionPage, showTagsPage, setShowTagsPage, setButtonState,
+  setShowAnswerPage
+}) {
+  const [selectedSection, setSelectedSection] = useState('tableSide')
+  function handleQuestionClick () {
+    setShowQuestionPage(showQuestionPage = true)
+    setShowTagsPage(showTagsPage = false)
+    setSelectedSection('tableSide')
+    setShowAnswerPage(false)
+    setButtonState(StatusEnum.NEWEST)
   }
   function handleTagsClick () {
     setShowQuestionPage(showQuestionPage = false)
