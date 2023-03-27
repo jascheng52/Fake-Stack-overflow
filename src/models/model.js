@@ -120,6 +120,16 @@ export default class Model {
     this.data.questions.push(theQuestion)
   }
 
+  addAnswerToQuestID (qid, answer) {
+    const questions = this.data.questions
+    for (let i = 0; i < questions.length; i++) {
+      if (questions[i].qid === qid) {
+        questions[i].ansIds.push(answer)
+        return
+      }
+    }
+  }
+
   addAnswer (theAnswer) {
     this.data.answers.push(theAnswer)
   }

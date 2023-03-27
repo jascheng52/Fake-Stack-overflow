@@ -1,6 +1,6 @@
 // THIS FUNCTION ADDS A ROW
-import React from 'react';
-//import deleteRows from '../components/deleteRows.js';
+import React from 'react'
+// import deleteRows from '../components/deleteRows.js';
 // import Model from '../models/model.js';
 import timeCheck from '../components/timeCheck';
 import PropTypes from 'prop-types';
@@ -13,15 +13,15 @@ AddRow.propTypes = {
 
 AddRow.propTypes = {
 
-};
+}
 
-function getTagName(tid,theModel){
-  const tagsArr = theModel.data.tags;
-  for (let i = 0; i < tagsArr.length; i++){
-      const id = tagsArr[i].tid;
-      if (id == tid){
-          return tagsArr[i].name;
-      }
+function getTagName (tid, theModel) {
+  const tagsArr = theModel.data.tags
+  for (let i = 0; i < tagsArr.length; i++) {
+    const id = tagsArr[i].tid
+    if (id === tid) {
+      return tagsArr[i].name
+    }
   }
 }
 
@@ -32,27 +32,25 @@ function AddRow({question,theModel,setshowQuestionPage,showAnswerPage,setShowAns
   }
 
   if (!question) {
-    return null; 
+    return null
   }
-    const qid = question.qid;
-    const num = qid.replace(/\D/g, '');
-    const names = question.tagIds.map(tagId => getTagName(tagId,theModel));
-    const dateArr = question.askDate.toString().split(" ");
-    const dateStr = question.askDate.toString();
-    const dateObj = new Date(dateStr);
+  const qid = question.qid
+  const num = qid.replace(/\D/g, '')
+  const names = question.tagIds.map(tagId => getTagName(tagId, theModel))
+  const dateArr = question.askDate.toString().split(' ')
+  const dateStr = question.askDate.toString()
+  const dateObj = new Date(dateStr)
 
-    let datePrint;
-    if (timeCheck.checkOverOneYear(dateObj)){
-        datePrint = dateArr[1] + " " + dateArr[2] + "," + dateArr[3] + " at " + dateArr[4];
-    }
-    else if (timeCheck.checkUnderTwentyFourHours(dateObj)){
-        datePrint = timeCheck.underTwentyFourReturn(dateObj);
-    }
-    else {
-        datePrint = dateArr[1] + " " + dateArr[2] + " at " + dateArr[4];
-    }
-    return (
-      <tr key={num-1} className="insertedRow" id={num-1}>
+  let datePrint
+  if (timeCheck.checkOverOneYear(dateObj)) {
+    datePrint = dateArr[1] + ' ' + dateArr[2] + ',' + dateArr[3] + ' at ' + dateArr[4]
+  } else if (timeCheck.checkUnderTwentyFourHours(dateObj)) {
+    datePrint = timeCheck.underTwentyFourReturn(dateObj)
+  } else {
+    datePrint = dateArr[1] + ' ' + dateArr[2] + ' at ' + dateArr[4]
+  }
+  return (
+      <tr key={num - 1} className="insertedRow" id={num - 1}>
         <td className="newCellOne">{question.ansIds.length} answers {question.views} views</td>
         <td className="newCellTwo">
           <div style={{ overflowWrap: "break-word" }} onClick={handleOpenAnswerPage}>{question.title}</div>
@@ -62,12 +60,12 @@ function AddRow({question,theModel,setshowQuestionPage,showAnswerPage,setShowAns
             ))}
           </div>
         </td>
-        <td className="newCellFour" style={{ overflowWrap: "break-word" }}>
+        <td className="newCellFour" style={{ overflowWrap: 'break-word' }}>
           {question.askedBy} asked
         </td>
         <td className="newCellFive">{datePrint}</td>
       </tr>
-    );
+  )
 }
 
-export default AddRow;
+export default AddRow

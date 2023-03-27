@@ -1,25 +1,24 @@
 // import Model from '../models/model.js'
 // import React, { useState } from "react";
 
-
-function sortAnswerByDate(questionArr){
-  let secsSincePostedArr = [];
-  const currDate = new Date();
-  for (let i = 0; i < questionArr.length; i++){
-    let dateStr = questionArr[i].ansDate.toString();
-    const dateObj = new Date(dateStr);
-    let seconds = Math.abs(currDate - dateObj) / (1000);
-    secsSincePostedArr.push(seconds);
+function sortAnswerByDate (questionArr) {
+  const secsSincePostedArr = []
+  const currDate = new Date()
+  for (let i = 0; i < questionArr.length; i++) {
+    const dateStr = questionArr[i].ansDate.toString()
+    const dateObj = new Date(dateStr)
+    const seconds = Math.abs(currDate - dateObj) / (1000)
+    secsSincePostedArr.push(seconds)
   }
-  let tempArr = [...secsSincePostedArr];
-  tempArr = tempArr.sort(function(a, b){return a-b;});
-  let sortedIndexArr = [];
-  for (let j = 0; j < tempArr.length; j++){
-    sortedIndexArr.push(secsSincePostedArr.indexOf(tempArr[j])); 
+  let tempArr = [...secsSincePostedArr]
+  tempArr = tempArr.sort(function (a, b) { return a - b })
+  const sortedIndexArr = []
+  for (let j = 0; j < tempArr.length; j++) {
+    sortedIndexArr.push(secsSincePostedArr.indexOf(tempArr[j]))
   }
-  let sortedQuestionArr = [];
-  for (let k = 0; k < sortedIndexArr.length; k++){
-    sortedQuestionArr.push(questionArr[sortedIndexArr[k]]);
+  const sortedQuestionArr = []
+  for (let k = 0; k < sortedIndexArr.length; k++) {
+    sortedQuestionArr.push(questionArr[sortedIndexArr[k]])
   }
   return sortedQuestionArr;
 }
@@ -40,11 +39,11 @@ export default function ActiveButton({theModel}){
         } 
       }
     }
-    for (let k = tempArr.length; 0 < k; k--){
-      sortedByActive.push(tempArr[k - 1]);
-    }
-    return sortedByActive;
-    // let sortedModel = new Model();
-    // sortedModel.data.questions = sortedByActive;
-    // settheModel(theModel = sortedModel);
+  for (let k = tempArr.length; k > 0; k--) {
+    sortedByActive.push(tempArr[k - 1])
+  }
+  return sortedByActive
+  // let sortedModel = new Model();
+  // sortedModel.data.questions = sortedByActive;
+  // settheModel(theModel = sortedModel);
 }
