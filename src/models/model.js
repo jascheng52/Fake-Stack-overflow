@@ -8,7 +8,7 @@ export default class Model {
           text: 'the alert shows the proper index for the li clicked, and when I alert the variable within the last function I\'m calling, moveToNextImage(stepClicked), the same value shows but the animation isn\'t happening. This works many other ways, but I\'m trying to pass the index value of the list item clicked to use for the math to calculate.',
           tagIds: ['t1', 't2'],
           askedBy: 'JoJi John',
-          askDate: new Date('January 20, 2023 17:20:00'),
+          askDate: new Date('January 20, 2022 17:20:00'),
           ansIds: ['a1', 'a2'],
           views: 10
         },
@@ -21,6 +21,16 @@ export default class Model {
           askDate: new Date('February 22, 2022 12:06:12'),
           ansIds: ['a3', 'a4', 'a5'],
           views: 121
+        },
+        {
+          qid: 'q3',
+          title: 'Testing 123',
+          text: 'I am using bottom navigation view but am using custom navigation, so my fragments are not recreated every time i switch to a different view. I just hide/show my fragments depending on the icon selected. The problem i am facing is that whenever a config change happens (dark/light theme), my app crashes. I have 2 fragments in this activity and the below code is what i am using to refrain them from being recreated.',
+          tagIds: ['t3', 't4', 't2'],
+          askedBy: 'bob',
+          askDate: new Date('February 5, 2023 12:06:12'),
+          ansIds: [],
+          views: 0
         }
       ],
       tags: [

@@ -1,8 +1,8 @@
 // This function is the left side menu
 import React, { useState } from "react";
 // import QuestionPage from '../components/questionPage';
-import InitialHomePage from '../components/initialHomePage';
-import TagsPage from './tagsPage'
+//import InitialHomePage from '../components/initialHomePage';
+//import TagsPage from './tagsPage'
 // import Model from '../models/model.js';
 // import hideAllHidden  from '../components/hideAllHidden.js';
 // import addRow from '../components/addRow.js';
@@ -11,19 +11,21 @@ import PropTypes from 'prop-types';
 
 
 LeftSideMenu.propTypes = {
-    theModel: PropTypes.object.isRequired,
+    theModel: PropTypes.object,
+    showQuestionPage: PropTypes.bool,
+
 };
 
 export default function LeftSideMenu ({theModel,showQuestionPage,setshowQuestionPage,showTagsPage,setShowTagsPage}) {
   const [selectedSection, setSelectedSection] = useState("tableSide");
   function handleQuestionClick(){
-    setshowQuestionPage(showQuestionPage=true);
-    setShowTagsPage(showTagsPage=false);
+    setshowQuestionPage(showQuestionPage = true);
+    setShowTagsPage(showTagsPage = false);
     setSelectedSection("tableSide");
   }
   function handleTagsClick(){
-    setshowQuestionPage(showQuestionPage=false);
-    setShowTagsPage(showTagsPage=true);
+    setshowQuestionPage(showQuestionPage = false);
+    setShowTagsPage(showTagsPage = true);
     setSelectedSection("tagsSide");
   }
   return (

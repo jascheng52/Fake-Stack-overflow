@@ -45,7 +45,6 @@ function AddRow({question, theModel}) {
     else {
         datePrint = dateArr[1] + " " + dateArr[2] + " at " + dateArr[4];
     }
-
     return (
       <tr key={num-1} className="insertedRow" id={num-1}>
         <td className="newCellOne">{question.ansIds.length} answers {question.views} views</td>
