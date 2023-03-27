@@ -13,7 +13,7 @@ InitialHomePage.propTypes = {
   theModel: PropTypes.object,
   questions: PropTypes.object,
   showQuestionPage: PropTypes.bool,
-  setshowQuestionPage: PropTypes.bool,
+  setShowQuestionPage: PropTypes.bool,
   buttonState: PropTypes.bool,
   settheModel: PropTypes.func,
   setButtonState: PropTypes.func
@@ -25,7 +25,7 @@ CheckState.propTypes = {
   settheModel: PropTypes.func
 }
 
-function CheckState ({ buttonState, theModel, settheModel }) {
+function CheckState ({ buttonState, theModel, settheModel, setShowQuestionPage, showAnswerPage, setShowAnswerPage}) { 
   let sortedArr1
   let sortedArr2
   let sortedArr3
@@ -33,21 +33,24 @@ function CheckState ({ buttonState, theModel, settheModel }) {
     case StatusEnum.NEWEST:
       sortedArr1 = NewestButton({ theModel, settheModel })
       // console.log(JSON.stringify(sortedArr1));
-      return <LoadQuestions questions={sortedArr1} theModel={theModel}/>
+      return <LoadQuestions questions={sortedArr1} theModel={theModel} setShowQuestionPage={setShowQuestionPage}
+      showAnswerPage={showAnswerPage} setShowAnswerPage={setShowAnswerPage}/>
     case StatusEnum.ACTIVE:
       sortedArr2 = ActiveButton({ theModel, settheModel })
-      return <LoadQuestions questions={sortedArr2} theModel={theModel}/>
+      return <LoadQuestions questions={sortedArr2} theModel={theModel} setShowQuestionPage={setShowQuestionPage}
+      showAnswerPage={showAnswerPage} setShowAnswerPage={setShowAnswerPage}/>
 
     case StatusEnum.UNANSWERED:
       sortedArr3 = UnAnsweredButton({ theModel, settheModel })
-      return <LoadQuestions questions={sortedArr3} theModel={theModel}/>
+      return <LoadQuestions questions={sortedArr3} theModel={theModel} setShowQuestionPage={setShowQuestionPage}
+      showAnswerPage={showAnswerPage} setShowAnswerPage={setShowAnswerPage}/>
 
     default:
       break
   }
 }
 
-export default function InitialHomePage({theModel,settheModel,showQuestionPage,setshowQuestionPage,buttonState,setButtonState,
+export default function InitialHomePage({theModel,settheModel,showQuestionPage,setShowQuestionPage,buttonState,setButtonState,
   showAnswerPage,setShowAnswerPage}) {
   function handleNewestBtnClick(){
     setButtonState(StatusEnum.NEWEST);
@@ -85,7 +88,7 @@ export default function InitialHomePage({theModel,settheModel,showQuestionPage,s
 
           </thead>
           <table className = "defaultQuestTable">
-            <CheckState buttonState={buttonState} theModel={theModel} settheModel={settheModel} setshowQuestionPage={setshowQuestionPage}
+            <CheckState buttonState={buttonState} theModel={theModel} settheModel={settheModel} setShowQuestionPage={setShowQuestionPage}
             showAnswerPage={showAnswerPage} setShowAnswerPage={setShowAnswerPage}/>
           </table>
         </table>
@@ -94,9 +97,9 @@ export default function InitialHomePage({theModel,settheModel,showQuestionPage,s
 }
 
 
-function LoadQuestions({questions, theModel, setshowQuestionPage,showAnswerPage,setShowAnswerPage}) {
+function LoadQuestions({questions, theModel, setShowQuestionPage,showAnswerPage,setShowAnswerPage}) {
   return questions.map(function(questRow, index) {
-    return <AddRow key={index} question={questRow} theModel={theModel} setshowQuestionPage={setshowQuestionPage}
+    return <AddRow key={index} question={questRow} theModel={theModel} setShowQuestionPage={setShowQuestionPage}
     showAnswerPage={showAnswerPage} setShowAnswerPage={setShowAnswerPage}/>
   });
 }

@@ -19,7 +19,7 @@ import LoadAnswerPage from './components/loadAnswerPage';
 
 function App () {
   const [theModel, settheModel] = useState(new Model())  
-  const [showQuestionPage, setshowQuestionPage] = useState(true);
+  const [showQuestionPage, setShowQuestionPage] = useState(true);
   const [showTagsPage, setShowTagsPage] = useState(false);
   const [buttonState,setButtonState] = useState(StatusEnum.NEWEST);
   const [showAnswerPage, setShowAnswerPage] = useState(false);
@@ -28,11 +28,11 @@ function App () {
     <section className="fakeso">
       <Banner/>
       {/* <QuestionForm model = {theModel} setModel = {settheModel}/> */}
-      <LeftSideMenu theModel = {theModel} settheModel={settheModel} showQuestionPage={showQuestionPage} setshowQuestionPage={setshowQuestionPage}
+      <LeftSideMenu theModel = {theModel} settheModel={settheModel} showQuestionPage={showQuestionPage} setShowQuestionPage={setShowQuestionPage}
       showTagsPage={showTagsPage} setShowTagsPage={setShowTagsPage} setButtonState={setButtonState} setShowAnswerPage={setShowAnswerPage}/>
       {/* <AnswersForm/>  */}
       <InitialHomePage theModel = {theModel} settheModel={settheModel} showQuestionPage={showQuestionPage} buttonState={buttonState} 
-      setButtonState={setButtonState} setshowQuestionPage={setshowQuestionPage} showAnswerPage={showAnswerPage} setShowAnswerPage={setShowAnswerPage}/>
+      setButtonState={setButtonState} setShowQuestionPage={setShowQuestionPage} showAnswerPage={showAnswerPage} setShowAnswerPage={setShowAnswerPage}/>
       <TagsPage model = {theModel} setModel = {settheModel} showTagsPage={showTagsPage}/>
     </section>
   )
