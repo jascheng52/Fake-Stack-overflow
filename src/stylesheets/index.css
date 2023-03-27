@@ -371,3 +371,9 @@ text-align: right;
     color:green;
 }
 /* End of Answer Page Css*/
+
+/* For the leftSide highlighted with a gray background */
+.selectedLeftSideTable {
+    background-color: grey;
+}
+/* End of leftSide highlighted with a gray background */
