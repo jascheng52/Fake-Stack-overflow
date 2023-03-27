@@ -15,12 +15,14 @@ import LeftSideMenu from './components/leftSideMenu'
 import InitialHomePage from './components/initialHomePage'
 // import SortQuestionByDate from "./components/sortQuestionByDate.js";
 import StatusEnum from "./components/questionArrayStates";
+import LoadAnswerPage from './components/loadAnswerPage';
 
 function App () {
-  const [theModel, settheModel] = useState(new Model())   // This model maybe edited and have questions or answers removed from it
+  const [theModel, settheModel] = useState(new Model())  
   const [showQuestionPage, setshowQuestionPage] = useState(true);
   const [showTagsPage, setShowTagsPage] = useState(false);
   const [buttonState,setButtonState] = useState(StatusEnum.NEWEST);
+  const [showAnswerPage, setShowAnswerPage] = useState(false);
 
   return (
     <section className="fakeso">
@@ -30,7 +32,7 @@ function App () {
       showTagsPage={showTagsPage} setShowTagsPage={setShowTagsPage} setButtonState={setButtonState}/>
       {/* <AnswersForm/>  */}
       <InitialHomePage theModel = {theModel} settheModel={settheModel} showQuestionPage={showQuestionPage} buttonState={buttonState} 
-      setButtonState={setButtonState}/>
+      setButtonState={setButtonState} setshowQuestionPage={setshowQuestionPage} showAnswerPage={showAnswerPage} setShowAnswerPage={setShowAnswerPage}/>
       <TagsPage model = {theModel} setModel = {settheModel} showTagsPage={showTagsPage}/>
     </section>
   )

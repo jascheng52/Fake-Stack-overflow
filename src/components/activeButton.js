@@ -21,13 +21,11 @@ function sortAnswerByDate(questionArr){
   for (let k = 0; k < sortedIndexArr.length; k++){
     sortedQuestionArr.push(questionArr[sortedIndexArr[k]]);
   }
-  console.log(JSON.stringify(sortedQuestionArr) + "CCCCCCBABABABA");
   return sortedQuestionArr;
 }
 
 export default function ActiveButton({theModel}){
     let questions = theModel.data.questions;
-    console.log(JSON.stringify(questions) + "BABABABA");
     let sortedByActive = [];
     let tempArr = [...questions];
     let answers = theModel.data.answers;
