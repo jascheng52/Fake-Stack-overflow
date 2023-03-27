@@ -6,12 +6,14 @@ import ActiveButton from '../components/activeButton'
 import UnAnsweredButton from '../components/unAnsweredButton'
 // import SortQuestionByDate from "./sortQuestionByDate.js";
 // import Model from '../models/model.js'
-import StatusEnum from '../components/questionArrayStates'
+import StatusEnum from "../components/questionArrayStates";
+import LoadAnswerPage from '../components/loadAnswerPage';
 
 InitialHomePage.propTypes = {
   theModel: PropTypes.object,
   questions: PropTypes.object,
   showQuestionPage: PropTypes.bool,
+  setshowQuestionPage: PropTypes.bool,
   buttonState: PropTypes.bool,
   settheModel: PropTypes.func,
   setButtonState: PropTypes.func
@@ -45,9 +47,10 @@ function CheckState ({ buttonState, theModel, settheModel }) {
   }
 }
 
-export default function InitialHomePage ({ theModel, settheModel, showQuestionPage, buttonState, setButtonState }) {
-  function handleNewestBtnClick () {
-    setButtonState(StatusEnum.NEWEST)
+export default function InitialHomePage({theModel,settheModel,showQuestionPage,setshowQuestionPage,buttonState,setButtonState,
+  showAnswerPage,setShowAnswerPage}) {
+  function handleNewestBtnClick(){
+    setButtonState(StatusEnum.NEWEST);
   }
   function handleActiveBtnClick () {
     setButtonState(StatusEnum.ACTIVE)
@@ -55,6 +58,9 @@ export default function InitialHomePage ({ theModel, settheModel, showQuestionPa
   function handleUnAnsweredBtnClick () {
     setButtonState(StatusEnum.UNANSWERED)
   }
+  if (showAnswerPage){
+    return <LoadAnswerPage showAnswerPage={showAnswerPage}/>;
+  } 
 
   return (
       <div style={{ display: showQuestionPage ? 'block' : 'none' }} id="homepage">
@@ -79,17 +85,20 @@ export default function InitialHomePage ({ theModel, settheModel, showQuestionPa
 
           </thead>
           <table className = "defaultQuestTable">
-            <CheckState buttonState={buttonState} theModel={theModel} settheModel={settheModel}/>
+            <CheckState buttonState={buttonState} theModel={theModel} settheModel={settheModel} setshowQuestionPage={setshowQuestionPage}
+            showAnswerPage={showAnswerPage} setShowAnswerPage={setShowAnswerPage}/>
           </table>
         </table>
       </div>
   )
 }
 
-function LoadQuestions ({ questions, theModel }) {
-  return questions.map(function (questRow, index) {
-    return <AddRow key={index} question={questRow} theModel={theModel}/>
-  })
+
+function LoadQuestions({questions, theModel, setshowQuestionPage,showAnswerPage,setShowAnswerPage}) {
+  return questions.map(function(questRow, index) {
+    return <AddRow key={index} question={questRow} theModel={theModel} setshowQuestionPage={setshowQuestionPage}
+    showAnswerPage={showAnswerPage} setShowAnswerPage={setShowAnswerPage}/>
+  });
 }
 
 // function handleRemoveRows() {

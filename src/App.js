@@ -14,22 +14,25 @@ import { React, useState } from 'react'
 import LeftSideMenu from './components/leftSideMenu'
 import InitialHomePage from './components/initialHomePage'
 // import SortQuestionByDate from "./components/sortQuestionByDate.js";
-import StatusEnum from './components/questionArrayStates'
+import StatusEnum from "./components/questionArrayStates";
+import LoadAnswerPage from './components/loadAnswerPage';
 
 function App () {
-  const [theModel, settheModel] = useState(new Model()) // This model maybe edited and have questions or answers removed from it
-  const [showQuestionPage, setshowQuestionPage] = useState(true)
-  const [showTagsPage, setShowTagsPage] = useState(false)
-  const [buttonState, setButtonState] = useState(StatusEnum.NEWEST)
+  const [theModel, settheModel] = useState(new Model())  
+  const [showQuestionPage, setshowQuestionPage] = useState(true);
+  const [showTagsPage, setShowTagsPage] = useState(false);
+  const [buttonState,setButtonState] = useState(StatusEnum.NEWEST);
+  const [showAnswerPage, setShowAnswerPage] = useState(false);
+
   return (
     <section className="fakeso">
       <Banner/>
       {/* <QuestionForm model = {theModel} setModel = {settheModel}/> */}
       <LeftSideMenu theModel = {theModel} settheModel={settheModel} showQuestionPage={showQuestionPage} setshowQuestionPage={setshowQuestionPage}
-      showTagsPage={showTagsPage} setShowTagsPage={setShowTagsPage} setButtonState={setButtonState}/>
+      showTagsPage={showTagsPage} setShowTagsPage={setShowTagsPage} setButtonState={setButtonState} setShowAnswerPage={setShowAnswerPage}/>
       {/* <AnswersForm/>  */}
-      <InitialHomePage theModel = {theModel} settheModel={settheModel} showQuestionPage={showQuestionPage} buttonState={buttonState}
-      setButtonState={setButtonState}/>
+      <InitialHomePage theModel = {theModel} settheModel={settheModel} showQuestionPage={showQuestionPage} buttonState={buttonState} 
+      setButtonState={setButtonState} setshowQuestionPage={setshowQuestionPage} showAnswerPage={showAnswerPage} setShowAnswerPage={setShowAnswerPage}/>
       <TagsPage model = {theModel} setModel = {settheModel} showTagsPage={showTagsPage}/>
     </section>
   )
