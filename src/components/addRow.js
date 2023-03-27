@@ -2,14 +2,19 @@
 import React from 'react'
 // import deleteRows from '../components/deleteRows.js';
 // import Model from '../models/model.js';
-import timeCheck from '../components/timeCheck';
-import PropTypes from 'prop-types';
-import LoadAnswerPage from '../components/loadAnswerPage';
+import timeCheck from '../components/timeCheck'
+import PropTypes from 'prop-types'
+// import LoadAnswerPage from '../components/loadAnswerPage'
 
 AddRow.propTypes = {
   theModel: PropTypes.object,
-  question: PropTypes.object,
-};
+  question: PropTypes.func,
+  setShowQuestionPage: PropTypes.func,
+  showAnswerPage: PropTypes.func,
+  setShowAnswerPage: PropTypes.func,
+  questionClickedOn: PropTypes.func,
+  setQuestionClickedOn: PropTypes.func
+}
 
 AddRow.propTypes = {
 
@@ -25,10 +30,11 @@ function getTagName (tid, theModel) {
   }
 }
 
-function AddRow({question,theModel,setshowQuestionPage,showAnswerPage,setShowAnswerPage}) {
-  function handleOpenAnswerPage(){
-    setshowQuestionPage(false);
-    setShowAnswerPage(true);
+function AddRow ({ question, theModel, setShowQuestionPage, showAnswerPage, setShowAnswerPage, questionClickedOn, setQuestionClickedOn }) {
+  function handleOpenAnswerPage () {
+    setShowQuestionPage(false)
+    setQuestionClickedOn(question)
+    setShowAnswerPage(true)
   }
 
   if (!question) {
@@ -53,7 +59,7 @@ function AddRow({question,theModel,setshowQuestionPage,showAnswerPage,setShowAns
       <tr key={num - 1} className="insertedRow" id={num - 1}>
         <td className="newCellOne">{question.ansIds.length} answers {question.views} views</td>
         <td className="newCellTwo">
-          <div style={{ overflowWrap: "break-word" }} onClick={handleOpenAnswerPage}>{question.title}</div>
+          <div style={{ overflowWrap: 'break-word' }} onClick={handleOpenAnswerPage}>{question.title}</div>
           <div>
             {names.map((tag) => (
               <span key={tag} className="tagsCss">{tag}</span>

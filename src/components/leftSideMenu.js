@@ -12,26 +12,28 @@ import StatusEnum from '../components/questionArrayStates'
 
 LeftSideMenu.propTypes = {
   theModel: PropTypes.object,
-  showQuestionPage: PropTypes.bool,
-  setshowQuestionPage: PropTypes.bool,
-  showTagsPage: PropTypes.bool,
-  setShowTagsPage: PropTypes.bool,
-  setButtonState: PropTypes.bool
+  showQuestionPage: PropTypes.func,
+  setShowQuestionPage: PropTypes.func,
+  showTagsPage: PropTypes.func,
+  setShowTagsPage: PropTypes.func,
+  setButtonState: PropTypes.func,
+  setShowAnswerPage: PropTypes.func
+}
 
-};
-
-export default function LeftSideMenu ({theModel,showQuestionPage,setshowQuestionPage,showTagsPage,setShowTagsPage,setButtonState,
-  setShowAnswerPage}) {
-  const [selectedSection, setSelectedSection] = useState("tableSide");
-  function handleQuestionClick(){
-    setshowQuestionPage(showQuestionPage = true);
-    setShowTagsPage(showTagsPage = false);
-    setSelectedSection("tableSide");
-    setShowAnswerPage(false);
-    setButtonState(StatusEnum.NEWEST);
+export default function LeftSideMenu ({
+  theModel, showQuestionPage, setShowQuestionPage, showTagsPage, setShowTagsPage, setButtonState,
+  setShowAnswerPage
+}) {
+  const [selectedSection, setSelectedSection] = useState('tableSide')
+  function handleQuestionClick () {
+    setShowQuestionPage(showQuestionPage = true)
+    setShowTagsPage(showTagsPage = false)
+    setSelectedSection('tableSide')
+    setShowAnswerPage(false)
+    setButtonState(StatusEnum.NEWEST)
   }
   function handleTagsClick () {
-    setshowQuestionPage(showQuestionPage = false)
+    setShowQuestionPage(showQuestionPage = false)
     setShowTagsPage(showTagsPage = true)
     setSelectedSection('tagsSide')
   }
