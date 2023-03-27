@@ -29,7 +29,7 @@ function App () {
       <Banner/>
       {/* <QuestionForm model = {theModel} setModel = {settheModel}/> */}
       <LeftSideMenu theModel = {theModel} settheModel={settheModel} showQuestionPage={showQuestionPage} setshowQuestionPage={setshowQuestionPage}
-      showTagsPage={showTagsPage} setShowTagsPage={setShowTagsPage} setButtonState={setButtonState}/>
+      showTagsPage={showTagsPage} setShowTagsPage={setShowTagsPage} setButtonState={setButtonState} setShowAnswerPage={setShowAnswerPage}/>
       {/* <AnswersForm/>  */}
       <InitialHomePage theModel = {theModel} settheModel={settheModel} showQuestionPage={showQuestionPage} buttonState={buttonState} 
       setButtonState={setButtonState} setshowQuestionPage={setshowQuestionPage} showAnswerPage={showAnswerPage} setShowAnswerPage={setShowAnswerPage}/>

@@ -17,12 +17,14 @@ LeftSideMenu.propTypes = {
 
 };
 
-export default function LeftSideMenu ({theModel,showQuestionPage,setshowQuestionPage,showTagsPage,setShowTagsPage,setButtonState}) {
+export default function LeftSideMenu ({theModel,showQuestionPage,setshowQuestionPage,showTagsPage,setShowTagsPage,setButtonState,
+  setShowAnswerPage}) {
   const [selectedSection, setSelectedSection] = useState("tableSide");
   function handleQuestionClick(){
     setshowQuestionPage(showQuestionPage = true);
     setShowTagsPage(showTagsPage = false);
     setSelectedSection("tableSide");
+    setShowAnswerPage(false);
     setButtonState(StatusEnum.NEWEST);
   }
   function handleTagsClick(){
