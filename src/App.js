@@ -14,14 +14,13 @@ import { React, useState } from 'react'
 import LeftSideMenu from './components/leftSideMenu'
 import InitialHomePage from './components/initialHomePage'
 // import SortQuestionByDate from "./components/sortQuestionByDate.js";
-import StatusEnum from "./components/questionArrayStates";
+import StatusEnum from './components/questionArrayStates'
 
 function App () {
-  const [theModel, settheModel] = useState(new Model())   // This model maybe edited and have questions or answers removed from it
-  const [showQuestionPage, setshowQuestionPage] = useState(true);
-  const [showTagsPage, setShowTagsPage] = useState(false);
-  const [buttonState,setButtonState] = useState(StatusEnum.NEWEST);
-
+  const [theModel, settheModel] = useState(new Model()) // This model maybe edited and have questions or answers removed from it
+  const [showQuestionPage, setshowQuestionPage] = useState(true)
+  const [showTagsPage, setShowTagsPage] = useState(false)
+  const [buttonState, setButtonState] = useState(StatusEnum.NEWEST)
   return (
     <section className="fakeso">
       <Banner/>
@@ -29,7 +28,7 @@ function App () {
       <LeftSideMenu theModel = {theModel} settheModel={settheModel} showQuestionPage={showQuestionPage} setshowQuestionPage={setshowQuestionPage}
       showTagsPage={showTagsPage} setShowTagsPage={setShowTagsPage} setButtonState={setButtonState}/>
       {/* <AnswersForm/>  */}
-      <InitialHomePage theModel = {theModel} settheModel={settheModel} showQuestionPage={showQuestionPage} buttonState={buttonState} 
+      <InitialHomePage theModel = {theModel} settheModel={settheModel} showQuestionPage={showQuestionPage} buttonState={buttonState}
       setButtonState={setButtonState}/>
       <TagsPage model = {theModel} setModel = {settheModel} showTagsPage={showTagsPage}/>
     </section>
