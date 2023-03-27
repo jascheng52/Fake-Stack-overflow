@@ -38,12 +38,12 @@ export default function LeftSideMenu ({ theModel, showQuestionPage, setshowQuest
         <table className ="left-table">
           <tbody>
             <tr key="row1">
-            <td height='100' id="tableSide" onClick={handleQuestionClick}><h2 style = {{ paddingLeft: '1vw' }}
-            className={selectedSection === 'tableSide' ? 'selectedLeftSideTable' : null} > Question </h2></td>
+            <td height='100' id="tableSide" onClick={handleQuestionClick} className={selectedSection === 'tableSide' ? 'selectedLeftSideTable' : null}>
+              <h2 style = {{ paddingLeft: '1vw' }}> Question </h2></td>
             </tr>
             <tr key="row2">
-            <td height='100' id="tagsSide" onClick={handleTagsClick}><h2 style={{ paddingLeft: '1vw' }}
-            className={selectedSection === 'tagsSide' ? 'selectedLeftSideTable' : null}> Tags </h2></td>
+            <td height='100' id="tagsSide" onClick={handleTagsClick} className={selectedSection === 'tagsSide' ? 'selectedLeftSideTable' : null}>
+              <h2 style={{ paddingLeft: '1vw' }}> Tags </h2></td>
             </tr>
             <tr key="row3"></tr>
           </tbody>
