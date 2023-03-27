@@ -36,6 +36,7 @@ export default function LeftSideMenu ({
     setShowQuestionPage(showQuestionPage = false)
     setShowTagsPage(showTagsPage = true)
     setSelectedSection('tagsSide')
+    setShowAnswerPage(false)
   }
   return (
         <>

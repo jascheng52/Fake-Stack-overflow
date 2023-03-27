@@ -73,11 +73,12 @@ function AddAllAnswers ({ questionClickedOn, theModel }) { // adds all answers f
   const temp = []
 
   for (let x = 0; x < arr.length; x++) {
-    const object = arr[x]
-    const indexOfAnsId = findIndex(object, { theModel })
+    const aid = arr[x]
+    const indexOfAnsId = findIndex(aid, { theModel })
+    const object = theModel.data.answers[indexOfAnsId]
     let timeStr = ''
-    const dateArr = theModel.data.answers[indexOfAnsId].ansDate.toString().split(' ')
-    const dateStr = theModel.data.answers[indexOfAnsId].ansDate.toString()
+    const dateArr = object.ansDate.toString().split(' ')
+    const dateStr = object.ansDate.toString()
     const dateObj = new Date(dateStr)
     timeCheck.checkUnderTwentyFourHours(dateObj)
     if (timeCheck.checkOverOneYear(dateObj)) {
@@ -90,12 +91,11 @@ function AddAllAnswers ({ questionClickedOn, theModel }) { // adds all answers f
       const datePrint = dateArr[1] + ' ' + dateArr[2] + ' at ' + dateArr[4]
       timeStr = datePrint
     }
-
     temp.push(
-            <div className="answerToQuestion">
-                <div className="textBoxAnswer">${object.text}</div>
-                <div className="timeBoxAnswer"><span className="ansBy">{object.ansBy}</span> answered {timeStr}</div>
-            </div>
+        <div className="answerToQuestion">
+            <div className="textBoxAnswer">{object.text}</div>
+            <div className="timeBoxAnswer"><span className="ansBy">{object.ansBy}</span> answered {timeStr}</div>
+        </div>
     )
   }
   return temp
@@ -104,9 +104,7 @@ function AddAllAnswers ({ questionClickedOn, theModel }) { // adds all answers f
 function sortAnswerByDate (questionArr, { theModel }) { // sorts all answers by date
   const secsSincePostedArr = []
   const currDate = new Date()
-  // console.log(JSON.stringify(theModel) + " pausechamp5");
   const modelAns = theModel.data.answers
-  // console.log(JSON.stringify(questionArr) + " pausechamp1");
   for (let i = 0; i < questionArr.length; i++) {
     const dateStr = modelAns[i].ansDate.toString()
     const dateObj = new Date(dateStr)
