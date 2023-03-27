@@ -25,9 +25,10 @@ function getTagName (tid, theModel) {
   }
 }
 
-function AddRow({question,theModel,setShowQuestionPage,showAnswerPage,setShowAnswerPage}) {
+function AddRow({question,theModel,setShowQuestionPage,showAnswerPage,setShowAnswerPage,questionClickedOn,setQuestionClickedOn}) {
   function handleOpenAnswerPage(){
     setShowQuestionPage(false);
+    setQuestionClickedOn(question);
     setShowAnswerPage(true);
   }
 

@@ -295,7 +295,7 @@ text-align: right;
 }
 .numAnswersCss{
     padding-top: 3%;
-    max-width: 100px; 
+    /* max-width: 100px;  */
     height: 100px;
     font-weight: bold; 
     font-size: 120%;

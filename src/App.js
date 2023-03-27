@@ -23,6 +23,7 @@ function App () {
   const [showTagsPage, setShowTagsPage] = useState(false);
   const [buttonState,setButtonState] = useState(StatusEnum.NEWEST);
   const [showAnswerPage, setShowAnswerPage] = useState(false);
+  const [questionClickedOn, setQuestionClickedOn] = useState({});
 
   return (
     <section className="fakeso">
@@ -32,7 +33,8 @@ function App () {
       showTagsPage={showTagsPage} setShowTagsPage={setShowTagsPage} setButtonState={setButtonState} setShowAnswerPage={setShowAnswerPage}/>
       {/* <AnswersForm/>  */}
       <InitialHomePage theModel = {theModel} settheModel={settheModel} showQuestionPage={showQuestionPage} buttonState={buttonState} 
-      setButtonState={setButtonState} setShowQuestionPage={setShowQuestionPage} showAnswerPage={showAnswerPage} setShowAnswerPage={setShowAnswerPage}/>
+      setButtonState={setButtonState} setShowQuestionPage={setShowQuestionPage} showAnswerPage={showAnswerPage} setShowAnswerPage={setShowAnswerPage}
+      questionClickedOn={questionClickedOn} setQuestionClickedOn={setQuestionClickedOn}/>
       <TagsPage model = {theModel} setModel = {settheModel} showTagsPage={showTagsPage}/>
     </section>
   )

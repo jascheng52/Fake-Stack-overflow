@@ -25,7 +25,8 @@ CheckState.propTypes = {
   settheModel: PropTypes.func
 }
 
-function CheckState ({ buttonState, theModel, settheModel, setShowQuestionPage, showAnswerPage, setShowAnswerPage}) { 
+function CheckState ({ buttonState, theModel, settheModel, setShowQuestionPage, showAnswerPage, setShowAnswerPage
+  ,questionClickedOn,setQuestionClickedOn}) { 
   let sortedArr1
   let sortedArr2
   let sortedArr3
@@ -34,16 +35,19 @@ function CheckState ({ buttonState, theModel, settheModel, setShowQuestionPage, 
       sortedArr1 = NewestButton({ theModel, settheModel })
       // console.log(JSON.stringify(sortedArr1));
       return <LoadQuestions questions={sortedArr1} theModel={theModel} setShowQuestionPage={setShowQuestionPage}
-      showAnswerPage={showAnswerPage} setShowAnswerPage={setShowAnswerPage}/>
+      showAnswerPage={showAnswerPage} setShowAnswerPage={setShowAnswerPage} questionClickedOn={questionClickedOn} setQuestionClickedOn={setQuestionClickedOn}
+      />
     case StatusEnum.ACTIVE:
       sortedArr2 = ActiveButton({ theModel, settheModel })
       return <LoadQuestions questions={sortedArr2} theModel={theModel} setShowQuestionPage={setShowQuestionPage}
-      showAnswerPage={showAnswerPage} setShowAnswerPage={setShowAnswerPage}/>
+      showAnswerPage={showAnswerPage} setShowAnswerPage={setShowAnswerPage} questionClickedOn={questionClickedOn} setQuestionClickedOn={setQuestionClickedOn}
+      />
 
     case StatusEnum.UNANSWERED:
       sortedArr3 = UnAnsweredButton({ theModel, settheModel })
       return <LoadQuestions questions={sortedArr3} theModel={theModel} setShowQuestionPage={setShowQuestionPage}
-      showAnswerPage={showAnswerPage} setShowAnswerPage={setShowAnswerPage}/>
+      showAnswerPage={showAnswerPage} setShowAnswerPage={setShowAnswerPage} questionClickedOn={questionClickedOn} setQuestionClickedOn={setQuestionClickedOn}
+      />
 
     default:
       break
@@ -51,7 +55,7 @@ function CheckState ({ buttonState, theModel, settheModel, setShowQuestionPage, 
 }
 
 export default function InitialHomePage({theModel,settheModel,showQuestionPage,setShowQuestionPage,buttonState,setButtonState,
-  showAnswerPage,setShowAnswerPage}) {
+  showAnswerPage,setShowAnswerPage,questionClickedOn,setQuestionClickedOn}) {
   function handleNewestBtnClick(){
     setButtonState(StatusEnum.NEWEST);
   }
@@ -62,7 +66,7 @@ export default function InitialHomePage({theModel,settheModel,showQuestionPage,s
     setButtonState(StatusEnum.UNANSWERED)
   }
   if (showAnswerPage){
-    return <LoadAnswerPage showAnswerPage={showAnswerPage}/>;
+    return <LoadAnswerPage showAnswerPage={showAnswerPage} questionClickedOn={questionClickedOn}/>;
   } 
 
   return (
@@ -89,7 +93,8 @@ export default function InitialHomePage({theModel,settheModel,showQuestionPage,s
           </thead>
           <table className = "defaultQuestTable">
             <CheckState buttonState={buttonState} theModel={theModel} settheModel={settheModel} setShowQuestionPage={setShowQuestionPage}
-            showAnswerPage={showAnswerPage} setShowAnswerPage={setShowAnswerPage}/>
+            showAnswerPage={showAnswerPage} setShowAnswerPage={setShowAnswerPage} questionClickedOn={questionClickedOn} setQuestionClickedOn={setQuestionClickedOn}
+            />
           </table>
         </table>
       </div>
@@ -97,10 +102,11 @@ export default function InitialHomePage({theModel,settheModel,showQuestionPage,s
 }
 
 
-function LoadQuestions({questions, theModel, setShowQuestionPage,showAnswerPage,setShowAnswerPage}) {
+function LoadQuestions({questions, theModel, setShowQuestionPage,showAnswerPage,setShowAnswerPage,questionClickedOn,setQuestionClickedOn}) {
   return questions.map(function(questRow, index) {
     return <AddRow key={index} question={questRow} theModel={theModel} setShowQuestionPage={setShowQuestionPage}
-    showAnswerPage={showAnswerPage} setShowAnswerPage={setShowAnswerPage}/>
+    showAnswerPage={showAnswerPage} setShowAnswerPage={setShowAnswerPage} questionClickedOn={questionClickedOn} setQuestionClickedOn={setQuestionClickedOn}
+    />
   });
 }
 
