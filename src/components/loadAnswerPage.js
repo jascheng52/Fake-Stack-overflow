@@ -129,6 +129,12 @@ function sortAnswerByDate (questionArr, { theModel }) { // sorts all answers by 
 
 // questionClickedOn is the question object
 export default function LoadAnswerPage ({ questionClickedOn, theModel, state, setState }) {
+  function handleAnswerQuestionClick () {
+    setState(States.ANSWERFORM)
+  }
+  function handleAskQuestionClick () {
+    setState(States.QUESTIONFORM)
+  }
   if (state !== States.ANSWERPAGE) {
     return null
   }
@@ -139,11 +145,12 @@ export default function LoadAnswerPage ({ questionClickedOn, theModel, state, se
             <div className = "flexAnswerDisplay">
             <AmountOfAnswers questionClickedOn={questionClickedOn}/>
             <QuestionTitle questionClickedOn={questionClickedOn}/>
-            <div className = "tagHeader askQuestionButtonAp" style={{ marginLeft: 'auto' }}><button className="ask-q-button" id = "homeQbutton3" >Ask Question</button></div>
+            <div className = "tagHeader askQuestionButtonAp" style={{ marginLeft: 'auto' }}><button className="ask-q-button" id = "homeQbutton3"
+            onClick={handleAskQuestionClick} >Ask Question</button></div>
             </div>
             <AddSecondRow questionClickedOn={questionClickedOn}/>
             <AddAllAnswers questionClickedOn={questionClickedOn} theModel={theModel}/>
-            <div id="answerQuestionBtn"><button className="ask-q-button">Answer Question</button></div>
+            <div id="answerQuestionBtn"><button className="ask-q-button" onClick={handleAnswerQuestionClick}>Answer Question</button></div>
         </div>
         </div>
         </>
