@@ -11,7 +11,7 @@ import { StatusEnum, States } from '../components/questionArrayStates'
 
 InitialHomePage.propTypes = {
   theModel: PropTypes.object,
-  questions: PropTypes.func,
+  questions: PropTypes.array,
   buttonState: PropTypes.number,
   settheModel: PropTypes.func,
   setButtonState: PropTypes.func,
@@ -32,9 +32,10 @@ CheckState.propTypes = {
   setState: PropTypes.func
 }
 
-function CheckState ({
+export function CheckState ({
   buttonState, theModel, settheModel, questionClickedOn, setQuestionClickedOn, questions, state, setState
 }) {
+  console.log("here")
   let sortedArr1
   let sortedArr2
   let sortedArr3

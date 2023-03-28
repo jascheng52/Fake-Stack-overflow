@@ -58,7 +58,7 @@ function getAnswer (theModel, setModel, currentQuestion) {
   }
   theModel.addAnswer(newAnswer)
   theModel.addAnswerToQuestID(currentQuestion.qid, newAnswer.aid)
-  console.log(theModel)
+  // console.log(theModel)
   setModel(theModel)
   ansFormData.reset()
   //  TODO: LINK BACK AND LOAD THE ANSWER ON PAGE

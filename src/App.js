@@ -19,19 +19,24 @@ import { StatusEnum, States } from './components/questionArrayStates'
 // eslint-disable-next-line no-unused-vars
 import LoadAnswerPage from './components/loadAnswerPage'
 import QuestionForm from './components/question'
+
 import AnswerForm from './components/answers'
-// import SearchPage from './components/search'
+import SearchPage from './components/search'
+
 
 function App () {
   const [theModel, settheModel] = useState(new Model())
   const [buttonState, setButtonState] = useState(StatusEnum.NEWEST)
   const [questionClickedOn, setQuestionClickedOn] = useState({})
   const [state, setState] = useState(States.QUESTIONPAGE)
+  const [search, setSearch] = useState(false)
   const [selectedSection, setSelectedSection] = useState('tableSide')
+
 
   return (
     <section className="fakeso">
-      <Banner/>
+      <Banner state = {state} setState = {setState} setButtonState={setButtonState}
+      setSearch={setSearch} searchState={search}/>
       {/* <QuestionForm model = {theModel} setModel = {settheModel}/> */}
       <LeftSideMenu theModel = {theModel} settheModel={settheModel} setButtonState={setButtonState}
       state={state} setState={setState} selectedSection={selectedSection} setSelectedSection={setSelectedSection}/>
@@ -41,7 +46,7 @@ function App () {
       />
       <TagsPage model = {theModel} setModel = {settheModel} state={state} setState={setState}
       selectedSection={selectedSection} setSelectedSection={setSelectedSection}/>
-      {/* <SearchPage theModel={theModel} settheModel={settheModel} buttonState = {buttonState} setButtonState={setButtonState} showSearchPage = {showSearchPage}/> */}
+      <SearchPage theModel={theModel} settheModel={settheModel} buttonState = {buttonState} setButtonState={setButtonState} state={state} setState={setState} />
       <LoadAnswerPage questionClickedOn={questionClickedOn} theModel={theModel} state={state} setState={setState}/>;
       <QuestionForm theModel = {theModel} settheModel={settheModel} state={state} setState={setState} />
       <AnswerForm theModel = {theModel} settheModel={settheModel} currentQuestion={questionClickedOn} state={state} setState={setState}/>

@@ -1,19 +1,35 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import CheckState from './initialHomePage.js'
-import StatusEnum from './questionArrayStates'
+import { CheckState } from './initialHomePage.js'
+import { States, StatusEnum } from './questionArrayStates'
+
+export function enterKey (e, setSearch, setState, setButtonState, searchState) {
+  if (e.key === 'Enter') {
+    setState(States.SEARCHPAGE)
+    setButtonState(StatusEnum.NEWEST)
+    setSearch(!searchState)
+  }
+}
 
 SearchPage.propTypes = {
   theModel: PropTypes.object,
-  showSearchPage: PropTypes.bool,
   buttonState: PropTypes.number,
   settheModel: PropTypes.func,
-  setButtonState: PropTypes.func
+  setButtonState: PropTypes.func,
+  questionClickedOn: PropTypes.func,
+  setQuestionClickedOn: PropTypes.func,
+  state: PropTypes.number,
+  setState: PropTypes.func
 }
 
 export default function SearchPage ({
-  theModel, settheModel, showSearchPage, buttonState, setButtonState
+  theModel, settheModel, buttonState, setButtonState,
+  questionClickedOn, setQuestionClickedOn, state, setState
 }) {
+  console.log('should be searching' + state)
+  if (state !== States.SEARCHPAGE) {
+    return null
+  }
   function handleNewestBtnClick () {
     setButtonState(StatusEnum.NEWEST)
   }
@@ -23,7 +39,12 @@ export default function SearchPage ({
   function handleUnAnsweredBtnClick () {
     setButtonState(StatusEnum.UNANSWERED)
   }
-  function NumQuestion (questions) {
+
+  NumQuestion.propTypes = {
+    questions: PropTypes.array
+  }
+
+  function NumQuestion ({ questions }) {
     if (questions.length === 1) {
       return <h3 id="numQuestions">1 question</h3>
     } else {
@@ -31,8 +52,9 @@ export default function SearchPage ({
     }
   }
   const searchedQuestion = loadSearch(theModel)
+  console.log(searchedQuestion)
   return (
-          <div style={{ display: showSearchPage ? 'block' : 'none' }} id="homepage">
+          <div id="homepage">
               <table className="defaultPos" id="allQuestions">
                   <thead>
                       <tr className="topRow">
@@ -53,7 +75,9 @@ export default function SearchPage ({
                       </tr>
         </thead>
         <table className = "defaultQuestTable">
-          <CheckState buttonState={buttonState} theModel={theModel} settheModel={settheModel} />
+          <CheckState buttonState={buttonState} theModel={theModel} settheModel={settheModel}
+            questionClickedOn={questionClickedOn} setQuestionClickedOn={setQuestionClickedOn}
+            questions={searchedQuestion} state = {state} setState={setState}/>
         </table>
       </table>
     </div>
@@ -62,14 +86,18 @@ export default function SearchPage ({
 
 function loadSearch (theModel) {
   const search = document.getElementById('searchText')
+  // console.log(theModel)
+  // console.log(search)
+  if (!search) { return [] }
   let searchText = search.value
   console.log(searchText)
   const tagsInSearch = getTagsSearch(searchText, theModel)
   searchText = removeTagsSearch(searchText)
-  console.log(tagsInSearch)
-  console.log(searchText)
+  // console.log(tagsInSearch)
+  // console.log(searchText)
   let keywordsList = searchText.split(/\s+/)
   keywordsList = keywordsList.filter(str => str)
+  console.log(keywordsList)
   const questions = theModel.getAllQstns()
   const filteredQuestionsTag = questions.filter(filterByTagList(tagsInSearch))
   const filteredQuestionsKey = questions.filter(filterKeywords(keywordsList))
@@ -82,6 +110,7 @@ function loadSearch (theModel) {
   }
 
   console.log(filteredQuestions)
+  return filteredQuestions
   //  TODO: LINK BACK AND LOAD THE ANSWER ON PAGE
 }
 
