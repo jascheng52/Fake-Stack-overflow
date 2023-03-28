@@ -35,7 +35,7 @@ CheckState.propTypes = {
 export function CheckState ({
   buttonState, theModel, settheModel, questionClickedOn, setQuestionClickedOn, questions, state, setState
 }) {
-  console.log("here")
+  // console.log("here")
   let sortedArr1
   let sortedArr2
   let sortedArr3

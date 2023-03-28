@@ -23,7 +23,6 @@ import QuestionForm from './components/question'
 import AnswerForm from './components/answers'
 import SearchPage from './components/search'
 
-
 function App () {
   const [theModel, settheModel] = useState(new Model())
   const [buttonState, setButtonState] = useState(StatusEnum.NEWEST)
@@ -31,7 +30,6 @@ function App () {
   const [state, setState] = useState(States.QUESTIONPAGE)
   const [search, setSearch] = useState(false)
   const [selectedSection, setSelectedSection] = useState('tableSide')
-
 
   return (
     <section className="fakeso">
