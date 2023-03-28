@@ -92,7 +92,7 @@ function AddAllAnswers ({ questionClickedOn, theModel }) { // adds all answers f
       timeStr = datePrint
     }
     temp.push(
-        <div className="answerToQuestion">
+        <div className="answerToQuestion" key={aid}>
             <div className="textBoxAnswer">{object.text}</div>
             <div className="timeBoxAnswer"><span className="ansBy">{object.ansBy}</span> answered {timeStr}</div>
         </div>

@@ -31,17 +31,17 @@ CheckState.propTypes = {
   showAnswerPage: PropTypes.func,
   setShowAnswerPage: PropTypes.func,
   questionClickedOn: PropTypes.func,
-  setQuestionClickedOn: PropTypes.func
+  setQuestionClickedOn: PropTypes.func,
+  questions: PropTypes.array
 }
 
 function CheckState ({
   buttonState, theModel, settheModel, setShowQuestionPage, showAnswerPage, setShowAnswerPage
-  , questionClickedOn, setQuestionClickedOn
+  , questionClickedOn, setQuestionClickedOn, questions
 }) {
   let sortedArr1
   let sortedArr2
   let sortedArr3
-  console.log(questions)
   switch (buttonState) {
     case StatusEnum.NEWEST:
       sortedArr1 = NewestButton({ theModel, settheModel, questions })
@@ -50,13 +50,13 @@ function CheckState ({
       showAnswerPage={showAnswerPage} setShowAnswerPage={setShowAnswerPage} questionClickedOn={questionClickedOn} setQuestionClickedOn={setQuestionClickedOn}
       />
     case StatusEnum.ACTIVE:
-      sortedArr2 = ActiveButton({ theModel, settheModel })
+      sortedArr2 = ActiveButton({ theModel, settheModel, questions })
       return <LoadQuestions questions={sortedArr2} theModel={theModel} setShowQuestionPage={setShowQuestionPage}
       showAnswerPage={showAnswerPage} setShowAnswerPage={setShowAnswerPage} questionClickedOn={questionClickedOn} setQuestionClickedOn={setQuestionClickedOn}
       />
 
     case StatusEnum.UNANSWERED:
-      sortedArr3 = UnAnsweredButton({ theModel, settheModel })
+      sortedArr3 = UnAnsweredButton({ theModel, settheModel, questions })
       return <LoadQuestions questions={sortedArr3} theModel={theModel} setShowQuestionPage={setShowQuestionPage}
       showAnswerPage={showAnswerPage} setShowAnswerPage={setShowAnswerPage} questionClickedOn={questionClickedOn} setQuestionClickedOn={setQuestionClickedOn}
       />
@@ -104,6 +104,7 @@ export default function InitialHomePage ({
           <table className = "defaultQuestTable">
             <CheckState buttonState={buttonState} theModel={theModel} settheModel={settheModel} setShowQuestionPage={setShowQuestionPage}
             showAnswerPage={showAnswerPage} setShowAnswerPage={setShowAnswerPage} questionClickedOn={questionClickedOn} setQuestionClickedOn={setQuestionClickedOn}
+            questions={theModel.data.questions}
             />
           </table>
         </table>
