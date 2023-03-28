@@ -16,7 +16,8 @@ AddRow.propTypes = {
   questionClickedOn: PropTypes.func,
   setQuestionClickedOn: PropTypes.func,
   state: PropTypes.number,
-  setState: PropTypes.func
+  setState: PropTypes.func,
+  settheModel: PropTypes.func
 }
 
 AddRow.propTypes = {
@@ -33,8 +34,10 @@ function getTagName (tid, theModel) {
   }
 }
 
-function AddRow ({ question, theModel, questionClickedOn, setQuestionClickedOn, state, setState }) {
+function AddRow ({ question, theModel, questionClickedOn, setQuestionClickedOn, state, setState, settheModel }) {
   function handleOpenAnswerPage () {
+    theModel.addViews(question)
+    settheModel(theModel)
     setState(States.ANSWERPAGE)
     setQuestionClickedOn(question)
   }
