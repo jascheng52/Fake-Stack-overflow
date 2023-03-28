@@ -1,15 +1,20 @@
 import React from 'react'
 import PropTypes from 'prop-types'
+import { States } from '../components/questionArrayStates'
 
 TagsPage.propTypes = {
   model: PropTypes.object,
   setModel: PropTypes.func,
-  showTagsPage: PropTypes.bool
+  state: PropTypes.number,
+  setState: PropTypes.func
 }
-export default function TagsPage ({ model, setModel, showTagsPage }) {
+export default function TagsPage ({ model, setModel, state, setState }) {
+  if (state !== States.TAGSPAGE) {
+    return null
+  }
   return (
     <>
-        <div style={{ display: showTagsPage ? 'block' : 'none' }} className = 'hidden' id = "tagsPage">
+        <div className = 'hidden' id = "tagsPage">
 
             <div className="right-table defaultPos">
                 <div>

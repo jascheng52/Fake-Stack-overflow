@@ -1,11 +1,14 @@
 import React from 'react'
 import timeCheck from '../components/timeCheck'
 import PropTypes from 'prop-types'
+import { States } from '../components/questionArrayStates'
 
 LoadAnswerPage.propTypes = {
   theModel: PropTypes.object,
-  questionClickedOn: PropTypes.func,
-  showAnswerPage: PropTypes.func
+  questionClickedOn: PropTypes.object,
+  showAnswerPage: PropTypes.bool,
+  state: PropTypes.number,
+  setState: PropTypes.func
 }
 
 // questionClickedOn.questionClickedOn.ansIds.length because questionClickedOn is an object containing the key questionClickedOn with the actual data
@@ -125,13 +128,13 @@ function sortAnswerByDate (questionArr, { theModel }) { // sorts all answers by 
 }
 
 // questionClickedOn is the question object
-export default function LoadAnswerPage ({ showAnswerPage, questionClickedOn, theModel }) {
-  if (!showAnswerPage) {
+export default function LoadAnswerPage ({ questionClickedOn, theModel, state, setState }) {
+  if (state !== States.ANSWERPAGE) {
     return null
   }
   return (
         <>
-        <div style={{ display: showAnswerPage ? 'block' : 'none' }} id = "answerPage">
+        <div id = "answerPage">
         <div className="right-table defaultPos">
             <div className = "flexAnswerDisplay">
             <AmountOfAnswers questionClickedOn={questionClickedOn}/>
