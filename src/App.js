@@ -23,16 +23,15 @@ import SearchPage from './components/search'
 function App () {
   const [theModel, settheModel] = useState(new Model())
   const [showQuestionPage, setShowQuestionPage] = useState(true)
-  const [showSearchPage, setshowSearchPage] = useState(false)
+  const [showSearchPage, setShowSearchPage] = useState(false)
   const [showTagsPage, setShowTagsPage] = useState(false)
   const [buttonState, setButtonState] = useState(StatusEnum.NEWEST)
   const [showAnswerPage, setShowAnswerPage] = useState(false)
   const [questionClickedOn, setQuestionClickedOn] = useState({})
 
-
   return (
     <section className="fakeso">
-      <Banner/>
+      <Banner setShowPage={setShowSearchPage}/>
       {/* <QuestionForm model = {theModel} setModel = {settheModel}/> */}
       <LeftSideMenu theModel = {theModel} settheModel={settheModel} showQuestionPage={showQuestionPage} setShowQuestionPage={setShowQuestionPage}
       showTagsPage={showTagsPage} setShowTagsPage={setShowTagsPage} setButtonState={setButtonState} setShowAnswerPage={setShowAnswerPage}/>
@@ -41,7 +40,7 @@ function App () {
       setButtonState={setButtonState} setShowQuestionPage={setShowQuestionPage} showAnswerPage={showAnswerPage} setShowAnswerPage={setShowAnswerPage}
       questionClickedOn={questionClickedOn} setQuestionClickedOn={setQuestionClickedOn}/>
       <TagsPage model = {theModel} setModel = {settheModel} showTagsPage={showTagsPage}/>
-      {/* <SearchPage theModel={theModel} settheModel={settheModel} buttonState = {buttonState} setButtonState={setButtonState} showSearchPage = {showSearchPage}/> */}
+      <SearchPage theModel={theModel} settheModel={settheModel} buttonState = {buttonState} setButtonState={setButtonState} showSearchPage = {showSearchPage}/>
       <LoadAnswerPage showAnswerPage={showAnswerPage} questionClickedOn={questionClickedOn} theModel={theModel}/>;
     </section>
   )

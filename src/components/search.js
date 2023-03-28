@@ -3,16 +3,28 @@ import PropTypes from 'prop-types'
 import CheckState from './initialHomePage.js'
 import StatusEnum from './questionArrayStates'
 
+export function enterKey (e, showSearchPage) {
+  if (e.key === 'Enter') {
+    console.log('search Press')
+    showSearchPage(true)
+  }
+}
+
 SearchPage.propTypes = {
   theModel: PropTypes.object,
   showSearchPage: PropTypes.bool,
   buttonState: PropTypes.number,
   settheModel: PropTypes.func,
-  setButtonState: PropTypes.func
+  setButtonState: PropTypes.func,
+  showAnswerPage: PropTypes.func,
+  setShowAnswerPage: PropTypes.func,
+  questionClickedOn: PropTypes.func,
+  setQuestionClickedOn: PropTypes.func
 }
 
 export default function SearchPage ({
-  theModel, settheModel, showSearchPage, buttonState, setButtonState
+  theModel, settheModel, showSearchPage, buttonState, setButtonState,
+  showAnswerPage, setShowAnswerPage, questionClickedOn, setQuestionClickedOn
 }) {
   function handleNewestBtnClick () {
     setButtonState(StatusEnum.NEWEST)
@@ -32,7 +44,7 @@ export default function SearchPage ({
   }
   const searchedQuestion = loadSearch(theModel)
   return (
-          <div style={{ display: showSearchPage ? 'block' : 'none' }} id="homepage">
+          <div id="homepage">
               <table className="defaultPos" id="allQuestions">
                   <thead>
                       <tr className="topRow">
@@ -54,6 +66,9 @@ export default function SearchPage ({
         </thead>
         <table className = "defaultQuestTable">
           <CheckState buttonState={buttonState} theModel={theModel} settheModel={settheModel} />
+          <CheckState buttonState={buttonState} theModel={theModel} settheModel={settheModel}
+            showAnswerPage={showAnswerPage} setShowAnswerPage={setShowAnswerPage} questionClickedOn={questionClickedOn} setQuestionClickedOn={setQuestionClickedOn}
+            questions={theModel.data.questions}/>
         </table>
       </table>
     </div>
@@ -62,12 +77,15 @@ export default function SearchPage ({
 
 function loadSearch (theModel) {
   const search = document.getElementById('searchText')
+  console.log(theModel)
+  console.log(search)
+  if (!search) { return [] }
   let searchText = search.value
-  console.log(searchText)
+  // console.log(searchText)
   const tagsInSearch = getTagsSearch(searchText, theModel)
   searchText = removeTagsSearch(searchText)
-  console.log(tagsInSearch)
-  console.log(searchText)
+  // console.log(tagsInSearch)
+  // console.log(searchText)
   let keywordsList = searchText.split(/\s+/)
   keywordsList = keywordsList.filter(str => str)
   const questions = theModel.getAllQstns()
@@ -82,6 +100,7 @@ function loadSearch (theModel) {
   }
 
   console.log(filteredQuestions)
+  return filteredQuestions
   //  TODO: LINK BACK AND LOAD THE ANSWER ON PAGE
 }
 
