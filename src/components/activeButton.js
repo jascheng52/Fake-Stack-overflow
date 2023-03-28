@@ -23,8 +23,7 @@ function sortAnswerByDate (questionArr) {
   return sortedQuestionArr
 }
 
-export default function ActiveButton ({ theModel }) {
-  const questions = theModel.data.questions
+export default function ActiveButton ({ theModel, questions }) {
   const sortedByActive = []
   const tempArr = [...questions]
   const answers = theModel.data.answers

@@ -3,12 +3,12 @@ import React from 'react'
 import PropTypes from 'prop-types'
 
 AnswerForm.propTypes = {
-  model: PropTypes.object,
+  theModel: PropTypes.object,
   setModel: PropTypes.func,
   currentQuestion: PropTypes.object
 }
 
-export default function AnswerForm ({ model, setModel, currentQuestion }) {
+export default function AnswerForm ({ theModel, setModel, currentQuestion }) {
   return (
     <>
     <div className = "hidden" id = "newAnswerForm">
@@ -23,7 +23,7 @@ export default function AnswerForm ({ model, setModel, currentQuestion }) {
         <span className = "formEntry"><br/><textarea className = "formText textInput" name = "aText" type="text" placeholder="Enter Response..."></textarea>
     </span>
     <br/>
-    <span ><button type = "button" className = "formButton" id = "aButton" onClick={function () { return getAnswer(model, setModel, currentQuestion) }}> Post Answer</button></span>
+    <span ><button type = "button" className = "formButton" id = "aButton" onClick={function () { return getAnswer(theModel, setModel, currentQuestion) }}> Post Answer</button></span>
     </form>
     </div>
     </>
@@ -47,10 +47,11 @@ function getAnswer (theModel, setModel, currentQuestion) {
     ansDate: new Date()
   }
   theModel.addAnswer(newAnswer)
-  theModel.addAnswerToQuestID(currentQuestion.qid, newAnswer)
+  theModel.addAnswerToQuestID(currentQuestion.qid, newAnswer.aid)
   console.log(theModel)
   setModel(theModel)
   ansFormData.reset()
+  //  TODO: LINK BACK AND LOAD THE ANSWER ON PAGE
 };
 
 function validateInputs (userName, text) {

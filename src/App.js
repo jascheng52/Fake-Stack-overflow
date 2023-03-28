@@ -15,15 +15,20 @@ import LeftSideMenu from './components/leftSideMenu'
 import InitialHomePage from './components/initialHomePage'
 // import SortQuestionByDate from "./components/sortQuestionByDate.js";
 import StatusEnum from './components/questionArrayStates'
+
+// eslint-disable-next-line no-unused-vars
 import LoadAnswerPage from './components/loadAnswerPage'
+import SearchPage from './components/search'
 
 function App () {
   const [theModel, settheModel] = useState(new Model())
   const [showQuestionPage, setShowQuestionPage] = useState(true)
+  const [showSearchPage, setshowSearchPage] = useState(false)
   const [showTagsPage, setShowTagsPage] = useState(false)
   const [buttonState, setButtonState] = useState(StatusEnum.NEWEST)
   const [showAnswerPage, setShowAnswerPage] = useState(false)
   const [questionClickedOn, setQuestionClickedOn] = useState({})
+
 
   return (
     <section className="fakeso">
@@ -36,6 +41,7 @@ function App () {
       setButtonState={setButtonState} setShowQuestionPage={setShowQuestionPage} showAnswerPage={showAnswerPage} setShowAnswerPage={setShowAnswerPage}
       questionClickedOn={questionClickedOn} setQuestionClickedOn={setQuestionClickedOn}/>
       <TagsPage model = {theModel} setModel = {settheModel} showTagsPage={showTagsPage}/>
+      {/* <SearchPage theModel={theModel} settheModel={settheModel} buttonState = {buttonState} setButtonState={setButtonState} showSearchPage = {showSearchPage}/> */}
       <LoadAnswerPage showAnswerPage={showAnswerPage} questionClickedOn={questionClickedOn} theModel={theModel}/>;
     </section>
   )
