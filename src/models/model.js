@@ -110,6 +110,16 @@ export default class Model {
     this.data.questions.push(theQuestion)
   }
 
+  addViews (question) {
+    const questions = this.data.questions
+    for (let i = 0; i < questions.length; i++) {
+      if (questions[i] === question) {
+        questions[i].views = questions[i].views + 1
+        return
+      }
+    }
+  }
+
   addAnswerToQuestID (qid, answer) {
     const questions = this.data.questions
     for (let i = 0; i < questions.length; i++) {

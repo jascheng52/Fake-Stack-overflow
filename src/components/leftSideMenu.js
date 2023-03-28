@@ -1,5 +1,5 @@
 // This function is the left side menu
-import React, { useState } from 'react'
+import React from 'react'
 // import QuestionPage from '../components/questionPage';
 // import InitialHomePage from '../components/initialHomePage';
 // import TagsPage from './tagsPage'
@@ -14,13 +14,14 @@ LeftSideMenu.propTypes = {
   theModel: PropTypes.object,
   setButtonState: PropTypes.func,
   state: PropTypes.number,
-  setState: PropTypes.func
+  setState: PropTypes.func,
+  selectedSection: PropTypes.string,
+  setSelectedSection: PropTypes.func
 }
 
 export default function LeftSideMenu ({
-  theModel, setButtonState, state, setState
+  theModel, setButtonState, state, setState, selectedSection, setSelectedSection
 }) {
-  const [selectedSection, setSelectedSection] = useState('tableSide')
   function handleQuestionClick () {
     setState(States.QUESTIONPAGE)
     setSelectedSection('tableSide')

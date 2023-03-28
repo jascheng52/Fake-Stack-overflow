@@ -6,9 +6,15 @@ TagsPage.propTypes = {
   model: PropTypes.object,
   setModel: PropTypes.func,
   state: PropTypes.number,
-  setState: PropTypes.func
+  setState: PropTypes.func,
+  selectedSection: PropTypes.string,
+  setSelectedSection: PropTypes.func
 }
-export default function TagsPage ({ model, setModel, state, setState }) {
+export default function TagsPage ({ model, setModel, state, setState, selectedSection, setSelectedSection }) {
+  function handleAskQuestionClick () {
+    setState(States.QUESTIONFORM)
+    setSelectedSection('tableSide')
+  }
   if (state !== States.TAGSPAGE) {
     return null
   }
@@ -20,7 +26,8 @@ export default function TagsPage ({ model, setModel, state, setState }) {
                 <div>
                     <div className = "tagHeader" height='100' ><h2 id = "numTagsHeader">  Tags </h2></div>
                     <div className = "tagHeader" style ={{ paddingLeft: '40%' }}><h2> All Tags </h2></div>
-                    <div className = "tagHeader" style = {{ float: 'right', paddingTop: '10px' }}><button className="ask-q-button" id = "homeQbutton4" >Ask Question</button></div>
+                    <div className = "tagHeader" style = {{ float: 'right', paddingTop: '10px' }}><button className="ask-q-button" id = "homeQbutton4"
+                    onClick={handleAskQuestionClick}>Ask Question</button></div>
                 </div>
 
             </div>

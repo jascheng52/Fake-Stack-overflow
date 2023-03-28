@@ -1,14 +1,24 @@
 // import Model from '../models/model.js'
 import React from 'react'
 import PropTypes from 'prop-types'
+import { States } from '../components/questionArrayStates.js'
 
 AnswerForm.propTypes = {
   theModel: PropTypes.object,
   setModel: PropTypes.func,
-  currentQuestion: PropTypes.object
+  currentQuestion: PropTypes.object,
+  state: PropTypes.number,
+  setState: PropTypes.func
 }
 
-export default function AnswerForm ({ theModel, setModel, currentQuestion }) {
+export default function AnswerForm ({ theModel, setModel, currentQuestion, state, setState }) {
+  function handlePostAnswerClick () {
+    setState(States.ANSWERPAGE)
+    return getAnswer(theModel, setModel, currentQuestion)
+  }
+  if (state !== States.ANSWERFORM) {
+    return null
+  }
   return (
     <>
     <div className = "hidden" id = "newAnswerForm">
@@ -23,7 +33,7 @@ export default function AnswerForm ({ theModel, setModel, currentQuestion }) {
         <span className = "formEntry"><br/><textarea className = "formText textInput" name = "aText" type="text" placeholder="Enter Response..."></textarea>
     </span>
     <br/>
-    <span ><button type = "button" className = "formButton" id = "aButton" onClick={function () { return getAnswer(theModel, setModel, currentQuestion) }}> Post Answer</button></span>
+    <span ><button type = "button" className = "formButton" id = "aButton" onClick={handlePostAnswerClick}> Post Answer</button></span>
     </form>
     </div>
     </>

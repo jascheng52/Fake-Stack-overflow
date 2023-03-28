@@ -43,16 +43,16 @@ export function CheckState ({
     case StatusEnum.NEWEST:
       sortedArr1 = NewestButton({ theModel, settheModel, questions })
       return <LoadQuestions questions={sortedArr1} theModel={theModel} questionClickedOn={questionClickedOn} setQuestionClickedOn={setQuestionClickedOn}
-      state={state} setState={setState}/>
+      state={state} setState={setState} settheModel={settheModel}/>
     case StatusEnum.ACTIVE:
       sortedArr2 = ActiveButton({ theModel, settheModel, questions })
       return <LoadQuestions questions={sortedArr2} theModel={theModel} questionClickedOn={questionClickedOn} setQuestionClickedOn={setQuestionClickedOn}
-      state={state} setState={setState}/>
+      state={state} setState={setState} settheModel={settheModel}/>
 
     case StatusEnum.UNANSWERED:
       sortedArr3 = UnAnsweredButton({ theModel, settheModel, questions })
       return <LoadQuestions questions={sortedArr3} theModel={theModel} questionClickedOn={questionClickedOn} setQuestionClickedOn={setQuestionClickedOn}
-      state={state} setState={setState}/>
+      state={state} setState={setState} settheModel={settheModel}/>
 
     default:
       break
@@ -62,7 +62,7 @@ export function CheckState ({
 export default function InitialHomePage ({
   theModel, settheModel, buttonState, setButtonState, questionClickedOn, setQuestionClickedOn, state, setState
 }) {
-  console.log(JSON.stringify(questionClickedOn) + ' pausechamp999')
+  // console.log(JSON.stringify(questionClickedOn) + ' pausechamp999')
   function handleNewestBtnClick () {
     setButtonState(StatusEnum.NEWEST)
   }
@@ -110,10 +110,10 @@ export default function InitialHomePage ({
   )
 }
 
-function LoadQuestions ({ questions, theModel, questionClickedOn, setQuestionClickedOn, state, setState }) {
+function LoadQuestions ({ questions, theModel, questionClickedOn, setQuestionClickedOn, state, setState, settheModel }) {
   return questions.map(function (questRow, index) {
     return <AddRow key={index} question={questRow} theModel={theModel} questionClickedOn={questionClickedOn} setQuestionClickedOn={setQuestionClickedOn}
-    state={state} setState={setState}/>
+    state={state} setState={setState} settheModel={settheModel}/>
   })
 }
 
