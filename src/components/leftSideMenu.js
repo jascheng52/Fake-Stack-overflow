@@ -13,22 +13,25 @@ import StatusEnum from '../components/questionArrayStates'
 LeftSideMenu.propTypes = {
   theModel: PropTypes.object,
   showQuestionPage: PropTypes.bool,
-  setshowQuestionPage: PropTypes.bool,
+  setshowQuestionPage: PropTypes.func,
   showTagsPage: PropTypes.bool,
-  setShowTagsPage: PropTypes.bool,
-  setButtonState: PropTypes.bool
+  setShowTagsPage: PropTypes.func,
+  setButtonState: PropTypes.func,
+  setShowAnswerPage: PropTypes.func
 
-};
+}
 
-export default function LeftSideMenu ({theModel,showQuestionPage,setshowQuestionPage,showTagsPage,setShowTagsPage,setButtonState,
-  setShowAnswerPage}) {
-  const [selectedSection, setSelectedSection] = useState("tableSide");
-  function handleQuestionClick(){
-    setshowQuestionPage(showQuestionPage = true);
-    setShowTagsPage(showTagsPage = false);
-    setSelectedSection("tableSide");
-    setShowAnswerPage(false);
-    setButtonState(StatusEnum.NEWEST);
+export default function LeftSideMenu ({
+  theModel, showQuestionPage, setshowQuestionPage, showTagsPage, setShowTagsPage, setButtonState,
+  setShowAnswerPage
+}) {
+  const [selectedSection, setSelectedSection] = useState('tableSide')
+  function handleQuestionClick () {
+    setshowQuestionPage(showQuestionPage = true)
+    setShowTagsPage(showTagsPage = false)
+    setSelectedSection('tableSide')
+    setShowAnswerPage(false)
+    setButtonState(StatusEnum.NEWEST)
   }
   function handleTagsClick () {
     setshowQuestionPage(showQuestionPage = false)

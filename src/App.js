@@ -14,15 +14,18 @@ import { React, useState } from 'react'
 import LeftSideMenu from './components/leftSideMenu'
 import InitialHomePage from './components/initialHomePage'
 // import SortQuestionByDate from "./components/sortQuestionByDate.js";
-import StatusEnum from "./components/questionArrayStates";
-import LoadAnswerPage from './components/loadAnswerPage';
+import StatusEnum from './components/questionArrayStates'
+// eslint-disable-next-line no-unused-vars
+import LoadAnswerPage from './components/loadAnswerPage'
+import SearchPage from './components/search'
 
 function App () {
-  const [theModel, settheModel] = useState(new Model())  
-  const [showQuestionPage, setshowQuestionPage] = useState(true);
-  const [showTagsPage, setShowTagsPage] = useState(false);
-  const [buttonState,setButtonState] = useState(StatusEnum.NEWEST);
-  const [showAnswerPage, setShowAnswerPage] = useState(false);
+  const [theModel, settheModel] = useState(new Model())
+  const [showQuestionPage, setshowQuestionPage] = useState(true)
+  const [showSearchPage, setshowSearchPage] = useState(false)
+  const [showTagsPage, setShowTagsPage] = useState(false)
+  const [buttonState, setButtonState] = useState(StatusEnum.NEWEST)
+  const [showAnswerPage, setShowAnswerPage] = useState(false)
 
   return (
     <section className="fakeso">
@@ -31,9 +34,10 @@ function App () {
       <LeftSideMenu theModel = {theModel} settheModel={settheModel} showQuestionPage={showQuestionPage} setshowQuestionPage={setshowQuestionPage}
       showTagsPage={showTagsPage} setShowTagsPage={setShowTagsPage} setButtonState={setButtonState} setShowAnswerPage={setShowAnswerPage}/>
       {/* <AnswersForm/>  */}
-      <InitialHomePage theModel = {theModel} settheModel={settheModel} showQuestionPage={showQuestionPage} buttonState={buttonState} 
+      <InitialHomePage theModel = {theModel} settheModel={settheModel} showQuestionPage={showQuestionPage} buttonState={buttonState}
       setButtonState={setButtonState} setshowQuestionPage={setshowQuestionPage} showAnswerPage={showAnswerPage} setShowAnswerPage={setShowAnswerPage}/>
       <TagsPage model = {theModel} setModel = {settheModel} showTagsPage={showTagsPage}/>
+      {/* <SearchPage theModel={theModel} settheModel={settheModel} buttonState = {buttonState} setButtonState={setButtonState} showSearchPage = {showSearchPage}/> */}
     </section>
   )
 }

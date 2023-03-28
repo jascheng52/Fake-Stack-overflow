@@ -6,40 +6,44 @@ import ActiveButton from '../components/activeButton'
 import UnAnsweredButton from '../components/unAnsweredButton'
 // import SortQuestionByDate from "./sortQuestionByDate.js";
 // import Model from '../models/model.js'
-import StatusEnum from "../components/questionArrayStates";
-import LoadAnswerPage from '../components/loadAnswerPage';
+import StatusEnum from '../components/questionArrayStates'
+import LoadAnswerPage from '../components/loadAnswerPage'
 
 InitialHomePage.propTypes = {
   theModel: PropTypes.object,
   questions: PropTypes.object,
   showQuestionPage: PropTypes.bool,
-  setshowQuestionPage: PropTypes.bool,
-  buttonState: PropTypes.bool,
+  setshowQuestionPage: PropTypes.func,
+  buttonState: PropTypes.number,
   settheModel: PropTypes.func,
-  setButtonState: PropTypes.func
+  setButtonState: PropTypes.func,
+  showAnswerPage: PropTypes.bool,
+  setShowAnswerPage: PropTypes.func
 }
 
 CheckState.propTypes = {
   buttonState: PropTypes.number,
   theModel: PropTypes.object,
-  settheModel: PropTypes.func
+  settheModel: PropTypes.func,
+  questions: PropTypes.array
 }
 
-function CheckState ({ buttonState, theModel, settheModel }) {
+function CheckState ({ buttonState, theModel, settheModel, questions }) {
   let sortedArr1
   let sortedArr2
   let sortedArr3
+  console.log(questions)
   switch (buttonState) {
     case StatusEnum.NEWEST:
-      sortedArr1 = NewestButton({ theModel, settheModel })
+      sortedArr1 = NewestButton({ theModel, settheModel, questions })
       // console.log(JSON.stringify(sortedArr1));
       return <LoadQuestions questions={sortedArr1} theModel={theModel}/>
     case StatusEnum.ACTIVE:
-      sortedArr2 = ActiveButton({ theModel, settheModel })
+      sortedArr2 = ActiveButton({ theModel, settheModel, questions })
       return <LoadQuestions questions={sortedArr2} theModel={theModel}/>
 
     case StatusEnum.UNANSWERED:
-      sortedArr3 = UnAnsweredButton({ theModel, settheModel })
+      sortedArr3 = UnAnsweredButton({ theModel, settheModel, questions })
       return <LoadQuestions questions={sortedArr3} theModel={theModel}/>
 
     default:
@@ -47,10 +51,12 @@ function CheckState ({ buttonState, theModel, settheModel }) {
   }
 }
 
-export default function InitialHomePage({theModel,settheModel,showQuestionPage,setshowQuestionPage,buttonState,setButtonState,
-  showAnswerPage,setShowAnswerPage}) {
-  function handleNewestBtnClick(){
-    setButtonState(StatusEnum.NEWEST);
+export default function InitialHomePage ({
+  theModel, settheModel, showQuestionPage, setshowQuestionPage, buttonState, setButtonState,
+  showAnswerPage, setShowAnswerPage
+}) {
+  function handleNewestBtnClick () {
+    setButtonState(StatusEnum.NEWEST)
   }
   function handleActiveBtnClick () {
     setButtonState(StatusEnum.ACTIVE)
@@ -58,10 +64,9 @@ export default function InitialHomePage({theModel,settheModel,showQuestionPage,s
   function handleUnAnsweredBtnClick () {
     setButtonState(StatusEnum.UNANSWERED)
   }
-  if (showAnswerPage){
-    return <LoadAnswerPage showAnswerPage={showAnswerPage}/>;
-  } 
-
+  if (showAnswerPage) {
+    return <LoadAnswerPage showAnswerPage={showAnswerPage}/>
+  }
   return (
       <div style={{ display: showQuestionPage ? 'block' : 'none' }} id="homepage">
         <table className="defaultPos" id="allQuestions">
@@ -86,19 +91,18 @@ export default function InitialHomePage({theModel,settheModel,showQuestionPage,s
           </thead>
           <table className = "defaultQuestTable">
             <CheckState buttonState={buttonState} theModel={theModel} settheModel={settheModel} setshowQuestionPage={setshowQuestionPage}
-            showAnswerPage={showAnswerPage} setShowAnswerPage={setShowAnswerPage}/>
+            showAnswerPage={showAnswerPage} setShowAnswerPage={setShowAnswerPage} questions={theModel.data.questions}/>
           </table>
         </table>
       </div>
   )
 }
 
-
-function LoadQuestions({questions, theModel, setshowQuestionPage,showAnswerPage,setShowAnswerPage}) {
-  return questions.map(function(questRow, index) {
+function LoadQuestions ({ questions, theModel, setshowQuestionPage, showAnswerPage, setShowAnswerPage }) {
+  return questions.map(function (questRow, index) {
     return <AddRow key={index} question={questRow} theModel={theModel} setshowQuestionPage={setshowQuestionPage}
     showAnswerPage={showAnswerPage} setShowAnswerPage={setShowAnswerPage}/>
-  });
+  })
 }
 
 // function handleRemoveRows() {

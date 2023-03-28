@@ -6,8 +6,7 @@
 // import InitialHomePage from '../components/initialHomePage'
 import SortQuestionByDate from '../components/sortQuestionByDate'
 
-export default function NewestButton ({ theModel, settheModel }) {
-  const questions = theModel.data.questions
+export default function NewestButton ({ theModel, settheModel, questions }) {
   const sortedArr = SortQuestionByDate(questions)
   return sortedArr
   // let sortedModel = new Model();
