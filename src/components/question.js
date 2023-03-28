@@ -98,7 +98,7 @@ function getQuestion (theModel, setModel) {
   }
   theModel.addQuestion(newQuestion)
   // console.log(theModel.getAllQstns());
-  console.log(theModel)
+  // console.log(theModel)
   //   console.log(updatedModel);
   setModel(theModel)
   //  TODO: LINK BACK AND LOAD THE QUESTION ON PAGE

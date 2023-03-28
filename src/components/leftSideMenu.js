@@ -15,7 +15,7 @@ LeftSideMenu.propTypes = {
   setButtonState: PropTypes.func,
   state: PropTypes.number,
   setState: PropTypes.func,
-  selectedSection: PropTypes.func,
+  selectedSection: PropTypes.string,
   setSelectedSection: PropTypes.func
 }
 

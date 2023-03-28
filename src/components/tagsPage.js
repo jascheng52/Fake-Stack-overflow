@@ -7,7 +7,7 @@ TagsPage.propTypes = {
   setModel: PropTypes.func,
   state: PropTypes.number,
   setState: PropTypes.func,
-  selectedSection: PropTypes.func,
+  selectedSection: PropTypes.string,
   setSelectedSection: PropTypes.func
 }
 export default function TagsPage ({ model, setModel, state, setState, selectedSection, setSelectedSection }) {
