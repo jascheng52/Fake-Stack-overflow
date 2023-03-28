@@ -4,6 +4,7 @@ import React from 'react'
 // import Model from '../models/model.js';
 import timeCheck from '../components/timeCheck'
 import PropTypes from 'prop-types'
+import { States } from '../components/questionArrayStates.js'
 // import LoadAnswerPage from '../components/loadAnswerPage'
 
 AddRow.propTypes = {
@@ -13,7 +14,9 @@ AddRow.propTypes = {
   showAnswerPage: PropTypes.func,
   setShowAnswerPage: PropTypes.func,
   questionClickedOn: PropTypes.func,
-  setQuestionClickedOn: PropTypes.func
+  setQuestionClickedOn: PropTypes.func,
+  state: PropTypes.number,
+  setState: PropTypes.func
 }
 
 AddRow.propTypes = {
@@ -30,11 +33,10 @@ function getTagName (tid, theModel) {
   }
 }
 
-function AddRow ({ question, theModel, setShowQuestionPage, showAnswerPage, setShowAnswerPage, questionClickedOn, setQuestionClickedOn }) {
+function AddRow ({ question, theModel, questionClickedOn, setQuestionClickedOn, state, setState }) {
   function handleOpenAnswerPage () {
-    setShowQuestionPage(false)
+    setState(States.ANSWERPAGE)
     setQuestionClickedOn(question)
-    setShowAnswerPage(true)
   }
 
   if (!question) {

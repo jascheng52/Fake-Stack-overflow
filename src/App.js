@@ -14,35 +14,33 @@ import { React, useState } from 'react'
 import LeftSideMenu from './components/leftSideMenu'
 import InitialHomePage from './components/initialHomePage'
 // import SortQuestionByDate from "./components/sortQuestionByDate.js";
-import StatusEnum from './components/questionArrayStates'
+import { StatusEnum, States } from './components/questionArrayStates'
 
 // eslint-disable-next-line no-unused-vars
 import LoadAnswerPage from './components/loadAnswerPage'
-import SearchPage from './components/search'
+import QuestionForm from './components/question'
+// import SearchPage from './components/search'
 
 function App () {
   const [theModel, settheModel] = useState(new Model())
-  const [showQuestionPage, setShowQuestionPage] = useState(true)
-  const [showSearchPage, setshowSearchPage] = useState(false)
-  const [showTagsPage, setShowTagsPage] = useState(false)
   const [buttonState, setButtonState] = useState(StatusEnum.NEWEST)
-  const [showAnswerPage, setShowAnswerPage] = useState(false)
   const [questionClickedOn, setQuestionClickedOn] = useState({})
-
+  const [state, setState] = useState(States.QUESTIONPAGE)
 
   return (
     <section className="fakeso">
       <Banner/>
       {/* <QuestionForm model = {theModel} setModel = {settheModel}/> */}
-      <LeftSideMenu theModel = {theModel} settheModel={settheModel} showQuestionPage={showQuestionPage} setShowQuestionPage={setShowQuestionPage}
-      showTagsPage={showTagsPage} setShowTagsPage={setShowTagsPage} setButtonState={setButtonState} setShowAnswerPage={setShowAnswerPage}/>
+      <LeftSideMenu theModel = {theModel} settheModel={settheModel} setButtonState={setButtonState}
+      state={state} setState={setState}/>
       {/* <AnswersForm/>  */}
-      <InitialHomePage theModel = {theModel} settheModel={settheModel} showQuestionPage={showQuestionPage} buttonState={buttonState}
-      setButtonState={setButtonState} setShowQuestionPage={setShowQuestionPage} showAnswerPage={showAnswerPage} setShowAnswerPage={setShowAnswerPage}
-      questionClickedOn={questionClickedOn} setQuestionClickedOn={setQuestionClickedOn}/>
-      <TagsPage model = {theModel} setModel = {settheModel} showTagsPage={showTagsPage}/>
+      <InitialHomePage theModel = {theModel} settheModel={settheModel} buttonState={buttonState} setButtonState={setButtonState}
+      questionClickedOn={questionClickedOn} setQuestionClickedOn={setQuestionClickedOn} state={state} setState={setState}
+      />
+      <TagsPage model = {theModel} setModel = {settheModel} state={state} setState={setState}/>
       {/* <SearchPage theModel={theModel} settheModel={settheModel} buttonState = {buttonState} setButtonState={setButtonState} showSearchPage = {showSearchPage}/> */}
-      <LoadAnswerPage showAnswerPage={showAnswerPage} questionClickedOn={questionClickedOn} theModel={theModel}/>;
+      <LoadAnswerPage questionClickedOn={questionClickedOn} theModel={theModel} state={state} setState={setState}/>;
+      <QuestionForm theModel = {theModel} settheModel={settheModel} state={state} setState={setState} />
     </section>
   )
 }

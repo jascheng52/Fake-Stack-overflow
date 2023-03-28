@@ -6,38 +6,34 @@ import ActiveButton from '../components/activeButton'
 import UnAnsweredButton from '../components/unAnsweredButton'
 // import SortQuestionByDate from "./sortQuestionByDate.js";
 // import Model from '../models/model.js'
-import StatusEnum from '../components/questionArrayStates'
+import { StatusEnum, States } from '../components/questionArrayStates'
 // import LoadAnswerPage from '../components/loadAnswerPage'
 
 InitialHomePage.propTypes = {
   theModel: PropTypes.object,
   questions: PropTypes.func,
-  showQuestionPage: PropTypes.func,
-  setShowQuestionPage: PropTypes.func,
-  buttonState: PropTypes.func,
+  buttonState: PropTypes.number,
   settheModel: PropTypes.func,
   setButtonState: PropTypes.func,
-  showAnswerPage: PropTypes.func,
-  setShowAnswerPage: PropTypes.func,
-  questionClickedOn: PropTypes.func,
-  setQuestionClickedOn: PropTypes.func
+  questionClickedOn: PropTypes.object,
+  setQuestionClickedOn: PropTypes.func,
+  state: PropTypes.number,
+  setState: PropTypes.func
 }
 
 CheckState.propTypes = {
   theModel: PropTypes.object,
-  setShowQuestionPage: PropTypes.func,
-  buttonState: PropTypes.func,
+  buttonState: PropTypes.number,
   settheModel: PropTypes.func,
-  showAnswerPage: PropTypes.func,
-  setShowAnswerPage: PropTypes.func,
-  questionClickedOn: PropTypes.func,
+  questionClickedOn: PropTypes.object,
   setQuestionClickedOn: PropTypes.func,
-  questions: PropTypes.array
+  questions: PropTypes.array,
+  state: PropTypes.number,
+  setState: PropTypes.func
 }
 
 function CheckState ({
-  buttonState, theModel, settheModel, setShowQuestionPage, showAnswerPage, setShowAnswerPage
-  , questionClickedOn, setQuestionClickedOn, questions
+  buttonState, theModel, settheModel, questionClickedOn, setQuestionClickedOn, questions, state, setState
 }) {
   let sortedArr1
   let sortedArr2
@@ -45,21 +41,17 @@ function CheckState ({
   switch (buttonState) {
     case StatusEnum.NEWEST:
       sortedArr1 = NewestButton({ theModel, settheModel, questions })
-      // console.log(JSON.stringify(sortedArr1));
-      return <LoadQuestions questions={sortedArr1} theModel={theModel} setShowQuestionPage={setShowQuestionPage}
-      showAnswerPage={showAnswerPage} setShowAnswerPage={setShowAnswerPage} questionClickedOn={questionClickedOn} setQuestionClickedOn={setQuestionClickedOn}
-      />
+      return <LoadQuestions questions={sortedArr1} theModel={theModel} questionClickedOn={questionClickedOn} setQuestionClickedOn={setQuestionClickedOn}
+      state={state} setState={setState}/>
     case StatusEnum.ACTIVE:
       sortedArr2 = ActiveButton({ theModel, settheModel, questions })
-      return <LoadQuestions questions={sortedArr2} theModel={theModel} setShowQuestionPage={setShowQuestionPage}
-      showAnswerPage={showAnswerPage} setShowAnswerPage={setShowAnswerPage} questionClickedOn={questionClickedOn} setQuestionClickedOn={setQuestionClickedOn}
-      />
+      return <LoadQuestions questions={sortedArr2} theModel={theModel} questionClickedOn={questionClickedOn} setQuestionClickedOn={setQuestionClickedOn}
+      state={state} setState={setState}/>
 
     case StatusEnum.UNANSWERED:
       sortedArr3 = UnAnsweredButton({ theModel, settheModel, questions })
-      return <LoadQuestions questions={sortedArr3} theModel={theModel} setShowQuestionPage={setShowQuestionPage}
-      showAnswerPage={showAnswerPage} setShowAnswerPage={setShowAnswerPage} questionClickedOn={questionClickedOn} setQuestionClickedOn={setQuestionClickedOn}
-      />
+      return <LoadQuestions questions={sortedArr3} theModel={theModel} questionClickedOn={questionClickedOn} setQuestionClickedOn={setQuestionClickedOn}
+      state={state} setState={setState}/>
 
     default:
       break
@@ -67,9 +59,9 @@ function CheckState ({
 }
 
 export default function InitialHomePage ({
-  theModel, settheModel, showQuestionPage, setShowQuestionPage, buttonState, setButtonState,
-  showAnswerPage, setShowAnswerPage, questionClickedOn, setQuestionClickedOn
+  theModel, settheModel, buttonState, setButtonState, questionClickedOn, setQuestionClickedOn, state, setState
 }) {
+  console.log(JSON.stringify(questionClickedOn) + ' pausechamp999')
   function handleNewestBtnClick () {
     setButtonState(StatusEnum.NEWEST)
   }
@@ -79,14 +71,20 @@ export default function InitialHomePage ({
   function handleUnAnsweredBtnClick () {
     setButtonState(StatusEnum.UNANSWERED)
   }
+  function handleAskQuestionClick () {
+    setState(States.QUESTIONFORM)
+  }
+  if (state !== States.QUESTIONPAGE) {
+    return null
+  }
   return (
-      <div style={{ display: showQuestionPage ? 'block' : 'none' }} id="homepage">
+      <div id="homepage">
         <table className="defaultPos" id="allQuestions">
           <thead>
             <tr className="topRow">
               <td height='100' colSpan="8"><h2 id="typeDisplayed"> All Questions</h2></td>
               <td colSpan="1" style={{ textAlign: 'right', width: 'auto' }}>
-                <button className="ask-q-button" id="homeQbutton" style={{ float: 'right' }}> Ask Question </button>
+                <button className="ask-q-button" id="homeQbutton" style={{ float: 'right' }} onClick={handleAskQuestionClick}> Ask Question </button>
               </td>
             </tr>
             <tr className="topRow">
@@ -102,9 +100,8 @@ export default function InitialHomePage ({
 
           </thead>
           <table className = "defaultQuestTable">
-            <CheckState buttonState={buttonState} theModel={theModel} settheModel={settheModel} setShowQuestionPage={setShowQuestionPage}
-            showAnswerPage={showAnswerPage} setShowAnswerPage={setShowAnswerPage} questionClickedOn={questionClickedOn} setQuestionClickedOn={setQuestionClickedOn}
-            questions={theModel.data.questions}
+            <CheckState buttonState={buttonState} theModel={theModel} settheModel={settheModel} questionClickedOn={questionClickedOn}
+            setQuestionClickedOn={setQuestionClickedOn} questions={theModel.data.questions} state={state} setState={setState}
             />
           </table>
         </table>
@@ -112,11 +109,10 @@ export default function InitialHomePage ({
   )
 }
 
-function LoadQuestions ({ questions, theModel, setShowQuestionPage, showAnswerPage, setShowAnswerPage, questionClickedOn, setQuestionClickedOn }) {
+function LoadQuestions ({ questions, theModel, questionClickedOn, setQuestionClickedOn, state, setState }) {
   return questions.map(function (questRow, index) {
-    return <AddRow key={index} question={questRow} theModel={theModel} setShowQuestionPage={setShowQuestionPage}
-    showAnswerPage={showAnswerPage} setShowAnswerPage={setShowAnswerPage} questionClickedOn={questionClickedOn} setQuestionClickedOn={setQuestionClickedOn}
-    />
+    return <AddRow key={index} question={questRow} theModel={theModel} questionClickedOn={questionClickedOn} setQuestionClickedOn={setQuestionClickedOn}
+    state={state} setState={setState}/>
   })
 }
 
