@@ -8,35 +8,27 @@ import React, { useState } from 'react'
 // import addRow from '../components/addRow.js';
 // import newestButton from '../components/newestButton.js';
 import PropTypes from 'prop-types'
-import StatusEnum from '../components/questionArrayStates'
+import { StatusEnum, States } from '../components/questionArrayStates'
 
 LeftSideMenu.propTypes = {
   theModel: PropTypes.object,
-  showQuestionPage: PropTypes.func,
-  setShowQuestionPage: PropTypes.func,
-  showTagsPage: PropTypes.func,
-  setShowTagsPage: PropTypes.func,
   setButtonState: PropTypes.func,
-  setShowAnswerPage: PropTypes.func
+  state: PropTypes.number,
+  setState: PropTypes.func
 }
 
 export default function LeftSideMenu ({
-  theModel, showQuestionPage, setShowQuestionPage, showTagsPage, setShowTagsPage, setButtonState,
-  setShowAnswerPage
+  theModel, setButtonState, state, setState
 }) {
   const [selectedSection, setSelectedSection] = useState('tableSide')
   function handleQuestionClick () {
-    setShowQuestionPage(showQuestionPage = true)
-    setShowTagsPage(showTagsPage = false)
+    setState(States.QUESTIONPAGE)
     setSelectedSection('tableSide')
-    setShowAnswerPage(false)
     setButtonState(StatusEnum.NEWEST)
   }
   function handleTagsClick () {
-    setShowQuestionPage(showQuestionPage = false)
-    setShowTagsPage(showTagsPage = true)
+    setState(States.TAGSPAGE)
     setSelectedSection('tagsSide')
-    setShowAnswerPage(false)
   }
   return (
         <>

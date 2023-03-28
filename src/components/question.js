@@ -1,6 +1,27 @@
 // import Model from '../models/model.js';
 import React from 'react'
-export default function questionForm ({ model, setModel }) {
+import PropTypes from 'prop-types'
+import { States } from '../components/questionArrayStates.js'
+
+QuestionForm.propTypes = {
+  theModel: PropTypes.object,
+  settheModel: PropTypes.func,
+  showQuestionForm: PropTypes.bool,
+  setShowQuestionPage: PropTypes.func,
+  setShowQuestionForm: PropTypes.func,
+  state: PropTypes.number,
+  setState: PropTypes.func
+}
+
+export default function QuestionForm ({ theModel, settheModel, state, setState }) {
+  function handlePostQuestionClick () {
+    setState(States.QUESTIONPAGE)
+    return getQuestion(theModel, settheModel)
+  }
+
+  if (state !== States.QUESTIONFORM) {
+    return null
+  }
   return (
     <>
         <div className = "hidden" id = "newQuestionForm">
@@ -31,7 +52,7 @@ export default function questionForm ({ model, setModel }) {
             <span className = "formEntry"><input className = "formText" type="text" name = "qUserName" placeholder="Enter Text..."/></span>
         <br/>
         <br/>
-        <span ><button type = "button" className = "formButton" id = "qButton" onClick={function () { return getQuestion(model, setModel) }}> Post Question</button></span> <div id = "qRequired"> * indicates mandatory fields</div>
+        <span ><button type = "button" className = "formButton" id = "qButton" onClick={handlePostQuestionClick}> Post Question</button></span> <div id = "qRequired"> * indicates mandatory fields</div>
         </form>
         </div>
     </>
