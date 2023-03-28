@@ -4,15 +4,16 @@ import React from 'react'
 // import Model from '../models/model.js';
 import timeCheck from '../components/timeCheck'
 import PropTypes from 'prop-types'
-// eslint-disable-next-line no-unused-vars
-import LoadAnswerPage from '../components/loadAnswerPage'
+// import LoadAnswerPage from '../components/loadAnswerPage'
 
 AddRow.propTypes = {
   theModel: PropTypes.object,
-  question: PropTypes.object,
-  setshowQuestionPage: PropTypes.func,
+  question: PropTypes.func,
+  setShowQuestionPage: PropTypes.func,
   showAnswerPage: PropTypes.func,
-  setShowAnswerPage: PropTypes.func
+  setShowAnswerPage: PropTypes.func,
+  questionClickedOn: PropTypes.func,
+  setQuestionClickedOn: PropTypes.func
 }
 
 AddRow.propTypes = {
@@ -29,9 +30,10 @@ function getTagName (tid, theModel) {
   }
 }
 
-function AddRow ({ question, theModel, setshowQuestionPage, showAnswerPage, setShowAnswerPage }) {
+function AddRow ({ question, theModel, setShowQuestionPage, showAnswerPage, setShowAnswerPage, questionClickedOn, setQuestionClickedOn }) {
   function handleOpenAnswerPage () {
-    setshowQuestionPage(false)
+    setShowQuestionPage(false)
+    setQuestionClickedOn(question)
     setShowAnswerPage(true)
   }
 
