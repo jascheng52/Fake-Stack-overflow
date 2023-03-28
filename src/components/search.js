@@ -39,7 +39,9 @@ export default function SearchPage ({
   function handleUnAnsweredBtnClick () {
     setButtonState(StatusEnum.UNANSWERED)
   }
-
+  function handleAskQuestionClick () {
+    setState(States.QUESTIONFORM)
+  }
   NumQuestion.propTypes = {
     questions: PropTypes.array
   }
@@ -60,7 +62,7 @@ export default function SearchPage ({
                       <tr className="topRow">
                       <td height='100' colSpan="8"><h2 id="typeDisplayed"> Search Results</h2></td>
                       <td colSpan="1" style={{ textAlign: 'right', width: 'auto' }}>
-                          <button className="ask-q-button" id="homeQbutton" style={{ float: 'right' }}> Ask Question </button>
+                          <button className="ask-q-button" id="homeQbutton" style={{ float: 'right' }} onClick={handleAskQuestionClick}> Ask Question </button>
                       </td>
                       </tr>
                       <tr className="topRow">
@@ -101,6 +103,7 @@ function loadSearch (theModel) {
   const questions = theModel.getAllQstns()
   const filteredQuestionsTag = questions.filter(filterByTagList(tagsInSearch))
   const filteredQuestionsKey = questions.filter(filterKeywords(keywordsList))
+  console.log(filteredQuestionsKey)
 
   const filteredQuestions = filteredQuestionsTag.concat(filteredQuestionsKey)
   for (let i = 0; i < filteredQuestions.length; i++) {

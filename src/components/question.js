@@ -1,7 +1,7 @@
 // import Model from '../models/model.js';
-import React from 'react'
 import PropTypes from 'prop-types'
 import { States } from '../components/questionArrayStates.js'
+import { useState, React } from 'react'
 
 QuestionForm.propTypes = {
   theModel: PropTypes.object,
@@ -14,9 +14,20 @@ QuestionForm.propTypes = {
 }
 
 export default function QuestionForm ({ theModel, settheModel, state, setState }) {
+  const [validTitle, setValidTitle] = useState(true)
+  const [validQuest, setValidQuest] = useState(true)
+  const [validTags, setValidTags] = useState(true)
+  const [validUser, setValidUser] = useState(true)
+  const validSetters = [setValidTitle, setValidQuest, setValidTags, setValidUser]
   function handlePostQuestionClick () {
-    setState(States.QUESTIONPAGE)
-    return getQuestion(theModel, settheModel)
+    const goodForm = getQuestion(theModel, settheModel, validSetters)
+    if (goodForm) {
+      setValidTitle(true)
+      setValidQuest(true)
+      setValidTags(true)
+      setValidUser(true)
+      setState(States.QUESTIONPAGE)
+    }
   }
 
   if (state !== States.QUESTIONFORM) {
@@ -28,19 +39,19 @@ export default function QuestionForm ({ theModel, settheModel, state, setState }
             <form className = "defaultPos" id = "questionForm">
             <label className = "formTitle" htmlFor = "qTitle"> Question Title*</label>
             <div className = "questionInfo">  Limit title to 100 characters or less</div>
-            <div className = "invalidInput" id = "qTitleError"></div>
+            <div className = "invalidInput" id = "qTitleError" style={{ display: !validTitle ? 'block' : 'none' }}> Need Title</div>
             <span className = "formEntry"><input id = "questionTitle" className = "formText" type="text" name = "qTitle" maxLength="100" required placeholder="Enter Title..."/></span>
         <br/>
 
             <label className = "formTitle" htmlFor = "qText"> Question Text*</label>
             <div className = "questionInfo">  Add Details</div>
-            <div className = "invalidInput" id = "qTextError"></div>
+            <div className = "invalidInput" id = "qTextError" style={{ display: !validQuest ? 'block' : 'none' }}> Need Question </div>
             <span className = "formEntry"><br/><textarea className = "formText textInput" name = "qText" type="text" placeholder="Enter Response..."></textarea></span>
         <br/>
 
             <label className = "formTitle" htmlFor = "qTag">Tags*</label>
             <div className = "questionInfo">  Add key words separated by whitespace</div>
-            <div className = "invalidInput" id = "qTagsError"></div>
+            <div className = "invalidInput" id = "qTagsError" style={{ display: !validTags ? 'block' : 'none' }}>Need Tags</div>
             <span className = "formEntry"><input className = "formText" type="text" name = "qTag" placeholder="Enter Tags..."/></span>
 
         <br/>
@@ -48,7 +59,7 @@ export default function QuestionForm ({ theModel, settheModel, state, setState }
             <label className = "formTitle" htmlFor = "qUsername"> Username*</label>
         <br/>
         <br/>
-            <div className = "invalidInput" id = "qUserError"></div>
+            <div className = "invalidInput" id = "qUserError" style={{ display: !validUser ? 'block' : 'none' }}>Need Username</div>
             <span className = "formEntry"><input className = "formText" type="text" name = "qUserName" placeholder="Enter Text..."/></span>
         <br/>
         <br/>
@@ -60,19 +71,19 @@ export default function QuestionForm ({ theModel, settheModel, state, setState }
 }
 
 // adds questions and tags to model from form
-function getQuestion (theModel, setModel) {
+function getQuestion (theModel, setModel, validInputs, validSetters) {
   const qFormData = document.getElementById('questionForm')
   const qTitle = qFormData[0].value
   const qText = qFormData[1].value
   const qTags = qFormData[2].value
   const qUsername = qFormData[3].value
 
-  if (!validateInputs(qTitle, qText, qTags, qUsername)) { return }
+  if (!validateInputs(qTitle, qText, qTags, qUsername, validInputs, validSetters)) { console.log('here'); return false }
   clearInvalidInputs()
   let qTagsList = qTags.split(/\s+/) // split by all whitespace
   qTagsList = qTagsList.filter(function (tag) { return tag !== '' }) // handles case where empty string
 
-  if (!validateTags(qTagsList, theModel)) { return }
+  if (!validateTags(qTagsList, theModel)) { return false }
   clearInvalidInputs()
   const newQuestTags = []
   for (let i = 0; i < qTagsList.length; i++) {
@@ -101,36 +112,40 @@ function getQuestion (theModel, setModel) {
   // console.log(theModel)
   //   console.log(updatedModel);
   setModel(theModel)
+  return true
   //  TODO: LINK BACK AND LOAD THE QUESTION ON PAGE
-  qFormData.reset()
 }
 
 // Check if inputs are valid and adds error
-function validateInputs (qTitle, qText, qTags, qUsername) {
+function validateInputs (qTitle, qText, qTags, qUsername, validSetters) {
   // Check if empty
   let valid = true
   if (!qTitle || qTitle.replaceAll(' ', '').length === 0) {
     console.log('Need Title')
     const titleDiv = document.getElementById('qTitleError')
     titleDiv.innerHTML = 'Need Title'
+    validSetters[0](false)
     valid = false
   }
   if (!qText || qText.replaceAll(' ', '').length === 0) {
     console.log('Need Question')
     const textDiv = document.getElementById('qTextError')
     textDiv.innerHTML = 'Need to fill response'
+    validSetters[1](false)
     valid = false
   }
   if (!qTags || qTags.replaceAll(' ', '').length === 0) {
     console.log('Need Tags')
     const tagsDiv = document.getElementById('qTagsError')
     tagsDiv.innerHTML = 'Need to give tags'
+    validSetters[2](false)
     valid = false
   }
   if (!qUsername || qUsername.replaceAll(' ', '').length === 0) {
     console.log('Need Username')
     const userDiv = document.getElementById('qUserError')
     userDiv.innerHTML = 'Need to give username'
+    validSetters[3](false)
     valid = false
   }
   return valid
