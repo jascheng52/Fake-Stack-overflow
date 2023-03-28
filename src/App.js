@@ -19,17 +19,19 @@ import { StatusEnum, States } from './components/questionArrayStates'
 // eslint-disable-next-line no-unused-vars
 import LoadAnswerPage from './components/loadAnswerPage'
 import QuestionForm from './components/question'
-// import SearchPage from './components/search'
+import SearchPage from './components/search'
 
 function App () {
   const [theModel, settheModel] = useState(new Model())
   const [buttonState, setButtonState] = useState(StatusEnum.NEWEST)
   const [questionClickedOn, setQuestionClickedOn] = useState({})
   const [state, setState] = useState(States.QUESTIONPAGE)
+  const [search, setSearch] = useState(false)
 
   return (
     <section className="fakeso">
-      <Banner setShowPage={setShowSearchPage}/>
+      <Banner state = {state} setState = {setState} setButtonState={setButtonState}
+      setSearch={setSearch} searchState={search}/>
       {/* <QuestionForm model = {theModel} setModel = {settheModel}/> */}
       <LeftSideMenu theModel = {theModel} settheModel={settheModel} setButtonState={setButtonState}
       state={state} setState={setState}/>
@@ -38,7 +40,7 @@ function App () {
       questionClickedOn={questionClickedOn} setQuestionClickedOn={setQuestionClickedOn} state={state} setState={setState}
       />
       <TagsPage model = {theModel} setModel = {settheModel} state={state} setState={setState}/>
-      {/* <SearchPage theModel={theModel} settheModel={settheModel} buttonState = {buttonState} setButtonState={setButtonState} showSearchPage = {showSearchPage}/> */}
+      <SearchPage theModel={theModel} settheModel={settheModel} buttonState = {buttonState} setButtonState={setButtonState} state={state} setState={setState} />
       <LoadAnswerPage questionClickedOn={questionClickedOn} theModel={theModel} state={state} setState={setState}/>;
       <QuestionForm theModel = {theModel} settheModel={settheModel} state={state} setState={setState} />
     </section>
