@@ -25,6 +25,8 @@ export default function IfHyperLink (qText) {
         } else {
           return false
         }
+      } else {
+        return false
       }
     }
   } else {
