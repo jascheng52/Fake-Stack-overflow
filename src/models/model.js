@@ -142,6 +142,14 @@ export default class Model {
     return null
   }
 
+  getNameFromID (tagID) {
+    const tagList = this.data.tags
+    for (let i = 0; i < tagList.length; i++) {
+      if (tagList[i].tid === tagID) { return tagList[i].name }
+    }
+    return null
+  }
+
   // Returns list of questions that have tagID
   filterQuestByTagID (tagID) {
     const questions = this.data.questions

@@ -39,6 +39,7 @@ export function CheckState ({
   let sortedArr1
   let sortedArr2
   let sortedArr3
+  console.log('adsadasdasdas')
   switch (buttonState) {
     case StatusEnum.NEWEST:
       sortedArr1 = NewestButton({ theModel, settheModel, questions })

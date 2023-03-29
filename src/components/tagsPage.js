@@ -1,6 +1,7 @@
-import React from 'react'
+import { React, useState } from 'react'
 import PropTypes from 'prop-types'
-import { States } from '../components/questionArrayStates'
+import { States, StatusEnum } from '../components/questionArrayStates'
+import { CheckState } from './initialHomePage'
 
 TagsPage.propTypes = {
   model: PropTypes.object,
@@ -8,12 +9,27 @@ TagsPage.propTypes = {
   state: PropTypes.number,
   setState: PropTypes.func,
   selectedSection: PropTypes.string,
-  setSelectedSection: PropTypes.func
+  setSelectedSection: PropTypes.func,
+  buttonState: PropTypes.number,
+  setButtonState: PropTypes.func,
+  questionClickedOn: PropTypes.object,
+  setQuestionClickedOn: PropTypes.func
 }
-export default function TagsPage ({ model, setModel, state, setState, selectedSection, setSelectedSection }) {
+export default function TagsPage ({
+  model, setModel, state, setState, selectedSection, setSelectedSection,
+  buttonState, setButtonState, questionClickedOn, setQuestionClickedOn
+}) {
   function handleAskQuestionClick () {
     setState(States.QUESTIONFORM)
     setSelectedSection('tableSide')
+  }
+  const [filteredTag, setTagFilter] = useState([])
+  console.log('qqq')
+  console.log(buttonState)
+  if (state === States.TAGSFILTERPAGE) {
+    return <TagsFiltered theModel={model} settheModel={setModel} buttonState={buttonState}
+    setButtonState={setButtonState} questionClickedOn={questionClickedOn}
+    setQuestionClickedOn={setQuestionClickedOn} filteredTag={filteredTag} state={state} setState={setState}/>
   }
   if (state !== States.TAGSPAGE) {
     return null
@@ -32,7 +48,7 @@ export default function TagsPage ({ model, setModel, state, setState, selectedSe
 
             </div>
             <div className = "defaultStartTable" id = "defaultStartTable">
-              <BuildTagTable theModel={model}/>
+              <BuildTagTable theModel={model} setState={setState} setTagFilter={setTagFilter}/>
             </div>
 
         </div>
@@ -42,14 +58,15 @@ export default function TagsPage ({ model, setModel, state, setState, selectedSe
 
 TagCell.propTypes = {
   theModel: PropTypes.object,
-  tagCell: PropTypes.object
+  tagCell: PropTypes.object,
+  cellClick: PropTypes.func
 }
-function TagCell ({ tagCell, theModel }) {
+function TagCell ({ tagCell, theModel, cellClick }) {
   console.log(tagCell)
   if (!tagCell) {
     return (
             <>
-                <div className = "flexItemTagEmpty">
+                <div className = "flexItemTagEmpty" >
                     <div className = "tagWrapper">
                         <div className = " flexTagName itemElements"></div>
                         <div className = "numTag itemElements"></div>
@@ -66,7 +83,7 @@ function TagCell ({ tagCell, theModel }) {
     if (tagCount === 1) {
       return (
                 <>
-                    <div className = "flexItemTag">
+                    <div className = "flexItemTag" onClick={cellClick}>
                         <div className = "tagWrapper">
                             <div className = " flexTagName itemElements">{tagName}</div>
                             <div className = "numTag itemElements">{tagCount} question</div>
@@ -78,7 +95,7 @@ function TagCell ({ tagCell, theModel }) {
     } else {
       return (
                 <>
-                    <div className = "flexItemTag">
+                    <div className = "flexItemTag" onClick={cellClick}>
                         <div className = "tagWrapper">
                             <div className = " flexTagName itemElements">{tagName}</div>
                             <div className = "numTag itemElements">{tagCount}questions</div>
@@ -93,17 +110,21 @@ function TagCell ({ tagCell, theModel }) {
 
 TagRow.propTypes = {
   theModel: PropTypes.object,
-  tagRow: PropTypes.array
+  tagRow: PropTypes.array,
+  setState: PropTypes.func,
+  setTagFilter: PropTypes.func
 }
 
-function TagRow ({ tagRow, theModel }) {
+function TagRow ({ tagRow, theModel, setState, setTagFilter }) {
   if (!tagRow) { return null }
   return tagRow.map(function (tagCell, index) {
-    if (!tagCell) { return <TagCell key={index} tagCell={null} theModel={theModel} /> } else { return <TagCell key={index} tagCell={tagCell} theModel={theModel} /> }
+    if (!tagCell) { return <TagCell key={index} tagCell={null} theModel={theModel} /> } else {
+      return <TagCell key={index} tagCell={tagCell} theModel={theModel} cellClick={function () { return redirectTag(tagCell.name, theModel, setState, setTagFilter) }} />
+    }
   })
 }
 
-function BuildTagTable ({ theModel }) {
+function BuildTagTable ({ theModel, setState, setTagFilter }) {
   // let table = document.getElementById("defaultStartTable");
   // table.innerHTML = "";
   // console.log(table);
@@ -129,27 +150,93 @@ function BuildTagTable ({ theModel }) {
     // eslint-disable-next-line brace-style
     if (!tagRow) { return <div key = {index}className='flexContainerRow'><TagRow tagRow = {null} theModel = {theModel}/></div> }
     // eslint-disable-next-line block-spacing
-    else { return <div key = {index}className='flexContainerRow'><TagRow tagRow = {tagRow} theModel = {theModel} /></div>}
+    else { return <div key = {index}className='flexContainerRow'><TagRow tagRow = {tagRow} theModel = {theModel} setState={setState} setTagFilter= {setTagFilter} /></div>}
   })
 }
 
-// function redirectTag(tagName)
-// {
-//     console.log(tagName);
-//     let tagID = theModel.getTagIDFromName(tagName);
-//     let filteredQuest = theModel.filterQuestByTagID(tagID);
+function redirectTag (tagName, theModel, setState, setTagFilter) {
+  // console.log(tagName)
+  const tagID = theModel.getTagIDFromName(tagName)
+  const filteredQuest = theModel.filterQuestByTagID(tagID)
+  console.log('Filtered Questions')
+  console.log(filteredQuest)
+  setState(States.TAGSFILTERPAGE)
+  setTagFilter(tagID)
+}
 
-//     hideAllHidden();
-//     addRow(filteredQuest);
-//     if(filteredQuest.length === 1)
-//         document.getElementById("numQuestions").innerHTML = 1 + " Question";
-//     else
-//         document.getElementById("numQuestions").innerHTML = filteredQuest.length + " Questions";
-//     document.getElementById("homepage").style.display = "block";
-//     document.getElementById("typeDisplayed").innerHTML = "All " + tagName + " Questions";
-//     let qst = document.getElementById("tableSide");
-//     qst.style.backgroundColor = "gray";
-//     let tag = document.getElementById("tagsSide");
-//     tag.style.backgroundColor = "transparent";
-//     newestButton(filteredQuest);
-// }
+TagsFiltered.propTypes = {
+  theModel: PropTypes.object,
+  buttonState: PropTypes.number,
+  settheModel: PropTypes.func,
+  setButtonState: PropTypes.func,
+  questionClickedOn: PropTypes.object,
+  setQuestionClickedOn: PropTypes.func,
+  state: PropTypes.number,
+  setState: PropTypes.func,
+  filteredTag: PropTypes.string
+}
+export function TagsFiltered ({
+  theModel, settheModel, buttonState, setButtonState,
+  questionClickedOn, setQuestionClickedOn, state, setState, filteredTag
+}) {
+  // console.log('should be searching' + state)
+  if (state !== States.TAGSFILTERPAGE) {
+    return null
+  }
+  function handleNewestBtnClick () {
+    setButtonState(StatusEnum.NEWEST)
+  }
+  function handleActiveBtnClick () {
+    setButtonState(StatusEnum.ACTIVE)
+  }
+  function handleUnAnsweredBtnClick () {
+    setButtonState(StatusEnum.UNANSWERED)
+  }
+  function handleAskQuestionClick () {
+    setState(States.QUESTIONFORM)
+  }
+  NumQuestion.propTypes = {
+    questions: PropTypes.array
+  }
+
+  function NumQuestion ({ questions }) {
+    if (questions.length === 1) {
+      return <h3 id="numQuestions">1 question</h3>
+    } else {
+      return <h3 id="numQuestions">{questions.length} questions</h3>
+    }
+  }
+  const tagFilterQuestion = theModel.filterQuestByTagID(filteredTag)
+  console.log(theModel.getNameFromID(filteredTag))
+  console.log('dasdsadkk')
+  console.log(tagFilterQuestion)
+  return (
+          <div id="homepage">
+              <table className="defaultPos" id="allQuestions">
+                  <thead>
+                      <tr className="topRow">
+                      <td height='100' colSpan="8"><h2 id="typeDisplayed"> {theModel.getNameFromID(filteredTag)} Results</h2></td>
+                      <td colSpan="1" style={{ textAlign: 'right', width: 'auto' }}>
+                          <button className="ask-q-button" id="homeQbutton" style={{ float: 'right' }} onClick={handleAskQuestionClick}> Ask Question </button>
+                      </td>
+                      </tr>
+                      <tr className="topRow">
+                          <td height='100' style={{ textAlign: 'left', width: '100%' }} colSpan="8">
+                              <NumQuestion questions ={tagFilterQuestion}/>
+                              <div style={{ float: 'right', marginTop: '-40px' }}>
+                              <div className="three-cell" style={{ display: 'inline-block' }} id="homePageNewestBtn" onClick={handleNewestBtnClick}>Newest</div>
+                              <div className="three-cell" style={{ display: 'inline-block' }} id="activeBtn" onClick={handleActiveBtnClick}>Active</div>
+                              <div className="three-cell" style={{ display: 'inline-block' }} id="unansweredBtn" onClick={handleUnAnsweredBtnClick}>Unanswered</div>
+                              </div>
+                          </td>
+                      </tr>
+        </thead>
+        <table className = "defaultQuestTable">
+          <CheckState buttonState={buttonState} theModel={theModel} settheModel={settheModel}
+            questionClickedOn={questionClickedOn} setQuestionClickedOn={setQuestionClickedOn}
+            questions={tagFilterQuestion} state = {state} setState={setState}/>
+        </table>
+      </table>
+    </div>
+  )
+}
