@@ -42,8 +42,10 @@ function App () {
       <InitialHomePage theModel = {theModel} settheModel={settheModel} buttonState={buttonState} setButtonState={setButtonState}
       questionClickedOn={questionClickedOn} setQuestionClickedOn={setQuestionClickedOn} state={state} setState={setState}
       />
-      <TagsPage model = {theModel} setModel = {settheModel} state={state} setState={setState}
-      selectedSection={selectedSection} setSelectedSection={setSelectedSection}/>
+      <TagsPage model = {theModel} setModel = {settheModel} state={state} setState={setState} buttonState={buttonState}
+      selectedSection={selectedSection} setSelectedSection={setSelectedSection}
+      setButtonState = {setButtonState} questionClickedOn = {questionClickedOn} setQuestionClickedOn={setQuestionClickedOn}
+      />
       <SearchPage theModel={theModel} settheModel={settheModel} buttonState = {buttonState} setButtonState={setButtonState} state={state} setState={setState} />
       <LoadAnswerPage questionClickedOn={questionClickedOn} theModel={theModel} state={state} setState={setState}/>;
       <QuestionForm theModel = {theModel} settheModel={settheModel} state={state} setState={setState} />
