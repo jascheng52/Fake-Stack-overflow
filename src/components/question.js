@@ -2,6 +2,7 @@
 import PropTypes from 'prop-types'
 import { States } from '../components/questionArrayStates.js'
 import { useState, React } from 'react'
+import IfHyperLink from './checkIfHyperLink.js'
 
 QuestionForm.propTypes = {
   theModel: PropTypes.object,
@@ -20,7 +21,8 @@ export default function QuestionForm ({ theModel, settheModel, state, setState }
   const [validUser, setValidUser] = useState(true)
   const [lessFiveTags, setNumberTags] = useState(true)
   const [lessTenTags, setLengthTags] = useState(true)
-  const validSetters = [setValidTitle, setValidQuest, setValidTags, setValidUser]
+  const [badHyperLink, setBadHyperLink] = useState(true)
+  const validSetters = [setValidTitle, setValidQuest, setValidTags, setValidUser, setBadHyperLink]
   const checkingTags = [setNumberTags, setLengthTags]
   function handlePostQuestionClick () {
     setValidTitle(true)
@@ -29,6 +31,7 @@ export default function QuestionForm ({ theModel, settheModel, state, setState }
     setValidUser(true)
     setNumberTags(true)
     setLengthTags(true)
+    setBadHyperLink(true)
     console.log(checkingTags)
     const goodForm = getQuestion(theModel, settheModel, validSetters, checkingTags)
     if (goodForm) {
@@ -38,6 +41,7 @@ export default function QuestionForm ({ theModel, settheModel, state, setState }
       setValidUser(true)
       setNumberTags(true)
       setLengthTags(true)
+      setBadHyperLink(true)
       setState(States.QUESTIONPAGE)
     }
   }
@@ -59,6 +63,7 @@ export default function QuestionForm ({ theModel, settheModel, state, setState }
             <div className = "questionInfo">  Add Details</div>
 
             <div className = "invalidInput" id = "qTextError" style={{ display: !validQuest ? 'block' : 'none' }}> Need Question </div>
+            <div className = "invalidInput" id = "qTextError" style={{ display: !badHyperLink ? 'block' : 'none' }}> HyperLink constraint is violated </div>
 
             <span className = "formEntry"><br/><textarea className = "formText textInput" name = "qText" type="text" placeholder="Enter Response..."></textarea></span>
         <br/>
@@ -158,8 +163,17 @@ function getQuestion (theModel, setModel, validSetters, checkingTags) {
 
 // Check if inputs are valid and adds error
 function validateInputs (qTitle, qText, qTags, qUsername, validSetters) {
-  // Check if empty
   let valid = true
+
+  const charArr = qText.split('')
+  if (charArr.includes('[')) {
+    if (!IfHyperLink(qText)) {
+      validSetters[4](false)
+      valid = false
+    }
+  }
+
+  // let valid = true
   if (!qTitle || qTitle.replaceAll(' ', '').length === 0) {
     console.log('Need Title')
     validSetters[0](false)
@@ -180,6 +194,7 @@ function validateInputs (qTitle, qText, qTags, qUsername, validSetters) {
     validSetters[3](false)
     valid = false
   }
+  console.log(JSON.stringify(valid) + ' pausechamp1')
   return valid
 }
 
