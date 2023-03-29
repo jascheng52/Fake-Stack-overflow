@@ -2,6 +2,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import { States } from '../components/questionArrayStates.js'
+import IfHyperLink from './checkIfHyperLink.js'
 
 AnswerForm.propTypes = {
   theModel: PropTypes.object,
@@ -66,6 +67,7 @@ function getAnswer (theModel, setModel, currentQuestion) {
 
 function validateInputs (userName, text) {
   let valid = true
+
   if (!userName) {
     const userDiv = document.getElementById('aUserError')
     userDiv.innerHTML = 'Need UserName'

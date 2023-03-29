@@ -2,6 +2,7 @@
 import PropTypes from 'prop-types'
 import { States } from '../components/questionArrayStates.js'
 import { useState, React } from 'react'
+import IfHyperLink from './checkIfHyperLink.js'
 
 QuestionForm.propTypes = {
   theModel: PropTypes.object,
@@ -118,8 +119,16 @@ function getQuestion (theModel, setModel, validInputs, validSetters) {
 
 // Check if inputs are valid and adds error
 function validateInputs (qTitle, qText, qTags, qUsername, validSetters) {
-  // Check if empty
   let valid = true
+
+  if (!IfHyperLink(qText)) {
+    const textDiv = document.getElementById('qTextError')
+    textDiv.innerHTML = 'HyperLink constraint is violated'
+    validSetters[1](false)
+    valid = false
+  }
+
+  // let valid = true
   if (!qTitle || qTitle.replaceAll(' ', '').length === 0) {
     console.log('Need Title')
     const titleDiv = document.getElementById('qTitleError')
@@ -148,6 +157,7 @@ function validateInputs (qTitle, qText, qTags, qUsername, validSetters) {
     validSetters[3](false)
     valid = false
   }
+  console.log(JSON.stringify(valid) + ' pausechamp1')
   return valid
 }
 

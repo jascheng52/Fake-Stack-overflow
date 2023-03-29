@@ -2,6 +2,7 @@ import React from 'react'
 import timeCheck from '../components/timeCheck'
 import PropTypes from 'prop-types'
 import { States } from '../components/questionArrayStates'
+import IfHyperLink from './checkIfHyperLink'
 
 LoadAnswerPage.propTypes = {
   theModel: PropTypes.object,
@@ -33,6 +34,7 @@ function QuestionTitle (questionClickedOn) {
 // adds NumViews Questions and AskDate
 function AddSecondRow (questionClickedOn) {
   const object = questionClickedOn.questionClickedOn
+  console.log(JSON.stringify(object.text) + ' pausechamp1')
 
   let timeStr = ''
   const dateArr = object.askDate.toString().split(' ')
@@ -48,6 +50,27 @@ function AddSecondRow (questionClickedOn) {
   } else {
     const datePrint = dateArr[1] + ' ' + dateArr[2] + ' at ' + dateArr[4]
     timeStr = datePrint
+  }
+  if (IfHyperLink(questionClickedOn.questionClickedOn.text)) {
+    const regex = /\[(.*?)\]\((.*?)\)/
+    const matches = questionClickedOn.questionClickedOn.text.match(regex)
+    const linkText = matches[1]
+    const linkUrl = matches[2]
+    console.log(linkText + ' LINKTEST')
+    console.log(linkUrl + ' LINKURL')
+    const text = object.text
+    console.log(text + 'Pogggg')
+    const indexLeftBrac = text.indexOf('[')
+    const firstPartOfTheText = text.substring(0, indexLeftBrac)
+    const indexOfRightParen = text.indexOf(')')
+    const secondPartOfTheText = text.substring(indexOfRightParen + 1, text.length)
+    return (
+      <div className="question-info-row1">
+        <div className="viewsBox"> {object.views} Views </div>
+        <div className="textBox"> {firstPartOfTheText} <a href={linkUrl}> {linkText} </a> {secondPartOfTheText} </div>
+        <div className="timeBox"><span className="askedBy">{object.askedBy}</span> asked {timeStr}</div>
+      </div>
+    )
   }
 
   return (
@@ -69,6 +92,8 @@ function AddAllAnswers ({ questionClickedOn, theModel }) { // adds all answers f
     }
     return 'error'
   }
+
+  console.log(JSON.stringify(questionClickedOn.text) + ' pausechamp995')
 
   let arr = questionClickedOn.ansIds
   console.log(JSON.stringify(arr) + ' pausechamp1')

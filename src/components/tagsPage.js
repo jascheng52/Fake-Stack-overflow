@@ -135,21 +135,21 @@ function BuildTagTable ({ theModel }) {
 
 // function redirectTag(tagName)
 // {
-//     console.log(tagName);
-//     let tagID = theModel.getTagIDFromName(tagName);
-//     let filteredQuest = theModel.filterQuestByTagID(tagID);
+//     console.log(tagName)
+//     // let tagID = theModel.getTagIDFromName(tagName);
+//     // let filteredQuest = theModel.filterQuestByTagID(tagID);
 
-//     hideAllHidden();
-//     addRow(filteredQuest);
-//     if(filteredQuest.length === 1)
-//         document.getElementById("numQuestions").innerHTML = 1 + " Question";
-//     else
-//         document.getElementById("numQuestions").innerHTML = filteredQuest.length + " Questions";
-//     document.getElementById("homepage").style.display = "block";
-//     document.getElementById("typeDisplayed").innerHTML = "All " + tagName + " Questions";
-//     let qst = document.getElementById("tableSide");
-//     qst.style.backgroundColor = "gray";
-//     let tag = document.getElementById("tagsSide");
-//     tag.style.backgroundColor = "transparent";
-//     newestButton(filteredQuest);
+//     // hideAllHidden();
+//     // addRow(filteredQuest);
+//     // if(filteredQuest.length === 1)
+//     //     document.getElementById("numQuestions").innerHTML = 1 + " Question";
+//     // else
+//     //     document.getElementById("numQuestions").innerHTML = filteredQuest.length + " Questions";
+//     // document.getElementById("homepage").style.display = "block";
+//     // document.getElementById("typeDisplayed").innerHTML = "All " + tagName + " Questions";
+//     // let qst = document.getElementById("tableSide");
+//     // qst.style.backgroundColor = "gray";
+//     // let tag = document.getElementById("tagsSide");
+//     // tag.style.backgroundColor = "transparent";
+//     // newestButton(filteredQuest);
 // }
