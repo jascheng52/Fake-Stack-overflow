@@ -21,7 +21,8 @@ export default function QuestionForm ({ theModel, settheModel, state, setState }
   const [validUser, setValidUser] = useState(true)
   const [lessFiveTags, setNumberTags] = useState(true)
   const [lessTenTags, setLengthTags] = useState(true)
-  const validSetters = [setValidTitle, setValidQuest, setValidTags, setValidUser]
+  const [badHyperLink, setBadHyperLink] = useState(true)
+  const validSetters = [setValidTitle, setValidQuest, setValidTags, setValidUser, setBadHyperLink]
   const checkingTags = [setNumberTags, setLengthTags]
   function handlePostQuestionClick () {
     setValidTitle(true)
@@ -30,6 +31,7 @@ export default function QuestionForm ({ theModel, settheModel, state, setState }
     setValidUser(true)
     setNumberTags(true)
     setLengthTags(true)
+    setBadHyperLink(true)
     console.log(checkingTags)
     const goodForm = getQuestion(theModel, settheModel, validSetters, checkingTags)
     if (goodForm) {
@@ -39,6 +41,7 @@ export default function QuestionForm ({ theModel, settheModel, state, setState }
       setValidUser(true)
       setNumberTags(true)
       setLengthTags(true)
+      setBadHyperLink(true)
       setState(States.QUESTIONPAGE)
     }
   }
@@ -60,6 +63,7 @@ export default function QuestionForm ({ theModel, settheModel, state, setState }
             <div className = "questionInfo">  Add Details</div>
 
             <div className = "invalidInput" id = "qTextError" style={{ display: !validQuest ? 'block' : 'none' }}> Need Question </div>
+            <div className = "invalidInput" id = "qTextError" style={{ display: !badHyperLink ? 'block' : 'none' }}> HyperLink constraint is violated </div>
 
             <span className = "formEntry"><br/><textarea className = "formText textInput" name = "qText" type="text" placeholder="Enter Response..."></textarea></span>
         <br/>
@@ -161,11 +165,12 @@ function getQuestion (theModel, setModel, validSetters, checkingTags) {
 function validateInputs (qTitle, qText, qTags, qUsername, validSetters) {
   let valid = true
 
-  if (!IfHyperLink(qText)) {
-    const textDiv = document.getElementById('qTextError')
-    textDiv.innerHTML = 'HyperLink constraint is violated'
-    validSetters[1](false)
-    valid = false
+  const charArr = qText.split('')
+  if (charArr.includes('[')) {
+    if (!IfHyperLink(qText)) {
+      validSetters[4](false)
+      valid = false
+    }
   }
 
   // let valid = true

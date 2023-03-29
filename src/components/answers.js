@@ -2,7 +2,7 @@
 import { React, useState } from 'react'
 import PropTypes from 'prop-types'
 import { States } from '../components/questionArrayStates.js'
-// import IfHyperLink from './checkIfHyperLink.js'
+import IfHyperLink from './checkIfHyperLink.js'
 
 AnswerForm.propTypes = {
   theModel: PropTypes.object,
@@ -104,7 +104,15 @@ function NeedName ({ validName }) {
 }
 
 function NeedAnswer ({ validAnswer }) {
-  console.log(validAnswer)
+  // console.log(validAnswer)
+
+  const ansFormData = document.getElementById('answerToQuestion')
+  const aText = ansFormData[1].value
+
+  if (!IfHyperLink(aText)) {
+    return <div className = "invalidInput" id = "aTextError">HyperLink constraint is violated</div>
+  }
+
   if (!validAnswer) { return <div className = "invalidInput" id = "aTextError">Need Answer</div> }
   return null
 }
