@@ -92,11 +92,45 @@ function AddAllHyperLinks (questionClickedOn) {
     secondPartOfTheText = text.substring(indexOfRightParen + 1, text.length)
     if (IfHyperLink(secondPartOfTheText)) {
       temp.push(
-        <span> {firstPartOfTheText} <a href={linkUrl}> {linkText} </a> </span>
+        <span key={linkText + x}> {firstPartOfTheText} <a href={linkUrl}> {linkText} </a> </span>
       )
     } else {
       temp.push(
-        <span> {firstPartOfTheText} <a href={linkUrl}> {linkText} </a> {secondPartOfTheText} </span>
+        <span key={linkText + x}> {firstPartOfTheText} <a href={linkUrl}> {linkText} </a> {secondPartOfTheText} </span>
+      )
+      break
+    }
+  }
+  return temp
+}
+
+function AddAllHyperLinksAnswers (questionClickedOn) {
+  console.log(JSON.stringify(questionClickedOn) + ' pausechampCHECKEHCKECHECK')
+  const temp = []
+  const object = questionClickedOn.questionClickedOn.object
+  let secondPartOfTheText = object.text
+  console.log(JSON.stringify(secondPartOfTheText) + ' pausechampCHECKEHCKECHECKsecondPartOfTheText')
+  const substrings = secondPartOfTheText.split(/\[/)
+  for (let x = 1; x < substrings.length; x++) {
+    const regex = /\[(.*?)\]\((.*?)\)/
+    const matches = object.text.match(regex)
+    const linkText = matches[1]
+    const linkUrl = matches[2]
+    console.log(linkText + ' LINKTEST')
+    console.log(linkUrl + ' LINKURL')
+    const text = object.text
+    console.log(text + 'Pogggg')
+    const indexLeftBrac = text.indexOf('[')
+    const firstPartOfTheText = text.substring(0, indexLeftBrac)
+    const indexOfRightParen = text.indexOf(')')
+    secondPartOfTheText = text.substring(indexOfRightParen + 1, text.length)
+    if (IfHyperLink(secondPartOfTheText)) {
+      temp.push(
+        <span key={linkText + x}> {firstPartOfTheText} <a href={linkUrl}> {linkText} </a> </span>
+      )
+    } else {
+      temp.push(
+        <span key={linkText + x}> {firstPartOfTheText} <a href={linkUrl}> {linkText} </a> {secondPartOfTheText} </span>
       )
       break
     }
@@ -142,21 +176,9 @@ function AddAllAnswers ({ questionClickedOn, theModel }) { // adds all answers f
       timeStr = datePrint
     }
     if (IfHyperLink(object.text)) {
-      const regex = /\[(.*?)\]\((.*?)\)/
-      const matches = object.text.match(regex)
-      const linkText = matches[1]
-      const linkUrl = matches[2]
-      console.log(linkText + ' LINKTEST')
-      console.log(linkUrl + ' LINKURL')
-      const text = object.text
-      console.log(text + 'Pogggg')
-      const indexLeftBrac = text.indexOf('[')
-      const firstPartOfTheText = text.substring(0, indexLeftBrac)
-      const indexOfRightParen = text.indexOf(')')
-      const secondPartOfTheText = text.substring(indexOfRightParen + 1, text.length)
       temp.push(
         <div className="answerToQuestion" key={aid}>
-            <div className="textBoxAnswer">{firstPartOfTheText} <a href={linkUrl}> {linkText} </a> {secondPartOfTheText} </div>
+            <div className="textBoxAnswer"> <AddAllHyperLinksAnswers questionClickedOn={{ object }}/> </div>
             <div className="timeBoxAnswer"><span className="ansBy">{object.ansBy}</span> answered {timeStr}</div>
         </div>
       )
