@@ -29,7 +29,7 @@ export default function TagsPage ({
   if (state === States.TAGSFILTERPAGE) {
     return <TagsFiltered theModel={model} settheModel={setModel} buttonState={buttonState}
     setButtonState={setButtonState} questionClickedOn={questionClickedOn}
-    setQuestionClickedOn={setQuestionClickedOn} filteredTag={filteredTag} state={state} setState={setState}/>
+    setQuestionClickedOn={setQuestionClickedOn} filteredTag={filteredTag} state={state} setState={setState} setSelectedSection={setSelectedSection}/>
   }
   if (state !== States.TAGSPAGE) {
     return null
@@ -98,7 +98,7 @@ function TagCell ({ tagCell, theModel, cellClick }) {
                     <div className = "flexItemTag" onClick={cellClick}>
                         <div className = "tagWrapper">
                             <div className = " flexTagName itemElements">{tagName}</div>
-                            <div className = "numTag itemElements">{tagCount}questions</div>
+                            <div className = "numTag itemElements">{tagCount + ' '}questions</div>
                         </div>
                     </div>
 
@@ -173,11 +173,12 @@ TagsFiltered.propTypes = {
   setQuestionClickedOn: PropTypes.func,
   state: PropTypes.number,
   setState: PropTypes.func,
-  filteredTag: PropTypes.string
+  filteredTag: PropTypes.string,
+  setSelectedSection: PropTypes.func
 }
 export function TagsFiltered ({
   theModel, settheModel, buttonState, setButtonState,
-  questionClickedOn, setQuestionClickedOn, state, setState, filteredTag
+  questionClickedOn, setQuestionClickedOn, state, setState, filteredTag, setSelectedSection
 }) {
   // console.log('should be searching' + state)
   if (state !== States.TAGSFILTERPAGE) {
@@ -193,6 +194,7 @@ export function TagsFiltered ({
     setButtonState(StatusEnum.UNANSWERED)
   }
   function handleAskQuestionClick () {
+    setSelectedSection('tableSide')
     setState(States.QUESTIONFORM)
   }
   NumQuestion.propTypes = {
@@ -203,7 +205,7 @@ export function TagsFiltered ({
     if (questions.length === 1) {
       return <h3 id="numQuestions">1 question</h3>
     } else {
-      return <h3 id="numQuestions">{questions.length} questions</h3>
+      return <h3 id="numQuestions">{questions.length + ' '}questions</h3>
     }
   }
   const tagFilterQuestion = theModel.filterQuestByTagID(filteredTag)
