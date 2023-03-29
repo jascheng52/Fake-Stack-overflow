@@ -49,7 +49,7 @@ export default function SearchPage ({
     if (questions.length === 1) {
       return <h3 id="numQuestions">1 question</h3>
     } else {
-      return <h3 id="numQuestions">${questions.length} questions</h3>
+      return <h3 id="numQuestions">{questions.length + ' '} questions</h3>
     }
   }
   const searchedQuestion = loadSearch(theModel)

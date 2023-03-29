@@ -98,7 +98,7 @@ function TagCell ({ tagCell, theModel, cellClick }) {
                     <div className = "flexItemTag" onClick={cellClick}>
                         <div className = "tagWrapper">
                             <div className = " flexTagName itemElements">{tagName}</div>
-                            <div className = "numTag itemElements">{tagCount}questions</div>
+                            <div className = "numTag itemElements">{tagCount + ' '}questions</div>
                         </div>
                     </div>
 
