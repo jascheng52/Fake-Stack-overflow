@@ -22,7 +22,6 @@ export default function AnswerForm ({ theModel, setModel, currentQuestion, state
     setValidAnswer(true)
     setBadHyperLink(true)
     const goodAnswer = getAnswer(theModel, setModel, currentQuestion, validInputs)
-    console.log(goodAnswer)
     if (goodAnswer) {
       setValidUser(true)
       setValidAnswer(true)
