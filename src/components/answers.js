@@ -1,5 +1,5 @@
 // import Model from '../models/model.js'
-import React from 'react'
+import { React, useState } from 'react'
 import PropTypes from 'prop-types'
 import { States } from '../components/questionArrayStates.js'
 import IfHyperLink from './checkIfHyperLink.js'
@@ -13,9 +13,19 @@ AnswerForm.propTypes = {
 }
 
 export default function AnswerForm ({ theModel, setModel, currentQuestion, state, setState }) {
+  const [validUser, setValidUser] = useState(true)
+  const [validAnswer, setValidAnswer] = useState(true)
+  const validInputs = [setValidUser, setValidAnswer]
   function handlePostAnswerClick () {
-    setState(States.ANSWERPAGE)
-    return getAnswer(theModel, setModel, currentQuestion)
+    setValidUser(true)
+    setValidAnswer(true)
+    const goodAnswer = getAnswer(theModel, setModel, currentQuestion, validInputs)
+    console.log(goodAnswer)
+    if (goodAnswer) {
+      setValidUser(true)
+      setValidAnswer(true)
+      setState(States.ANSWERPAGE)
+    }
   }
   if (state !== States.ANSWERFORM) {
     return null
@@ -25,12 +35,12 @@ export default function AnswerForm ({ theModel, setModel, currentQuestion, state
     <div className = "hidden" id = "newAnswerForm">
         <form className = "defaultPos" id = "answerToQuestion">
             <label className = "formTitle" htmlFor = "aUser"> Username*</label>
-            <div className = "invalidInput" id = "aUserError"></div>
+            <NeedName validName = {validUser}/>
             <span className = "formEntry"><br/><input className = "formText" type="text" name = "aUser" placeholder="Enter Username..."/></span>
         <br/>
         <br/>
         <label className = "formTitle" htmlFor = "aText">Answer Text*</label>
-        <div className = "invalidInput" id = "aTextError"></div>
+            <NeedAnswer validAnswer = {validAnswer}/>
         <span className = "formEntry"><br/><textarea className = "formText textInput" name = "aText" type="text" placeholder="Enter Response..."></textarea>
     </span>
     <br/>
@@ -41,14 +51,14 @@ export default function AnswerForm ({ theModel, setModel, currentQuestion, state
   )
 }
 
-function getAnswer (theModel, setModel, currentQuestion) {
+function getAnswer (theModel, setModel, currentQuestion, validInputs) {
   const ansFormData = document.getElementById('answerToQuestion')
   const aUsername = ansFormData[0].value
   const aText = ansFormData[1].value
-  if (!validateInputs(aUsername, aText)) {
-    return
+  if (!validateInputs(aUsername, aText, validInputs)) {
+    return false
   }
-  clearInvalidInputs()
+  // clearInvalidInputs()
   const numOfAnswers = theModel.getNumAnswers()
   const newAnswer =
   {
@@ -60,30 +70,48 @@ function getAnswer (theModel, setModel, currentQuestion) {
   theModel.addAnswer(newAnswer)
   theModel.addAnswerToQuestID(currentQuestion.qid, newAnswer.aid)
   // console.log(theModel)
-  setModel(theModel)
-  ansFormData.reset()
+  // setModel(theModel)
+  // ansFormData.reset()
+  return true
   //  TODO: LINK BACK AND LOAD THE ANSWER ON PAGE
-};
+}
 
-function validateInputs (userName, text) {
+function validateInputs (userName, text, validInputs) {
   let valid = true
 
   if (!userName) {
-    const userDiv = document.getElementById('aUserError')
-    userDiv.innerHTML = 'Need UserName'
+    validInputs[0](false)
     valid = false
   }
   if (!text) {
-    const userDiv = document.getElementById('aTextError')
-    userDiv.innerHTML = 'Need Text'
+    validInputs[1](false)
     valid = false
   }
   return valid
 };
 
-function clearInvalidInputs () {
-  const invalidDivs = document.getElementsByClassName('invalidInput')
-  for (let i = 0; i < invalidDivs.length; i++) {
-    invalidDivs[i].innerHTML = ''
-  }
+NeedName.propTypes = {
+  validName: PropTypes.bool
 }
+NeedAnswer.propTypes = {
+  validAnswer: PropTypes.bool
+}
+
+function NeedName ({ validName }) {
+  console.log(validName)
+  if (!validName) { return <div className = "invalidInput" id = "aUserError">Need Name</div> }
+  return null
+}
+
+function NeedAnswer ({ validAnswer }) {
+  console.log(validAnswer)
+  if (!validAnswer) { return <div className = "invalidInput" id = "aTextError">Need Answer</div> }
+  return null
+}
+
+// function clearInvalidInputs () {
+//   const invalidDivs = document.getElementsByClassName('invalidInput')
+//   for (let i = 0; i < invalidDivs.length; i++) {
+//     invalidDivs[i].innerHTML = ''
+//   }
+// }
