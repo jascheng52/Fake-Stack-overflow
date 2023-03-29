@@ -34,7 +34,6 @@ function QuestionTitle (questionClickedOn) {
 // adds NumViews Questions and AskDate
 function AddSecondRow (questionClickedOn) {
   const object = questionClickedOn.questionClickedOn
-  console.log(JSON.stringify(object.text) + ' pausechamp1')
 
   let timeStr = ''
   const dateArr = object.askDate.toString().split(' ')
@@ -71,21 +70,18 @@ function AddSecondRow (questionClickedOn) {
 }
 
 function AddAllHyperLinks (questionClickedOn) {
-  console.log(JSON.stringify(questionClickedOn) + ' pausechampCHECKEHCKECHECK')
   const temp = []
   const object = questionClickedOn.questionClickedOn.questionClickedOn
   let secondPartOfTheText = object.text
-  console.log(JSON.stringify(secondPartOfTheText) + ' pausechampCHECKEHCKECHECKsecondPartOfTheText')
   const substrings = secondPartOfTheText.split(/\[/)
   for (let x = 1; x < substrings.length; x++) {
     const regex = /\[(.*?)\]\((.*?)\)/
     const matches = object.text.match(regex)
     const linkText = matches[1]
     const linkUrl = matches[2]
-    console.log(linkText + ' LINKTEST')
-    console.log(linkUrl + ' LINKURL')
+
     const text = object.text
-    console.log(text + 'Pogggg')
+
     const indexLeftBrac = text.indexOf('[')
     const firstPartOfTheText = text.substring(0, indexLeftBrac)
     const indexOfRightParen = text.indexOf(')')
@@ -105,21 +101,16 @@ function AddAllHyperLinks (questionClickedOn) {
 }
 
 function AddAllHyperLinksAnswers (questionClickedOn) {
-  console.log(JSON.stringify(questionClickedOn) + ' pausechampCHECKEHCKECHECK')
   const temp = []
   const object = questionClickedOn.questionClickedOn.object
   let secondPartOfTheText = object.text
-  console.log(JSON.stringify(secondPartOfTheText) + ' pausechampCHECKEHCKECHECKsecondPartOfTheText')
   const substrings = secondPartOfTheText.split(/\[/)
   for (let x = 1; x < substrings.length; x++) {
     const regex = /\[(.*?)\]\((.*?)\)/
     const matches = object.text.match(regex)
     const linkText = matches[1]
     const linkUrl = matches[2]
-    console.log(linkText + ' LINKTEST')
-    console.log(linkUrl + ' LINKURL')
     const text = object.text
-    console.log(text + 'Pogggg')
     const indexLeftBrac = text.indexOf('[')
     const firstPartOfTheText = text.substring(0, indexLeftBrac)
     const indexOfRightParen = text.indexOf(')')
@@ -149,10 +140,7 @@ function AddAllAnswers ({ questionClickedOn, theModel }) { // adds all answers f
     return 'error'
   }
 
-  console.log(JSON.stringify(questionClickedOn.text) + ' pausechamp995')
-
   let arr = questionClickedOn.ansIds
-  console.log(JSON.stringify(arr) + ' pausechamp1')
   arr = sortAnswerByDate(arr, { theModel })
   const temp = []
 
