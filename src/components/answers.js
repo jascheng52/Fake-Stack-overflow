@@ -2,7 +2,7 @@
 import { React, useState } from 'react'
 import PropTypes from 'prop-types'
 import { States } from '../components/questionArrayStates.js'
-import IfHyperLink from './checkIfHyperLink.js'
+// import IfHyperLink from './checkIfHyperLink.js'
 
 AnswerForm.propTypes = {
   theModel: PropTypes.object,
