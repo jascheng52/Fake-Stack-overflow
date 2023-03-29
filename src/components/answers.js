@@ -15,15 +15,18 @@ AnswerForm.propTypes = {
 export default function AnswerForm ({ theModel, setModel, currentQuestion, state, setState }) {
   const [validUser, setValidUser] = useState(true)
   const [validAnswer, setValidAnswer] = useState(true)
-  const validInputs = [setValidUser, setValidAnswer]
+  const [badHyperLink, setBadHyperLink] = useState(true)
+  const validInputs = [setValidUser, setValidAnswer, setBadHyperLink]
   function handlePostAnswerClick () {
     setValidUser(true)
     setValidAnswer(true)
+    setBadHyperLink(true)
     const goodAnswer = getAnswer(theModel, setModel, currentQuestion, validInputs)
     console.log(goodAnswer)
     if (goodAnswer) {
       setValidUser(true)
       setValidAnswer(true)
+      setBadHyperLink(true)
       setState(States.ANSWERPAGE)
     }
   }
@@ -41,6 +44,7 @@ export default function AnswerForm ({ theModel, setModel, currentQuestion, state
         <br/>
         <label className = "formTitle" htmlFor = "aText">Answer Text*</label>
             <NeedAnswer validAnswer = {validAnswer}/>
+            <BadHyperLink badHyperLink = {badHyperLink}/>
         <span className = "formEntry"><br/><textarea className = "formText textInput" name = "aText" type="text" placeholder="Enter Response..."></textarea>
     </span>
     <br/>
@@ -79,6 +83,14 @@ function getAnswer (theModel, setModel, currentQuestion, validInputs) {
 function validateInputs (userName, text, validInputs) {
   let valid = true
 
+  const charArr = text.split('')
+  if (charArr.includes('[')) {
+    if (!IfHyperLink(text)) {
+      validInputs[2](false)
+      valid = false
+    }
+  }
+
   if (!userName) {
     validInputs[0](false)
     valid = false
@@ -96,6 +108,9 @@ NeedName.propTypes = {
 NeedAnswer.propTypes = {
   validAnswer: PropTypes.bool
 }
+BadHyperLink.propTypes = {
+  badHyperLink: PropTypes.bool
+}
 
 function NeedName ({ validName }) {
   console.log(validName)
@@ -104,16 +119,14 @@ function NeedName ({ validName }) {
 }
 
 function NeedAnswer ({ validAnswer }) {
-  // console.log(validAnswer)
-
-  const ansFormData = document.getElementById('answerToQuestion')
-  const aText = ansFormData[1].value
-
-  if (!IfHyperLink(aText)) {
-    return <div className = "invalidInput" id = "aTextError">HyperLink constraint is violated</div>
-  }
-
+  console.log(validAnswer)
   if (!validAnswer) { return <div className = "invalidInput" id = "aTextError">Need Answer</div> }
+  return null
+}
+
+function BadHyperLink ({ badHyperLink }) {
+  console.log(badHyperLink)
+  if (!badHyperLink) { return <div className = "invalidInput" id = "aTextError">HyperLink constraint is violated</div> }
   return null
 }
 

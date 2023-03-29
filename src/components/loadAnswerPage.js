@@ -51,9 +51,9 @@ function AddSecondRow (questionClickedOn) {
     const datePrint = dateArr[1] + ' ' + dateArr[2] + ' at ' + dateArr[4]
     timeStr = datePrint
   }
-  if (IfHyperLink(questionClickedOn.questionClickedOn.text)) {
+  if (IfHyperLink(object.text)) {
     const regex = /\[(.*?)\]\((.*?)\)/
-    const matches = questionClickedOn.questionClickedOn.text.match(regex)
+    const matches = object.text.match(regex)
     const linkText = matches[1]
     const linkUrl = matches[2]
     console.log(linkText + ' LINKTEST')
@@ -119,12 +119,33 @@ function AddAllAnswers ({ questionClickedOn, theModel }) { // adds all answers f
       const datePrint = dateArr[1] + ' ' + dateArr[2] + ' at ' + dateArr[4]
       timeStr = datePrint
     }
-    temp.push(
+    if (IfHyperLink(object.text)) {
+      const regex = /\[(.*?)\]\((.*?)\)/
+      const matches = object.text.match(regex)
+      const linkText = matches[1]
+      const linkUrl = matches[2]
+      console.log(linkText + ' LINKTEST')
+      console.log(linkUrl + ' LINKURL')
+      const text = object.text
+      console.log(text + 'Pogggg')
+      const indexLeftBrac = text.indexOf('[')
+      const firstPartOfTheText = text.substring(0, indexLeftBrac)
+      const indexOfRightParen = text.indexOf(')')
+      const secondPartOfTheText = text.substring(indexOfRightParen + 1, text.length)
+      temp.push(
+        <div className="answerToQuestion" key={aid}>
+            <div className="textBoxAnswer">{firstPartOfTheText} <a href={linkUrl}> {linkText} </a> {secondPartOfTheText} </div>
+            <div className="timeBoxAnswer"><span className="ansBy">{object.ansBy}</span> answered {timeStr}</div>
+        </div>
+      )
+    } else {
+      temp.push(
         <div className="answerToQuestion" key={aid}>
             <div className="textBoxAnswer">{object.text}</div>
             <div className="timeBoxAnswer"><span className="ansBy">{object.ansBy}</span> answered {timeStr}</div>
         </div>
-    )
+      )
+    }
   }
   return temp
 }
