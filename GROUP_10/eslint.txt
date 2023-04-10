@@ -1,0 +1,671 @@
+   \src\App.js
+   4:31  error  Missing semicolon                            semi
+   6:8   error  'Banner' is defined but never used           no-unused-vars
+   6:44  error  Missing semicolon                            semi
+   9:8   error  'TagsPage' is defined but never used         no-unused-vars
+   9:48  error  Missing semicolon                            semi
+  11:33  error  Missing semicolon                            semi
+  12:38  error  Missing semicolon                            semi
+  13:10  error  'React' is defined but never used            no-unused-vars
+  13:40  error  Missing semicolon                            semi
+  14:8   error  'LeftSideMenu' is defined but never used     no-unused-vars
+  14:53  error  Missing semicolon                            semi
+  15:8   error  'InitialHomePage' is defined but never used  no-unused-vars
+  15:59  error  Missing semicolon                            semi
+  17:70  error  Missing semicolon                            semi
+  20:57  error  Missing semicolon                            semi
+  21:8   error  'QuestionForm' is defined but never used     no-unused-vars
+  21:49  error  Missing semicolon                            semi
+  23:8   error  'AnswerForm' is defined but never used       no-unused-vars
+  23:46  error  Missing semicolon                            semi
+  24:8   error  'SearchPage' is defined but never used       no-unused-vars
+  24:45  error  Missing semicolon                            semi
+  27:56  error  Missing semicolon                            semi
+  28:68  error  Missing semicolon                            semi
+  29:65  error  Missing semicolon                            semi
+  30:58  error  Missing semicolon                            semi
+  31:46  error  Missing semicolon                            semi
+  32:70  error  Missing semicolon                            semi
+  54:4   error  Missing semicolon                            semi
+  57:19  error  Missing semicolon                            semi
+
+   \src\components\activeButton.js 
+   5:32  error  Missing semicolon  semi
+   6:30  error  Missing semicolon  semi
+   8:54  error  Missing semicolon  semi
+   9:38  error  Missing semicolon  semi
+  10:58  error  Missing semicolon  semi
+  11:37  error  Missing semicolon  semi
+  13:40  error  Missing semicolon  semi
+  14:56  error  Missing semicolon  semi
+  14:59  error  Missing semicolon  semi
+  15:28  error  Missing semicolon  semi
+  17:64  error  Missing semicolon  semi
+  19:31  error  Missing semicolon  semi
+  21:59  error  Missing semicolon  semi
+  23:27  error  Missing semicolon  semi
+  27:28  error  Missing semicolon  semi
+  28:33  error  Missing semicolon  semi
+  29:40  error  Missing semicolon  semi
+  30:50  error  Missing semicolon  semi
+  32:37  error  Missing semicolon  semi
+  35:40  error  Missing semicolon  semi
+  36:29  error  Missing semicolon  semi
+  37:14  error  Missing semicolon  semi
+  42:40  error  Missing semicolon  semi
+  44:24  error  Missing semicolon  semi
+
+   \src\components\addRow.js       
+   2:8   error  'React' is defined but never used  no-unused-vars
+   2:26  error  Missing semicolon                  semi
+   5:48  error  Missing semicolon                  semi
+   6:35  error  Missing semicolon                  semi
+   7:62  error  Missing semicolon                  semi
+  21:2   error  Missing semicolon                  semi
+  25:2   error  Missing semicolon                  semi
+  28:37  error  Missing semicolon                  semi
+  30:30  error  Missing semicolon                  semi
+  32:29  error  Missing semicolon                  semi
+  39:32  error  Missing semicolon                  semi
+  40:26  error  Missing semicolon                  semi
+  41:32  error  Missing semicolon                  semi
+  42:35  error  Missing semicolon                  semi
+  46:16  error  Missing semicolon                  semi
+  48:27  error  Missing semicolon                  semi
+  49:37  error  Missing semicolon                  semi
+  50:74  error  Missing semicolon                  semi
+  51:57  error  Missing semicolon                  semi
+  52:46  error  Missing semicolon                  semi
+  53:36  error  Missing semicolon                  semi
+  55:16  error  Missing semicolon                  semi
+  57:87  error  Missing semicolon                  semi
+  59:57  error  Missing semicolon                  semi
+  61:68  error  Missing semicolon                  semi
+  79:4   error  Missing semicolon                  semi
+  82:22  error  Missing semicolon                  semi
+
+   \src\components\answers.js      
+    2:10   error  'React' is defined but never used  no-unused-vars
+    2:40   error  Missing semicolon                  semi
+    3:35   error  Missing semicolon                  semi
+    4:62   error  Missing semicolon                  semi
+    5:48   error  Missing semicolon                  semi
+   13:2    error  Missing semicolon                  semi
+   16:51   error  Missing semicolon                  semi
+   17:55   error  Missing semicolon                  semi
+   18:57   error  Missing semicolon                  semi
+   19:70   error  Missing semicolon                  semi
+   21:23   error  Missing semicolon                  semi
+   22:25   error  Missing semicolon                  semi
+   23:26   error  Missing semicolon                  semi
+   24:83   error  Missing semicolon                  semi
+   26:25   error  Missing semicolon                  semi
+   27:27   error  Missing semicolon                  semi
+   28:28   error  Missing semicolon                  semi
+   29:34   error  Missing semicolon                  semi
+   33:16   error  Missing semicolon                  semi
+   54:4    error  Missing semicolon                  semi
+   58:66   error  Missing semicolon                  semi
+   59:41   error  Missing semicolon                  semi
+   60:37   error  Missing semicolon                  semi
+   62:17   error  Missing semicolon                  semi
+   65:48   error  Missing semicolon                  semi
+   72:4    error  Missing semicolon                  semi
+   73:32   error  Missing semicolon                  semi
+   74:66   error  Missing semicolon                  semi
+   78:14   error  Missing semicolon                  semi
+   83:19   error  Missing semicolon                  semi
+   85:33   error  Missing semicolon                  semi
+   88:28   error  Missing semicolon                  semi
+   89:20   error  Missing semicolon                  semi
+   94:26   error  Missing semicolon                  semi
+   95:18   error  Missing semicolon                  semi
+   98:26   error  Missing semicolon                  semi
+   99:18   error  Missing semicolon                  semi
+  101:15   error  Missing semicolon                  semi
+  102:2    error  Unnecessary semicolon              no-extra-semi
+  106:2    error  Missing semicolon                  semi
+  109:2    error  Missing semicolon                  semi
+  112:2    error  Missing semicolon                  semi
+  115:25   error  Missing semicolon                  semi
+  116:93   error  Missing semicolon                  semi
+  117:14   error  Missing semicolon                  semi
+  121:27   error  Missing semicolon                  semi
+  122:97   error  Missing semicolon                  semi
+  123:14   error  Missing semicolon                  semi
+  127:28   error  Missing semicolon                  semi
+  128:119  error  Missing semicolon                  semi
+  129:14   error  Missing semicolon                  semi
+
+   \src\components\banner.js       
+   2:8   error  'React' is defined but never used  no-unused-vars
+   2:26  error  Missing semicolon                  semi
+   3:36  error  Missing semicolon                  semi
+   4:35  error  Missing semicolon                  semi
+  12:2   error  Missing semicolon                  semi
+  23:4   error  Missing semicolon                  semi
+
+   \src\components\checkIfHyperLink.js
+   4:34  error  Missing semicolon  semi
+   6:41  error  Missing semicolon  semi
+   9:78  error  Missing semicolon  semi
+  11:58  error  Missing semicolon  semi
+  12:41  error  Missing semicolon  semi
+  14:33  error  Missing semicolon  semi
+  15:35  error  Missing semicolon  semi
+  16:66  error  Missing semicolon  semi
+  17:65  error  Missing semicolon  semi
+  18:36  error  Missing semicolon  semi
+  20:27  error  Missing semicolon  semi
+  23:25  error  Missing semicolon  semi
+  26:23  error  Missing semicolon  semi
+  29:21  error  Missing semicolon  semi
+  33:17  error  Missing semicolon  semi
+  35:14  error  Missing semicolon  semi
+
+   \src\components\fakestackoverflow.js
+  2:8   error  'React' is defined but never used  no-unused-vars
+  2:26  error  Missing semicolon                  semi
+  6:4   error  Missing semicolon                  semi
+
+   \src\components\initialHomePage.js
+    1:8   error  'React' is defined but never used          no-unused-vars
+    1:26  error  Missing semicolon                          semi
+    2:8   error  'AddRow' is defined but never used         no-unused-vars
+    2:45  error  Missing semicolon                          semi
+    3:35  error  Missing semicolon                          semi
+    4:57  error  Missing semicolon                          semi
+    5:54  error  Missing semicolon                          semi
+    6:62  error  Missing semicolon                          semi
+    9:71  error  Missing semicolon                          semi
+   22:2   error  Missing semicolon                          semi
+   33:2   error  Missing semicolon                          semi
+   39:17  error  Missing semicolon                          semi
+   40:17  error  Missing semicolon                          semi
+   41:17  error  Missing semicolon                          semi
+   42:31  error  Missing semicolon                          semi
+   45:70  error  Missing semicolon                          semi
+   47:68  error  Missing semicolon                          semi
+   49:70  error  Missing semicolon                          semi
+   51:68  error  Missing semicolon                          semi
+   54:74  error  Missing semicolon                          semi
+   56:68  error  Missing semicolon                          semi
+   59:12  error  Missing semicolon                          semi
+   68:38  error  Missing semicolon                          semi
+   71:38  error  Missing semicolon                          semi
+   74:42  error  Missing semicolon                          semi
+   77:34  error  Missing semicolon                          semi
+   80:16  error  Missing semicolon                          semi
+  111:4   error  Missing semicolon                          semi
+  114:10  error  'LoadQuestions' is defined but never used  no-unused-vars
+  117:66  error  Missing semicolon                          semi
+  118:5   error  Missing semicolon                          semi
+
+   \src\components\leftSideMenu.js 
+   2:8   error  'React' is defined but never used  no-unused-vars
+   2:26  error  Missing semicolon                  semi
+  10:35  error  Missing semicolon                  semi
+  11:71  error  Missing semicolon                  semi
+  20:2   error  Missing semicolon                  semi
+  26:34  error  Missing semicolon                  semi
+  27:36  error  Missing semicolon                  semi
+  28:38  error  Missing semicolon                  semi
+  31:30  error  Missing semicolon                  semi
+  32:35  error  Missing semicolon                  semi
+  52:4   error  Missing semicolon                  semi
+
+   \src\components\loadAnswerPage.js
+    1:8   error  'React' is defined but never used                    no-unused-vars
+    1:26  error  Missing semicolon                                    semi
+    2:48  error  Missing semicolon                                    semi
+    3:35  error  Missing semicolon                                    semi
+    4:59  error  Missing semicolon                                    semi
+    5:45  error  Missing semicolon                                    semi
+   13:2   error  Missing semicolon                                    semi
+   16:10  error  'AmountOfAnswers' is defined but never used          no-unused-vars
+   17:73  error  Missing semicolon                                    semi
+   22:4   error  Missing semicolon                                    semi
+   25:10  error  'QuestionTitle' is defined but never used            no-unused-vars
+   26:67  error  Missing semicolon                                    semi
+   31:4   error  Missing semicolon                                    semi
+   35:10  error  'AddSecondRow' is defined but never used             no-unused-vars
+   36:53  error  Missing semicolon                                    semi
+   38:19  error  Missing semicolon                                    semi
+   39:55  error  Missing semicolon                                    semi
+   40:44  error  Missing semicolon                                    semi
+   41:36  error  Missing semicolon                                    semi
+   42:47  error  Missing semicolon                                    semi
+   44:93  error  Missing semicolon                                    semi
+   45:24  error  Missing semicolon                                    semi
+   47:63  error  Missing semicolon                                    semi
+   48:24  error  Missing semicolon                                    semi
+   50:74  error  Missing semicolon                                    semi
+   51:24  error  Missing semicolon                                    semi
+   60:6   error  Missing semicolon                                    semi
+   69:4   error  Missing semicolon                                    semi
+   72:10  error  'AddAllHyperLinks' is defined but never used         no-unused-vars
+   73:18  error  Missing semicolon                                    semi
+   74:71  error  Missing semicolon                                    semi
+   75:40  error  Missing semicolon                                    semi
+   76:53  error  Missing semicolon                                    semi
+   78:39  error  Missing semicolon                                    semi
+   79:45  error  Missing semicolon                                    semi
+   80:32  error  Missing semicolon                                    semi
+   81:31  error  Missing semicolon                                    semi
+   83:29  error  Missing semicolon                                    semi
+   85:44  error  Missing semicolon                                    semi
+   86:64  error  Missing semicolon                                    semi
+   87:48  error  Missing semicolon                                    semi
+   88:77  error  Missing semicolon                                    semi
+   92:8   error  Missing semicolon                                    semi
+   96:8   error  Missing semicolon                                    semi
+   97:12  error  Missing semicolon                                    semi
+  100:14  error  Missing semicolon                                    semi
+  103:10  error  'AddAllHyperLinksAnswers' is defined but never used  no-unused-vars
+  104:18  error  Missing semicolon                                    semi
+  105:60  error  Missing semicolon                                    semi
+  106:40  error  Missing semicolon                                    semi
+  107:53  error  Missing semicolon                                    semi
+  109:39  error  Missing semicolon                                    semi
+  110:45  error  Missing semicolon                                    semi
+  111:32  error  Missing semicolon                                    semi
+  112:31  error  Missing semicolon                                    semi
+  113:29  error  Missing semicolon                                    semi
+  114:44  error  Missing semicolon                                    semi
+  115:64  error  Missing semicolon                                    semi
+  116:48  error  Missing semicolon                                    semi
+  117:77  error  Missing semicolon                                    semi
+  121:8   error  Missing semicolon                                    semi
+  125:8   error  Missing semicolon                                    semi
+  126:12  error  Missing semicolon                                    semi
+  129:14  error  Missing semicolon                                    semi
+  132:10  error  'AddAllAnswers' is defined but never used            no-unused-vars
+  134:38  error  Missing semicolon                                    semi
+  137:17  error  Missing semicolon                                    semi
+  140:19  error  Missing semicolon                                    semi
+  143:37  error  Missing semicolon                                    semi
+  144:44  error  Missing semicolon                                    semi
+  145:18  error  Missing semicolon                                    semi
+  148:23  error  Missing semicolon                                    semi
+  149:54  error  Missing semicolon                                    semi
+  150:55  error  Missing semicolon                                    semi
+  151:21  error  Missing semicolon                                    semi
+  152:57  error  Missing semicolon                                    semi
+  153:46  error  Missing semicolon                                    semi
+  154:38  error  Missing semicolon                                    semi
+  155:49  error  Missing semicolon                                    semi
+  157:95  error  Missing semicolon                                    semi
+  158:26  error  Missing semicolon                                    semi
+  160:65  error  Missing semicolon                                    semi
+  161:26  error  Missing semicolon                                    semi
+  163:76  error  Missing semicolon                                    semi
+  164:26  error  Missing semicolon                                    semi
+  172:8   error  Missing semicolon                                    semi
+  179:8   error  Missing semicolon                                    semi
+  182:14  error  Missing semicolon                                    semi
+  186:32  error  Missing semicolon                                    semi
+  187:30  error  Missing semicolon                                    semi
+  188:41  error  Missing semicolon                                    semi
+  190:51  error  Missing semicolon                                    semi
+  191:38  error  Missing semicolon                                    semi
+  192:58  error  Missing semicolon                                    semi
+  193:37  error  Missing semicolon                                    semi
+  195:40  error  Missing semicolon                                    semi
+  196:56  error  Missing semicolon                                    semi
+  196:59  error  Missing semicolon                                    semi
+  197:28  error  Missing semicolon                                    semi
+  199:64  error  Missing semicolon                                    semi
+  201:31  error  Missing semicolon                                    semi
+  203:59  error  Missing semicolon                                    semi
+  205:27  error  Missing semicolon                                    semi
+  211:32  error  Missing semicolon                                    semi
+  214:34  error  Missing semicolon                                    semi
+  217:16  error  Missing semicolon                                    semi
+  235:4   error  Missing semicolon                                    semi
+
+   \src\components\newestButton.js 
+  1:66  error  Missing semicolon  semi
+  4:50  error  Missing semicolon  semi
+  5:19  error  Missing semicolon  semi
+
+   \src\components\question.js     
+    2:35   error  Missing semicolon                  semi
+    3:62   error  Missing semicolon                  semi
+    4:20   error  'React' is defined but never used  no-unused-vars
+    4:40   error  Missing semicolon                  semi
+    5:48   error  Missing semicolon                  semi
+   15:2    error  Missing semicolon                  semi
+   18:53   error  Missing semicolon                  semi
+   19:53   error  Missing semicolon                  semi
+   20:51   error  Missing semicolon                  semi
+   21:51   error  Missing semicolon                  semi
+   22:55   error  Missing semicolon                  semi
+   23:54   error  Missing semicolon                  semi
+   24:57   error  Missing semicolon                  semi
+   25:99   error  Missing semicolon                  semi
+   26:54   error  Missing semicolon                  semi
+   28:24   error  Missing semicolon                  semi
+   29:24   error  Missing semicolon                  semi
+   30:23   error  Missing semicolon                  semi
+   31:23   error  Missing semicolon                  semi
+   32:24   error  Missing semicolon                  semi
+   33:24   error  Missing semicolon                  semi
+   34:26   error  Missing semicolon                  semi
+   35:30   error  Missing semicolon                  semi
+   36:84   error  Missing semicolon                  semi
+   38:26   error  Missing semicolon                  semi
+   39:26   error  Missing semicolon                  semi
+   40:25   error  Missing semicolon                  semi
+   41:25   error  Missing semicolon                  semi
+   42:26   error  Missing semicolon                  semi
+   43:26   error  Missing semicolon                  semi
+   44:28   error  Missing semicolon                  semi
+   45:36   error  Missing semicolon                  semi
+   50:16   error  Missing semicolon                  semi
+   91:4    error  Missing semicolon                  semi
+   96:2    error  Missing semicolon                  semi
+   99:2    error  Missing semicolon                  semi
+  102:2    error  Missing semicolon                  semi
+  104:94   error  Missing semicolon                  semi
+  105:14   error  Missing semicolon                  semi
+  109:106  error  Missing semicolon                  semi
+  110:14   error  Missing semicolon                  semi
+  114:115  error  Missing semicolon                  semi
+  115:14   error  Missing semicolon                  semi
+  120:60   error  Missing semicolon                  semi
+  121:36   error  Missing semicolon                  semi
+  122:35   error  Missing semicolon                  semi
+  123:35   error  Missing semicolon                  semi
+  124:39   error  Missing semicolon                  semi
+  126:106  error  Missing semicolon                  semi
+  128:37   error  Missing semicolon                  semi
+  129:66   error  Missing semicolon                  semi
+  129:69   error  Missing semicolon                  semi
+  131:71   error  Missing semicolon                  semi
+  133:26   error  Missing semicolon                  semi
+  137:52   error  Missing semicolon                  semi
+  138:14   error  Missing semicolon                  semi
+  142:40   error  Missing semicolon                  semi
+  154:4    error  Missing semicolon                  semi
+  155:36   error  Missing semicolon                  semi
+  159:21   error  Missing semicolon                  semi
+  160:14   error  Missing semicolon                  semi
+  166:19   error  Missing semicolon                  semi
+  168:34   error  Missing semicolon                  semi
+  171:29   error  Missing semicolon                  semi
+  172:20   error  Missing semicolon                  semi
+  178:30   error  Missing semicolon                  semi
+  179:27   error  Missing semicolon                  semi
+  180:18   error  Missing semicolon                  semi
+  183:33   error  Missing semicolon                  semi
+  184:27   error  Missing semicolon                  semi
+  185:18   error  Missing semicolon                  semi
+  188:29   error  Missing semicolon                  semi
+  189:27   error  Missing semicolon                  semi
+  190:18   error  Missing semicolon                  semi
+  193:33   error  Missing semicolon                  semi
+  194:27   error  Missing semicolon                  semi
+  195:18   error  Missing semicolon                  semi
+  197:54   error  Missing semicolon                  semi
+  198:15   error  Missing semicolon                  semi
+  212:23   error  Missing semicolon                  semi
+  213:31   error  Missing semicolon                  semi
+  215:33   error  Missing semicolon                  semi
+  216:27   error  Missing semicolon                  semi
+  217:17   error  Missing semicolon                  semi
+  221:39   error  Missing semicolon                  semi
+  222:29   error  Missing semicolon                  semi
+  223:19   error  Missing semicolon                  semi
+  225:94   error  Missing semicolon                  semi
+  231:8    error  Missing semicolon                  semi
+  232:30   error  Missing semicolon                  semi
+  235:14   error  Missing semicolon                  semi
+  240:38   error  Missing semicolon                  semi
+  243:36   error  Missing semicolon                  semi
+  247:2    error  Unnecessary semicolon              no-extra-semi
+
+   \src\components\questionArrayStates.js
+   6:2  error  Missing semicolon  semi
+  16:2  error  Missing semicolon  semi
+
+   \src\components\search.js       
+    1:8    error  'React' is defined but never used       no-unused-vars
+    1:26   error  Missing semicolon                       semi
+    2:35   error  Missing semicolon                       semi
+    3:10   error  'CheckState' is defined but never used  no-unused-vars
+    3:50   error  Missing semicolon                       semi
+    4:59   error  Missing semicolon                       semi
+    8:32   error  Missing semicolon                       semi
+    9:38   error  Missing semicolon                       semi
+   10:28   error  Missing semicolon                       semi
+   23:2    error  Missing semicolon                       semi
+   30:16   error  Missing semicolon                       semi
+   33:38   error  Missing semicolon                       semi
+   36:38   error  Missing semicolon                       semi
+   39:42   error  Missing semicolon                       semi
+   42:34   error  Missing semicolon                       semi
+   46:4    error  Missing semicolon                       semi
+   50:51   error  Missing semicolon                       semi
+   52:75   error  Missing semicolon                       semi
+   55:48   error  Missing semicolon                       semi
+   56:32   error  Missing semicolon                       semi
+   85:4    error  Missing semicolon                       semi
+   89:55   error  Missing semicolon                       semi
+   92:27   error  Missing semicolon                       semi
+   93:32   error  Missing semicolon                       semi
+   94:26   error  Missing semicolon                       semi
+   95:59   error  Missing semicolon                       semi
+   96:44   error  Missing semicolon                       semi
+   99:45   error  Missing semicolon                       semi
+  100:49   error  Missing semicolon                       semi
+  101:28   error  Missing semicolon                       semi
+  102:43   error  Missing semicolon                       semi
+  103:79   error  Missing semicolon                       semi
+  104:78   error  Missing semicolon                       semi
+  105:36   error  Missing semicolon                       semi
+  107:78   error  Missing semicolon                       semi
+  110:114  error  Missing semicolon                       semi
+  114:33   error  Missing semicolon                       semi
+  115:27   error  Missing semicolon                       semi
+  120:24   error  Missing semicolon                       semi
+  121:21   error  Missing semicolon                       semi
+  123:36   error  Missing semicolon                       semi
+  124:34   error  Missing semicolon                       semi
+  125:28   error  Missing semicolon                       semi
+  126:51   error  Missing semicolon                       semi
+  127:53   error  Missing semicolon                       semi
+  128:37   error  Missing semicolon                       semi
+  129:35   error  Missing semicolon                       semi
+  131:17   error  Missing semicolon                       semi
+  135:24   error  Missing semicolon                       semi
+  137:36   error  Missing semicolon                       semi
+  138:34   error  Missing semicolon                       semi
+  139:28   error  Missing semicolon                       semi
+  140:48   error  Missing semicolon                       semi
+  141:48   error  Missing semicolon                       semi
+  142:40   error  Missing semicolon                       semi
+  145:14   error  Missing semicolon                       semi
+  150:41   error  Missing semicolon                       semi
+  152:64   error  Missing semicolon                       semi
+  154:17   error  Missing semicolon                       semi
+  155:4    error  Missing semicolon                       semi
+  160:39   error  Missing semicolon                       semi
+  161:42   error  Missing semicolon                       semi
+  163:37   error  Missing semicolon                       semi
+  164:40   error  Missing semicolon                       semi
+  165:64   error  Missing semicolon                       semi
+  166:55   error  Missing semicolon                       semi
+  168:52   error  Missing semicolon                       semi
+  169:33   error  Missing semicolon                       semi
+  170:57   error  Missing semicolon                       semi
+  171:54   error  Missing semicolon                       semi
+  172:64   error  Missing semicolon                       semi
+  174:54   error  Missing semicolon                       semi
+  176:49   error  Missing semicolon                       semi
+  177:33   error  Missing semicolon                       semi
+  178:54   error  Missing semicolon                       semi
+  179:51   error  Missing semicolon                       semi
+  180:64   error  Missing semicolon                       semi
+  183:17   error  Missing semicolon                       semi
+  184:4    error  Missing semicolon                       semi
+
+   \src\components\sortQuestionByDate.js
+   4:32  error  Missing semicolon  semi
+   5:30  error  Missing semicolon  semi
+   7:54  error  Missing semicolon  semi
+   8:38  error  Missing semicolon  semi
+   9:58  error  Missing semicolon  semi
+  10:37  error  Missing semicolon  semi
+  12:40  error  Missing semicolon  semi
+  13:56  error  Missing semicolon  semi
+  13:59  error  Missing semicolon  semi
+  14:28  error  Missing semicolon  semi
+  16:64  error  Missing semicolon  semi
+  18:31  error  Missing semicolon  semi
+  20:59  error  Missing semicolon  semi
+  22:27  error  Missing semicolon  semi
+
+   \src\components\tagsPage.js     
+    1:10   error  'React' is defined but never used          no-unused-vars
+    1:40   error  Missing semicolon                          semi
+    2:35   error  Missing semicolon                          semi
+    3:71   error  Missing semicolon                          semi
+    4:10   error  'CheckState' is defined but never used     no-unused-vars
+    4:47   error  Missing semicolon                          semi
+   17:2    error  Missing semicolon                          semi
+   23:34   error  Missing semicolon                          semi
+   24:36   error  Missing semicolon                          semi
+   26:51   error  Missing semicolon                          semi
+   27:21   error  Missing semicolon                          semi
+   28:27   error  Missing semicolon                          semi
+   32:150  error  Missing semicolon                          semi
+   35:16   error  Missing semicolon                          semi
+   56:4    error  Missing semicolon                          semi
+   63:2    error  Missing semicolon                          semi
+   65:23   error  Missing semicolon                          semi
+   77:6    error  Missing semicolon                          semi
+   79:31   error  Missing semicolon                          semi
+   80:53   error  Missing semicolon                          semi
+   81:23   error  Missing semicolon                          semi
+   94:8    error  Missing semicolon                          semi
+  106:8    error  Missing semicolon                          semi
+  116:2    error  Missing semicolon                          semi
+  119:29   error  Missing semicolon                          semi
+  121:86   error  Missing semicolon                          semi
+  122:164  error  Missing semicolon                          semi
+  122:170  error  Missing semicolon                          semi
+  124:5    error  Missing semicolon                          semi
+  127:10   error  'BuildTagTable' is defined but never used  no-unused-vars
+  131:40   error  Missing semicolon                          semi
+  132:22   error  Missing semicolon                          semi
+  133:12   error  Missing semicolon                          semi
+  136:21   error  Missing semicolon                          semi
+  137:14   error  Missing semicolon                          semi
+  138:21   error  Missing semicolon                          semi
+  140:41   error  Missing semicolon                          semi
+  141:17   error  Missing semicolon                          semi
+  142:10   error  Missing semicolon                          semi
+  144:27   error  Missing semicolon                          semi
+  145:14   error  Missing semicolon                          semi
+  151:127  error  Missing semicolon                          semi
+  153:171  error  Missing semicolon                          semi
+  154:5    error  Missing semicolon                          semi
+  159:51   error  Missing semicolon                          semi
+  160:59   error  Missing semicolon                          semi
+  161:36   error  Missing semicolon                          semi
+  162:29   error  Missing semicolon                          semi
+  163:34   error  Missing semicolon                          semi
+  164:22   error  Missing semicolon                          semi
+  178:2    error  Missing semicolon                          semi
+  185:16   error  Missing semicolon                          semi
+  188:38   error  Missing semicolon                          semi
+  191:38   error  Missing semicolon                          semi
+  194:42   error  Missing semicolon                          semi
+  197:36   error  Missing semicolon                          semi
+  198:34   error  Missing semicolon                          semi
+  202:4    error  Missing semicolon                          semi
+  206:51   error  Missing semicolon                          semi
+  208:74   error  Missing semicolon                          semi
+  211:69   error  Missing semicolon                          semi
+  212:51   error  Missing semicolon                          semi
+  213:27   error  Missing semicolon                          semi
+  214:33   error  Missing semicolon                          semi
+  243:4    error  Missing semicolon                          semi
+
+   \src\components\timeCheck.js    
+   4:30  error  Missing semicolon  semi
+   5:67  error  Missing semicolon  semi
+   7:17  error  Missing semicolon  semi
+   9:14  error  Missing semicolon  semi
+  13:30  error  Missing semicolon  semi
+  14:59  error  Missing semicolon  semi
+  16:16  error  Missing semicolon  semi
+  18:15  error  Missing semicolon  semi
+  22:30  error  Missing semicolon  semi
+  23:67  error  Missing semicolon  semi
+  24:64  error  Missing semicolon  semi
+  25:59  error  Missing semicolon  semi
+  26:21  error  Missing semicolon  semi
+  27:23  error  Missing semicolon  semi
+  28:23  error  Missing semicolon  semi
+  30:55  error  Missing semicolon  semi
+  31:16  error  Missing semicolon  semi
+  33:55  error  Missing semicolon  semi
+  34:16  error  Missing semicolon  semi
+  36:51  error  Missing semicolon  semi
+  37:16  error  Missing semicolon  semi
+  45:2   error  Missing semicolon  semi
+
+   \src\components\unAnsweredButton.js
+   5:28  error  Missing semicolon  semi
+   8:44  error  Missing semicolon  semi
+  11:24  error  Missing semicolon  semi
+
+   \src\index.js
+   2:8   error  'React' is defined but never used  no-unused-vars
+   2:26  error  Missing semicolon                  semi
+   3:40  error  Missing semicolon                  semi
+   4:33  error  Missing semicolon                  semi
+   5:8   error  'App' is defined but never used    no-unused-vars
+   5:24  error  Missing semicolon                  semi
+   7:66  error  Missing semicolon                  semi
+  10:2   error  Missing semicolon                  semi
+
+   \src\models\model.js
+   77:6   error  Missing semicolon  semi
+   82:31  error  Missing semicolon  semi
+   86:26  error  Missing semicolon  semi
+   90:33  error  Missing semicolon  semi
+   94:38  error  Missing semicolon  semi
+   98:33  error  Missing semicolon  semi
+  102:36  error  Missing semicolon  semi
+  106:32  error  Missing semicolon  semi
+  110:42  error  Missing semicolon  semi
+  114:42  error  Missing semicolon  semi
+  117:52  error  Missing semicolon  semi
+  118:15  error  Missing semicolon  semi
+  124:42  error  Missing semicolon  semi
+  127:41  error  Missing semicolon  semi
+  128:15  error  Missing semicolon  semi
+  134:38  error  Missing semicolon  semi
+  138:35  error  Missing semicolon  semi
+  140:63  error  Missing semicolon  semi
+  142:16  error  Missing semicolon  semi
+  146:35  error  Missing semicolon  semi
+  148:61  error  Missing semicolon  semi
+  150:16  error  Missing semicolon  semi
+  155:42  error  Missing semicolon  semi
+  156:24  error  Missing semicolon  semi
+  158:47  error  Missing semicolon  semi
+  161:38  error  Missing semicolon  semi
+  162:16  error  Missing semicolon  semi
+  166:20  error  Missing semicolon  semi
+  171:52  error  Missing semicolon  semi
+  175:43  error  Missing semicolon  semi
+  180:29  error  Missing semicolon  semi
+  184:44  error  Missing semicolon  semi
+  189:42  error  Missing semicolon  semi
+  190:20  error  Missing semicolon  semi
+  192:47  error  Missing semicolon  semi
+  194:51  error  Missing semicolon  semi
+  197:19  error  Missing semicolon  semi
